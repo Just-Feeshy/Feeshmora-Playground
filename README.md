@@ -3,7 +3,7 @@
 
 - Feeshmora Playground is being developed in Repl it.
 
-## External Libraries
+## Libraries
 For now.
 
 -  [glfw](https://github.com/glfw/glfw)
