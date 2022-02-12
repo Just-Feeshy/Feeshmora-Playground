@@ -1,0 +1,127 @@
+#include "Model.h"
+
+Model::~Model() {
+    if(buffers.size() > 0) {
+        glDeleteBuffers(static_cast<GLsizei>(buffers.size()), buffers.data());
+    }
+
+    if(VAO != 0 && VAO) {
+        glDeleteVertexArrays(1, &VAO);
+    }
+}
+
+glm::mat4 Model::getMatrix() {
+    glm::mat4 model(1.0f);
+
+    model = Matrix::transform(movement.position, Quaternion::eularAngle(movement.rotation), glm::vec3(1, 1, 1));
+
+    return model;
+}
+
+void Model::render() {
+    setRotation(0, 0, 0);
+}
+
+void Model::draw() {
+    if(VAO != 0 && VAO) {
+        /**
+        for(GLuint i=0; i<textures.size(); i++) {
+            //DefaultTextures::Active(i);
+
+            std::cout << "oh ok" << std::endl;
+
+            textures[i].Draw(VAO, GL_TRIANGLES, 2, alignment.getMeshIndices().size(), true);
+        }
+        **/
+
+        texture.Draw(VAO, GL_TRIANGLES, 2, alignment.getMeshIndices().size(), true);
+
+        glBindVertexArray(0);
+    }
+}
+
+void Model::create(MeshVertices &meshConfig) {
+    createVAO();
+    createBuffer(GL_ARRAY_BUFFER, meshConfig, false);
+    createBuffer(GL_ELEMENT_ARRAY_BUFFER, meshConfig, true);
+    compile();
+
+    /**
+    Shaders shader(
+        "Shaders/DefaultShaders.vert",
+        "Shaders/DefaultShaders.frag"
+    );
+
+    shader.Init();
+    shaderGroup.push_back(shader);
+    **/
+}
+
+void Model::bindVAO() {
+    glBindVertexArray(VAO);
+}
+
+void Model::createVAO() {
+    if(VAO != 0 && VAO) {
+        glDeleteVertexArrays(1, &VAO);
+    }
+
+    glGenVertexArrays(1, &VAO);
+    bindVAO();
+}
+
+void Model::createBuffer(GLenum type, MeshVertices &m, bool indices) {
+    GLuint buffer;
+    glGenBuffers(1, &buffer);
+    glBindBuffer(type, buffer);
+
+    if(indices) {
+        glBufferData(type, sizeof(GLuint) * m.getMeshIndices().size(), &m.getMeshIndices()[0], GL_STATIC_DRAW);
+    }else {
+        glBufferData(type, sizeof(MeshVertex) * m.getMeshVertices().size(), &m.getMeshVertices()[0], GL_STATIC_DRAW);
+    }
+
+    alignment.cloneData(m);
+    buffers.push_back(buffer);
+}
+
+void Model::compile() {
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(MeshVertex), nullptr);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(MeshVertex), (void*)offsetof(MeshVertex, texCoords));
+    glEnableVertexAttribArray(1);
+
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(MeshVertex), (void*)offsetof(MeshVertex, colorRBG));
+    glEnableVertexAttribArray(2);
+
+    glBindVertexArray(0);
+}
+
+void Model::setRotation(float yaw, float pitch, float roll) {
+    movement.rotation = {yaw, pitch, roll};
+
+    glm::vec3 faceFront;
+
+    faceFront = glm::vec3(
+        sin(glm::radians(-pitch)),
+        0,
+        cos(glm::radians(pitch))
+    );
+
+    direction = faceFront;
+    angle = glm::normalize(glm::cross(direction, upwards));
+}
+
+void Model::setTexture(const std::string file, const TexEnum type, const TexParams params, const TexParams anti, int sides) {
+    texture.loadFile(file);
+    texture.createTexture(type, params, anti, sides);
+}
+
+void Model::update() {
+    if(shaderGroup.size() > 0) {
+        std::for_each(shaderGroup.begin(), shaderGroup.end(), [](Shaders &shader) {
+            shader.update();
+        });
+    }
+}
