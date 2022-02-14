@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef MODEL_INCLUDED
 #define MODEL_INCLUDED
 
@@ -19,6 +21,8 @@ class Model: public Mesh {
         void update() override;
         void render() override;
         void draw(Shaders* shader) override;
+
+        virtual void updatePlayerPos(const glm::vec3 &pos) override;
 
         void create(MeshVertices &meshConfig);
 

@@ -33,6 +33,7 @@ class Mesh {
         Mesh() = default;
 
         virtual void update() = 0;
+        virtual void updatePlayerPos(const glm::vec3 &pos) = 0;
 
         virtual glm::mat4 getMatrix() = 0;
     protected:

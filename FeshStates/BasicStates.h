@@ -58,6 +58,9 @@ class BasicStates {
 
             for(GLuint i=0; i<_objects.size(); i++) {
                 _objects[i] -> draw(&defaultShaders);
+
+                _objects[i] -> updatePlayerPos(Matrix::useVec3(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z)));
+                
                 _objects[i] -> update();
             }
         }

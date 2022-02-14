@@ -208,12 +208,16 @@ void PlayState::onCreate() {
     funniObject.setPosition(-1.25, -0.25, -1);
     funniObject.setTexture("Assets/images/feesh/Feesh.png", REGULAR, REPEAT, LINEAR, 1);
     this -> add(funniObject);
+
+    lightsource.setPosition(0, 0, 0);
+    lightsource.setColor(Matrix::useVec3(1, 1, 1));
+    this -> add(lightsource);
 }
 
 void PlayState::update(float elapsed) {
     daCamera -> setRotation(control.getMouseRot(Y) * 100, control.getMouseRot(X) * 100, 0.0f);
 
-    if(control.GetKeyHolding(Keys::SPACE)) {
+    if(control.GetKeyHolding(Keys::R) || control.GetKeyHolding(Keys::SPACE)) {
         square.setRotation(0, square.getRotation(Y) + (elapsed * 100), 0.0f);
 
         funniObject.setRotation(0, funniObject.getRotation(Y) - (elapsed * 100), 0.0f);

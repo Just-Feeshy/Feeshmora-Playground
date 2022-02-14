@@ -2,6 +2,7 @@
 #define PLAYSTATE_INCLUDED
 
 #include "../../FeshStates/BasicStates.h"
+#include "../../Model/Light.cpp"
 
 class PlayState: public BasicStates {
     public:
@@ -13,5 +14,7 @@ class PlayState: public BasicStates {
     private:
         Model square;
         Model funniObject;
+
+        Light lightsource;
 };
 #endif

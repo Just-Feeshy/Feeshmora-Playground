@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Model.h"
 
 Model::~Model() {
@@ -119,4 +121,8 @@ void Model::update() {
             shader.update();
         });
     }
+}
+
+void Model::updatePlayerPos(const glm::vec3 &pos) {
+    return;
 }

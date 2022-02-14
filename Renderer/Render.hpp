@@ -63,12 +63,12 @@ class Render {
             glUniform4f(glGetUniformLocation(shaderProgram, name), v.x, v.y, v.z, v.w);
         }
 
-        void uniformMat4(const char* name, const glm::mat4 &m) const {
-            glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name), 1, GL_FALSE, glm::value_ptr(m));
+        void uniformMat3(const char* name, const glm::mat3 &m) const {
+            glUniformMatrix3fv(glGetUniformLocation(shaderProgram, name), 1, GL_FALSE, glm::value_ptr(m));
         }
 
-        void uniformMat4_Vector(const char* name, const std::vector<glm::mat4> &m) {
-            glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name), m.size(), GL_FALSE, glm::value_ptr(m[0]));
+        void uniformMat4(const char* name, const glm::mat4 &m) const {
+            glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name), 1, GL_FALSE, glm::value_ptr(m));
         }
     protected:
         GLuint shaderProgram = 0;
