@@ -51,25 +51,13 @@ class BasicStates {
         * Stuff for the Application class to handle.
         */
         void updateAllObjs(float elapsed) {
-            std::vector<glm::mat4> storeMatrix;
-
-            defaultShaders.uniformInt("MODELS_AMOUNT", _objects.size());
-
-            /**
-            for(GLuint i=0; i<_objects.size(); i++) {
-                storeMatrix.push_back(_objects[i] -> getMatrix());
-            }
-            **/
-
-            defaultShaders.uniformMat4("modelMatrix_Array", _objects[0] -> getMatrix());
-
             defaultShaders.uniformMat4("pViewMatrix", daCamera -> getProjectionView());
 
             daCamera -> update(elapsed);
             defaultShaders.update();
 
             for(GLuint i=0; i<_objects.size(); i++) {
-                _objects[i] -> draw();
+                _objects[i] -> draw(&defaultShaders);
                 _objects[i] -> update();
             }
         }

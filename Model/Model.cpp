@@ -22,17 +22,9 @@ void Model::render() {
     setRotation(0, 0, 0);
 }
 
-void Model::draw() {
+void Model::draw(Shaders* shader) {
     if(VAO != 0 && VAO) {
-        /**
-        for(GLuint i=0; i<textures.size(); i++) {
-            //DefaultTextures::Active(i);
-
-            std::cout << "oh ok" << std::endl;
-
-            textures[i].Draw(VAO, GL_TRIANGLES, 2, alignment.getMeshIndices().size(), true);
-        }
-        **/
+        shader -> uniformMat4("modelMatrix", this -> getMatrix());
 
         texture.Draw(VAO, GL_TRIANGLES, 2, alignment.getMeshIndices().size(), true);
 
@@ -86,14 +78,17 @@ void Model::createBuffer(GLenum type, MeshVertices &m, bool indices) {
 }
 
 void Model::compile() {
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(MeshVertex), nullptr);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(MeshVertex), nullptr);
 
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(MeshVertex), (void*)offsetof(MeshVertex, texCoords));
     glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(MeshVertex), (void*)offsetof(MeshVertex, texCoords));
 
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(MeshVertex), (void*)offsetof(MeshVertex, colorRBG));
     glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(MeshVertex), (void*)offsetof(MeshVertex, colorRBG));
+
+    glEnableVertexAttribArray(3);
+    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(MeshVertex), (void*)offsetof(MeshVertex, normalCoords));
 
     glBindVertexArray(0);
 }

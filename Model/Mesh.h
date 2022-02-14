@@ -19,6 +19,7 @@ struct MeshVertex {
     glm::vec3 vertices;
     glm::vec2 texCoords;
     glm::vec3 colorRBG;
+    glm::vec3 normalCoords;
 };
 
 struct MeshInWorld {
@@ -45,7 +46,7 @@ class Mesh {
 
         friend class BasicStates;
 
-        virtual void draw() = 0;
+        virtual void draw(Shaders* shader) = 0;
         virtual void render() = 0;
 
         MeshInWorld movement;
