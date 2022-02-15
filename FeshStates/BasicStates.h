@@ -53,14 +53,13 @@ class BasicStates {
         void updateAllObjs(float elapsed) {
             defaultShaders.uniformMat4("pViewMatrix", daCamera -> getProjectionView());
 
+            defaultShaders.uniformVec3("cameraPos", Matrix::useVec3(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z)));
+
             daCamera -> update(elapsed);
             defaultShaders.update();
 
             for(GLuint i=0; i<_objects.size(); i++) {
                 _objects[i] -> draw(&defaultShaders);
-
-                _objects[i] -> updatePlayerPos(Matrix::useVec3(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z)));
-                
                 _objects[i] -> update();
             }
         }

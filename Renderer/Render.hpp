@@ -59,6 +59,10 @@ class Render {
             glUniform1i(glGetUniformLocation(shaderProgram, name), value);
         }
 
+        void uniformVec3(const char* name, const glm::vec3 &v) const {
+            glUniform3f(glGetUniformLocation(shaderProgram, name), v.x, v.y, v.z);
+        }
+
         void uniformVec4(const char* name, const glm::vec4 &v) const {
             glUniform4f(glGetUniformLocation(shaderProgram, name), v.x, v.y, v.z, v.w);
         }

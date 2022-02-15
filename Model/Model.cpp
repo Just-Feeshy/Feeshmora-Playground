@@ -122,7 +122,3 @@ void Model::update() {
         });
     }
 }
-
-void Model::updatePlayerPos(const glm::vec3 &pos) {
-    return;
-}

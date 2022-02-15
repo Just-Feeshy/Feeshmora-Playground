@@ -22,8 +22,6 @@ class Model: public Mesh {
         void render() override;
         void draw(Shaders* shader) override;
 
-        virtual void updatePlayerPos(const glm::vec3 &pos) override;
-
         void create(MeshVertices &meshConfig);
 
         void createVAO();
