@@ -4,37 +4,30 @@ Light::Light() {
     return;
 }
 
+Light::Light(const LightType type) {
+    return;
+}
+
 Light::~Light() {
     return;
 }
 
+void Light::setLightToBe(const LightType type) {
+    this -> type = type;
+}
+
 void Light::render() {
-    MeshVertices lv;
-
-    lv.addVertexRow(-0.25f, 0.25f, -0.25f);
-    lv.addTexCoordRow(0.0f, 1.0f);
-    lv.storeThisArray();
-
-    lv.addVertexRow(-0.25f, -0.25f, -0.25f);
-    lv.addTexCoordRow(0.0f, 0.0f);
-    lv.storeThisArray();
-
-    lv.addVertexRow(-0.25f, -0.25f, 0.25f);
-    lv.addTexCoordRow(1.0f, 0.0f);
-    lv.storeThisArray();
-
-    lv.addVertexRow(-0.25f, 0.25f, 0.25f);
-    lv.addTexCoordRow(1.0f, 1.0f);
-    lv.storeThisArray();
-
-    lv.storeIndices(0, 1, 3);
-    lv.storeIndices(3, 1, 2);
-
-    this -> create(lv);
+    return;
 }
 
 void Light::draw(Shaders* shader) {
+    shader -> uniformInt("lightEnum", type);
+
+    shader -> uniformFloat("linear", linear);
+    shader -> uniformFloat("constant", constant);
+
     shader -> uniformMat3("lightMatrix", this -> getLightMatrix());
+    shader -> uniformFloat("brightness", this -> brightness);
 }
 
 glm::mat3 Light::getLightMatrix() {
@@ -51,6 +44,34 @@ void Light::setColor(glm::vec3 color) {
     this -> color = color;
 }
 
+void Light::setBrightness(const float value) {
+    this -> brightness = value;
+}
+
+void Light::setLinear(const float value) {
+    this -> linear = value;
+}
+
+void Light::setConstant(const float value) {
+    this -> constant = value;
+}
+
+float Light::getBrightness() const {
+    return brightness;
+}
+
 glm::vec3 Light::getColor() const {
     return color;
+}
+
+float Light::getLinear() const {
+    return linear;
+}
+
+float Light::getConstant() const {
+    return constant;
+}
+
+LightType Light::getType() const {
+    return type;
 }

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Shaders.h"
 
 Shaders::Shaders(std::string vrtxShaders, std::string fagShaders) {

@@ -199,28 +199,66 @@ void PlayState::onCreate() {
     meshConfig2.storeIndices(10, 12, 11);
     meshConfig2.storeIndices(13, 15, 14);
 
+    MeshVertices meshConfig3;
+
+    //Floor
+    meshConfig3.addVertexRow(-3.0f, 0.0f, 3.0f);
+    meshConfig3.addTexCoordRow(0.0f, 0.0f);
+    meshConfig3.storeThisArray();
+
+    meshConfig3.addVertexRow(-3.0f, 0.0f, -3.0f);
+    meshConfig3.addTexCoordRow(0.0f, 6.0f);
+    meshConfig3.storeThisArray();
+
+    meshConfig3.addVertexRow(3.0f, 0.0f, -3.0f);
+    meshConfig3.addTexCoordRow(6.0f, 6.0f);
+    meshConfig3.storeThisArray();
+
+    meshConfig3.addVertexRow(3.0f, 0.0f, 3.0f);
+    meshConfig3.addTexCoordRow(6.0f, 0.0f);
+    meshConfig3.storeThisArray();
+
+    meshConfig3.storeIndices(0, 1, 2);
+    meshConfig3.storeIndices(0, 2, 3);
+
     square.create(meshConfig);
-    square.setPosition(0, 0, -1);
-    square.setTexture("Assets/images/feesh/FeeshPixel.png", REGULAR, REPEAT, LINEAR, 1);
+    square.setPosition(0, 1, -1);
+    square.setTexture("Assets/images/feesh/FeeshPixel.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     this -> add(square);
 
     funniObject.create(meshConfig2);
-    funniObject.setPosition(-1.25, -0.25, -1);
-    funniObject.setTexture("Assets/images/feesh/Feesh.png", REGULAR, REPEAT, LINEAR, 1);
+    funniObject.setPosition(-1.25, 0.75, -1);
+    funniObject.setTexture("Assets/images/feesh/Feesh.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     this -> add(funniObject);
 
-    lightsource.setPosition(0, 0, 0);
+    floor.create(meshConfig3);
+    floor.setPosition(-1.25, -0.25, -1);
+    floor.setTexture("Assets/textures/wood.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
+    floor.setTexture("Assets/textures/wood-disp.png", REGULAR, REPEAT, LINEAR, 1, SPECULAR);
+    this -> add(floor);
+
+    lightsource.setPosition(0, 0.5, 0);
     lightsource.setColor(Matrix::useVec3(1, 1, 1));
+    lightsource.setBrightness(0.5);
     this -> add(lightsource);
 }
 
 void PlayState::update(float elapsed) {
     daCamera -> setRotation(control.getMouseRot(Y) * 100, control.getMouseRot(X) * 100, 0.0f);
 
-    if(control.GetKeyHolding(Keys::R) || control.GetKeyHolding(Keys::SPACE)) {
+    if(/**control.GetKeyHolding(Keys::R) || control.GetKeyHolding(Keys::SPACE)**/ true) {
         square.setRotation(0, square.getRotation(Y) + (elapsed * 100), 0.0f);
 
         funniObject.setRotation(0, funniObject.getRotation(Y) - (elapsed * 100), 0.0f);
+    }
+
+    if(control.GetKeyHolding(Keys::F)) {
+        lightsource.setPosition(-daCamera -> getPosition(X), -daCamera -> getPosition(Y), -daCamera -> getPosition(Z));
+
+        lightsource.setBrightness(0.5f);
+    }else {
+        lightsource.setPosition(0, 0.5, 0);
+        lightsource.setBrightness(2);
     }
 
     if(control.GetKeyHolding(Keys::S)) {

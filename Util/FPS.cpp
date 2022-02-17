@@ -11,10 +11,9 @@ namespace GlobalFPS {
 void FPS::caculateFPS() {
     float currentTime = glfwGetTime();
     if ((currentTime - lastTickFPS) > 1) {
-      framerate = 0;
+      framerate = -1;
       lastTickFPS = currentTime;
-    }
-    else {
+    }else {
         framerate++;
     }
 }

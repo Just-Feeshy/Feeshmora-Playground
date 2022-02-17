@@ -2,6 +2,7 @@
 #define MATERIAL_INCLUDED
 
 #include "../Libraries/Libs.hpp"
+#include "Textures/DefaultTextures.cpp"
 
 class Material {
     public:
@@ -38,5 +39,7 @@ class Material {
 
         float shininess;
         float alpha;
+
+        GLuint activeMaterial;
 };
 #endif

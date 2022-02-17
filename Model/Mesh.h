@@ -4,9 +4,9 @@
 #define MESH_INCLUDED
 
 #include "../FeshStates/BasicStates.h"
-#include "../Graphics/Material.h"
 
 #include "../Renderer/Render.hpp"
+#include "../Graphics/Material.cpp"
 #include "../FeshMath/Matrix.cpp"
 
 #include <vector>

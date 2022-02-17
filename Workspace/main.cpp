@@ -9,6 +9,7 @@ int main(int argv, char** argc) {
    window.createSize(400, 400, false);
    window.setTitle("Funni Feesh Game");
    window.disableCursor();
+   //window.setColor(0.0f, 0.0f, 0.0f, 0.0f);
  
    Application game(window);
 

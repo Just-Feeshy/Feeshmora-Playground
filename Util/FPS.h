@@ -4,7 +4,7 @@
 #include "../Libraries/Libs.hpp"
 
 struct FPS {
-    int framerate = 0;
+    int framerate = -1;
     float lastTick = 0;
     float lastTickFPS = 0;
 

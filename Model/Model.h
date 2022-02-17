@@ -30,10 +30,8 @@ class Model: public Mesh {
         void compile();
 
         void createBuffer(GLenum type, MeshVertices &m, bool indices);
-        void setTexture(const std::string file, const TexEnum type, const TexParams params, const TexParams anti, int sides);
+        void setTexture(const std::string file, const TexEnum type, const TexParams params, const TexParams anti, int sides, const TexMap map);
     protected:
-        unsigned int counter = 0;
-
         DefaultTextures texture;
         MeshVertices alignment;
 
@@ -42,6 +40,8 @@ class Model: public Mesh {
         glm::vec3 upwards;
 
         int totalIndices;
+
+        bool created;
     public:
         virtual void setRotation(float yaw, float pitch, float roll);
 

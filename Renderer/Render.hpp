@@ -29,7 +29,7 @@ class Render {
 
         void Init() {
             glEnable(GL_DEPTH_TEST);
-            glMatrixMode(GL_MODELVIEW);
+            //glMatrixMode(GL_MODELVIEW);
 
             //glEnable(GL_STENCIL_TEST);
             //glEnable(GL_BLEND);

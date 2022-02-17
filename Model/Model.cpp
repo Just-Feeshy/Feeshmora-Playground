@@ -28,17 +28,21 @@ void Model::draw(Shaders* shader) {
     if(VAO != 0 && VAO) {
         shader -> uniformMat4("modelMatrix", this -> getMatrix());
 
-        texture.Draw(VAO, GL_TRIANGLES, 2, alignment.getMeshIndices().size(), true);
+        texture.Draw(VAO, GL_TRIANGLES, 2, alignment.getMeshIndices().size(), true, shader);
 
         glBindVertexArray(0);
     }
 }
 
 void Model::create(MeshVertices &meshConfig) {
-    createVAO();
-    createBuffer(GL_ARRAY_BUFFER, meshConfig, false);
-    createBuffer(GL_ELEMENT_ARRAY_BUFFER, meshConfig, true);
-    compile();
+    if(!created) {
+        createVAO();
+        createBuffer(GL_ARRAY_BUFFER, meshConfig, false);
+        createBuffer(GL_ELEMENT_ARRAY_BUFFER, meshConfig, true);
+        compile();
+        
+        created = true;
+    }
 
     /**
     Shaders shader(
@@ -110,9 +114,9 @@ void Model::setRotation(float yaw, float pitch, float roll) {
     angle = glm::normalize(glm::cross(direction, upwards));
 }
 
-void Model::setTexture(const std::string file, const TexEnum type, const TexParams params, const TexParams anti, int sides) {
+void Model::setTexture(const std::string file, const TexEnum type, const TexParams params, const TexParams anti, int sides, const TexMap map) {
     texture.loadFile(file);
-    texture.createTexture(type, params, anti, sides);
+    texture.createTexture(type, params, anti, sides, map);
 }
 
 void Model::update() {

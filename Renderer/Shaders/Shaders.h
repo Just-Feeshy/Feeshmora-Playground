@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef FIRST_SHADER_INCLUDED
 #define FIRST_SHADER_INCLUDED
 
