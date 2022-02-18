@@ -262,19 +262,19 @@ void PlayState::update(float elapsed) {
     }
 
     if(control.GetKeyHolding(Keys::S)) {
-        daCamera -> moveBackwards(elapsed);
+        daCamera -> moveBackwards(-elapsed);
     }
 
     if(control.GetKeyHolding(Keys::A)) {
-        daCamera -> moveLeft(elapsed);
+        daCamera -> moveLeft(-elapsed);
     }
 
     if(control.GetKeyHolding(Keys::D)) {
-        daCamera -> moveRight(elapsed);
+        daCamera -> moveRight(-elapsed);
     }
 
     if(control.GetKeyHolding(Keys::W)) {
-        daCamera -> moveForward(elapsed);
+        daCamera -> moveForward(-elapsed);
     }
 
     //daCamera -> setAsFPS();

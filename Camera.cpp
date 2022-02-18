@@ -40,7 +40,7 @@ glm::mat4 Camera::getMatrix() {
     model = glm::rotate(model, glm::radians(movement.rotation.y), {0, 1, 0});
     model = glm::rotate(model, glm::radians(movement.rotation.z), {0, 0, 1});
 
-    model = glm::translate(model, movement.position);
+    model = glm::translate(model, -movement.position);
 
     return model;
 }

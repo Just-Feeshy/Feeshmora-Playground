@@ -35,7 +35,7 @@ vec4 pointLight() {
     vec3 normaly = normalize(normal);
     lightDirection = normalize(lightDirection) * brightness;
     
-    vec3 cameraView = normalize((cameraPos * intensity) - globalModelPos);
+    vec3 cameraView = normalize(cameraPos - globalModelPos);
 
     vec3 reflection = reflect(-lightDirection / max(brightness, 1), normalize(normal));
 
