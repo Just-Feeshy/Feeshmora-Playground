@@ -21,13 +21,13 @@ void Light::render() {
 }
 
 void Light::draw(Shaders* shader) {
-    shader -> uniformInt("lightEnum", type);
+    shader -> uniformInt("light.lightEnum", type);
 
-    shader -> uniformFloat("linear", linear);
-    shader -> uniformFloat("constant", constant);
+    shader -> uniformFloat("light.linear", linear);
+    shader -> uniformFloat("light.constant", constant);
 
-    shader -> uniformMat3("lightMatrix", this -> getLightMatrix());
-    shader -> uniformFloat("brightness", this -> brightness);
+    shader -> uniformVec3("light.position", glm::vec3(movement.position.x, movement.position.y, movement.position.z));
+    shader -> uniformFloat("light.brightness", this -> brightness);
 }
 
 glm::mat3 Light::getLightMatrix() {

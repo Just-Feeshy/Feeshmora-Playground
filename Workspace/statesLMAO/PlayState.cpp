@@ -253,7 +253,7 @@ void PlayState::update(float elapsed) {
     }
 
     if(control.GetKeyHolding(Keys::F)) {
-        lightsource.setPosition(-daCamera -> getPosition(X), -daCamera -> getPosition(Y), -daCamera -> getPosition(Z));
+        lightsource.setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z));
 
         lightsource.setBrightness(0.5f);
     }else {

@@ -9,16 +9,19 @@ in vec3 normal;
 uniform sampler2D texture0;
 uniform sampler2D texture1;
 
-uniform int lightEnum;
+struct Light {
+    int lightEnum;
 
-uniform mat3 lightMatrix;
+    vec3 position;
+    
+    float brightness;
+    float linear;
+    float constant;
+};
+
+uniform Light light;
 
 uniform vec3 cameraPos;
-
-uniform float brightness;
-
-uniform float linear;
-uniform float constant;
 //uniform float quad;
 
 vec4 directionLight() {
@@ -27,17 +30,17 @@ vec4 directionLight() {
 
 vec4 pointLight() {
     //LightPosition and Brightness
-    vec3 lightDirection = (lightMatrix[0] - globalModelPos);
+    vec3 lightDirection = (light.position - globalModelPos);
 
     float distance = length(lightDirection);
-    float intensity = 1.0f / (linear * pow(distance, 2) + constant * distance);
+    float intensity = 1.0f / (light.linear * pow(distance, 2) + light.constant * distance);
 
     vec3 normaly = normalize(normal);
-    lightDirection = normalize(lightDirection) * brightness;
+    lightDirection = normalize(lightDirection) * light.brightness;
     
     vec3 cameraView = normalize(cameraPos - globalModelPos);
 
-    vec3 reflection = reflect(-lightDirection / max(brightness, 1), normalize(normal));
+    vec3 reflection = reflect(-lightDirection / max(light.brightness, 1), normalize(normal));
 
     float diff = max(dot(normaly, lightDirection), 0.0f);
 
@@ -52,9 +55,9 @@ vec4 pointLight() {
 }
 
 void main() {
-    if(lightEnum == 0) {
+    if(light.lightEnum == 0) {
         FragColor = pointLight();
-    }else if(lightEnum == 1) {
+    }else if(light.lightEnum == 1) {
         FragColor = directionLight();
     }
 }
