@@ -20,13 +20,13 @@ class Light: public Model {
         void render();
         void draw(Shaders* shader) override;
 
-        glm::mat3 getLightMatrix();
+        //glm::mat3 getLightMatrix();
         //glm::mat4 getMatrix() override;
 
         void setColor(glm::vec3 color);
         glm::vec3 getColor() const;
-        void setBrightness(const float value);
-        float getBrightness() const;
+        void setIntensity(const float value);
+        float getIntensity() const;
         void setLinear(const float value);
         float getLinear() const;
         void setConstant(const float value);
@@ -36,7 +36,7 @@ class Light: public Model {
     private:
         glm::vec3 color;
 
-        float brightness = 1.0f;
+        float intensity = 1.0f;
 
         float linear = 3.0f;
         float constant = 0.7f;

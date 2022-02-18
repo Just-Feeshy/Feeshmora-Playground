@@ -239,7 +239,7 @@ void PlayState::onCreate() {
 
     lightsource.setPosition(0, 0.5, 0);
     lightsource.setColor(Matrix::useVec3(1, 1, 1));
-    lightsource.setBrightness(0.5);
+    lightsource.setIntensity(2);
     this -> add(lightsource);
 }
 
@@ -255,10 +255,10 @@ void PlayState::update(float elapsed) {
     if(control.GetKeyHolding(Keys::F)) {
         lightsource.setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z));
 
-        lightsource.setBrightness(0.5f);
+        //lightsource.setIntensity(0.5f);
     }else {
-        lightsource.setPosition(0, 0.5, 0);
-        lightsource.setBrightness(2);
+        //lightsource.setPosition(0, 0.5, 0);
+        //lightsource.setIntensity(2);
     }
 
     if(control.GetKeyHolding(Keys::S)) {

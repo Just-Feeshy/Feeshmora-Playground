@@ -23,13 +23,16 @@ void Light::render() {
 void Light::draw(Shaders* shader) {
     shader -> uniformInt("light.lightEnum", type);
 
-    shader -> uniformFloat("light.linear", linear);
-    shader -> uniformFloat("light.constant", constant);
+    if(type == POINT) {
+        shader -> uniformFloat("light.linear", linear);
+        shader -> uniformFloat("light.constant", constant);
 
-    shader -> uniformVec3("light.position", glm::vec3(movement.position.x, movement.position.y, movement.position.z));
-    shader -> uniformFloat("light.brightness", this -> brightness);
+        shader -> uniformVec3("light.position", glm::vec3(movement.position.x, movement.position.y, movement.position.z));
+        shader -> uniformFloat("light.intensity", this -> intensity);
+    }
 }
 
+/**
 glm::mat3 Light::getLightMatrix() {
     glm::mat3 light(1.0f);
 
@@ -39,13 +42,14 @@ glm::mat3 Light::getLightMatrix() {
 
     return light;
 }
+**/
 
 void Light::setColor(glm::vec3 color) {
     this -> color = color;
 }
 
-void Light::setBrightness(const float value) {
-    this -> brightness = value;
+void Light::setIntensity(const float value) {
+    this -> intensity = value;
 }
 
 void Light::setLinear(const float value) {
@@ -56,8 +60,8 @@ void Light::setConstant(const float value) {
     this -> constant = value;
 }
 
-float Light::getBrightness() const {
-    return brightness;
+float Light::getIntensity() const {
+    return intensity;
 }
 
 glm::vec3 Light::getColor() const {

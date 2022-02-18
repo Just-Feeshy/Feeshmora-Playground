@@ -14,7 +14,7 @@ struct Light {
 
     vec3 position;
     
-    float brightness;
+    float intensity;
     float linear;
     float constant;
 };
@@ -33,14 +33,14 @@ vec4 pointLight() {
     vec3 lightDirection = (light.position - globalModelPos);
 
     float distance = length(lightDirection);
-    float intensity = 1.0f / (light.linear * pow(distance, 2) + light.constant * distance);
+    float intensity = light.intensity / (light.linear * pow(distance, 2) + light.constant * distance);
 
     vec3 normaly = normalize(normal);
-    lightDirection = normalize(lightDirection) * light.brightness;
+    lightDirection = normalize(lightDirection);
     
     vec3 cameraView = normalize(cameraPos - globalModelPos);
 
-    vec3 reflection = reflect(-lightDirection / max(light.brightness, 1), normalize(normal));
+    vec3 reflection = reflect(-lightDirection, normalize(normal));
 
     float diff = max(dot(normaly, lightDirection), 0.0f);
 
