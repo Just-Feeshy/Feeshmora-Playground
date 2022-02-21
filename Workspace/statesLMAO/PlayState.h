@@ -2,7 +2,7 @@
 #define PLAYSTATE_INCLUDED
 
 #include "../../FeshStates/BasicStates.h"
-#include "../../Model/Light.cpp"
+#include "../../Model/Light/PointLight.cpp"
 
 class PlayState: public BasicStates {
     public:
@@ -16,6 +16,7 @@ class PlayState: public BasicStates {
         Model funniObject;
         Model floor;
 
-        Light lightsource;
+        PointLight lightsource;
+        PointLight lightsource2;
 };
 #endif

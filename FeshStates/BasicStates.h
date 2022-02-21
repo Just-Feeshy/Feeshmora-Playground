@@ -59,6 +59,10 @@ class BasicStates {
             defaultShaders.update();
 
             for(GLuint i=0; i<_objects.size(); i++) {
+                if(&defaultShaders == nullptr) {
+                    break;
+                }
+
                 _objects[i] -> draw(&defaultShaders);
                 _objects[i] -> update();
             }

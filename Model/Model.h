@@ -20,7 +20,7 @@ class Model: public Mesh {
 
         void update() override;
         void render() override;
-        void draw(Shaders* shader) override;
+        virtual void draw(Shaders* shader) override;
 
         void create(MeshVertices &meshConfig);
 
@@ -89,7 +89,7 @@ class Model: public Mesh {
             return movement.rotation.x;
         }
 
-        float getPosition(FeshAxis axis)  const {
+        float getPosition(FeshAxis axis) const {
             if(axis == X) {
                 return movement.position.x;
             }else if(axis == Y) {
