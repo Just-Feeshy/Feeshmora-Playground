@@ -1,4 +1,7 @@
 #version 330 core
+
+#define MAXIMUM_POINTLIGHTS 1
+
 out vec4 FragColor;
 
 in vec3 globalModelPos;
@@ -9,9 +12,7 @@ in vec3 normal;
 uniform sampler2D texture0;
 uniform sampler2D texture1;
 
-uniform vec3 MAXIMUM_LIGHTS;
-
-struct Light {
+struct PointLight {
     int lightEnum;
 
     vec3 position;
@@ -21,21 +22,20 @@ struct Light {
     float constant;
 };
 
-uniform Light light;
-
 uniform vec3 cameraPos;
-//uniform float quad;
+
+uniform PointLight pointlight[MAXIMUM_POINTLIGHTS];
 
 vec4 directionLight() {
     return vec4(1.0f);
 }
 
-vec4 pointLight() {
+vec4 pointLight(int index) {
     //LightPosition and Brightness
-    vec3 lightDirection = (light.position - globalModelPos);
+    vec3 lightDirection = (pointlight[index].position - globalModelPos);
 
     float distance = length(lightDirection);
-    float intensity = light.intensity / (light.linear * pow(distance, 2) + light.constant * distance);
+    float intensity = pointlight[index].intensity / (pointlight[index].linear * pow(distance, 2) + pointlight[index].constant * distance);
 
     vec3 normaly = normalize(normal);
     lightDirection = normalize(lightDirection);
@@ -56,13 +56,13 @@ vec4 pointLight() {
     return (diffuse + specular);
 }
 
-vec4 spotLight() {
+vec4 spotLight(int index) {
     //Light and Shadow
     float lightCone = 0.90f;
     float shadowCone = 0.95f;
 
     //LightPosition and Brightness
-    vec3 lightDirection = (light.position - globalModelPos);
+    vec3 lightDirection = (pointlight[index].position - globalModelPos);
 
     float distance = length(lightDirection);
 
@@ -90,11 +90,9 @@ vec4 spotLight() {
 }
 
 void main() {
-    //vec4 results +=  
-
-    if(light.lightEnum == 0) {
-        FragColor = pointLight();
-    }else if(light.lightEnum == 1) {
-        FragColor = spotLight();
+    if(pointlight[0].lightEnum == 0) {
+        FragColor = pointLight(0);
+    }else if(pointlight[0].lightEnum == 1) {
+        FragColor = spotLight(0);
     }
 }

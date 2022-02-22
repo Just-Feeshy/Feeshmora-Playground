@@ -26,7 +26,9 @@ class Shaders: public Render {
 
         void loadFromString(const char* source, const ShaderType fv);
 
-        void loadFiles(std::string vrtxShaders, std::string fagShaders);
+        void loadFiles(const std::string vrtxShaders, const std::string fagShaders);
+
+        void loadFiles(const std::string vrtxShaders, const std::string fagShaders, const std::string extraString);
 
         bool loadedShaders() const;
     private:

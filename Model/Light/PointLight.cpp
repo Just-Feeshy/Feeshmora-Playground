@@ -11,14 +11,16 @@ PointLight::~PointLight() {
 }
 
 void PointLight::draw(Shaders *shader) {
-    shader -> uniformInt("light.lightEnum", getType());
+    shader -> uniformInt("MAXIMUM_POINTLIGHT", 1);
 
-    shader -> uniformFloat("light.linear", linear);
-    shader -> uniformFloat("light.constant", constant);
+    shader -> uniformInt("pointlight[0].lightEnum", getType());
+
+    shader -> uniformFloat("pointlight[0].linear", linear);
+    shader -> uniformFloat("pointlight[0].constant", constant);
 
     //Regular Light Stuff
-    shader -> uniformVec3("light.position", glm::vec3(movement.position.x, movement.position.y, movement.position.z));
-    shader -> uniformFloat("light.intensity", this -> intensity);
+    shader -> uniformVec3("pointlight[0].position", glm::vec3(movement.position.x, movement.position.y, movement.position.z));
+    shader -> uniformFloat("pointlight[0].intensity", this -> intensity);
 }
 
 void PointLight::setLinear(const float value) {

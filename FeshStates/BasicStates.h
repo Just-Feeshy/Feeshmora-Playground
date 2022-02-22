@@ -2,6 +2,7 @@
 #define BASICSTATE_INCLUDED
 
 #include "../Renderer/Shaders/Shaders.cpp"
+#include "../Renderer/Fragments/ShaderFragments.cpp"
 #include "../Graphics/Textures/FirstTextures.cpp"
 #include "../Input/Controls.cpp"
 #include "../Camera.cpp"
@@ -72,5 +73,9 @@ class BasicStates {
             daCamera = make_unique<Camera>(window);
             control.bindToWindow(window);
         }
+    protected:
+
+        //Caculate lights in Application.
+        glm::vec3 lightAmounts;
 };
 #endif
