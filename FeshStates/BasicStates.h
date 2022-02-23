@@ -2,7 +2,6 @@
 #define BASICSTATE_INCLUDED
 
 #include "../Renderer/Shaders/Shaders.cpp"
-#include "../Renderer/Fragments/ShaderFragments.cpp"
 #include "../Graphics/Textures/FirstTextures.cpp"
 #include "../Input/Controls.cpp"
 #include "../Camera.cpp"

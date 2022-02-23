@@ -4,8 +4,9 @@
 #define FRAGMENT_PIECES_INCLUDED
 
 #include "../../Libraries/json.hpp"
+#include "../../Util/FileAssets.hpp"
 
-#include <string>
+#include <iostream>
 
 struct ShaderFragments {
     static const std::string getVersion();

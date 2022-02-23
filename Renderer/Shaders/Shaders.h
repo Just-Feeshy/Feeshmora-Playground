@@ -3,6 +3,7 @@
 #ifndef FIRST_SHADER_INCLUDED
 #define FIRST_SHADER_INCLUDED
 
+#include "../Fragments/ShaderFragments.cpp"
 #include "../../Util/FileAssets.hpp"
 #include "../Render.hpp"
 
@@ -11,7 +12,8 @@
 
 enum ShaderType {
     VERTICES,
-    FRAGMENT
+    FRAGMENT,
+    BOTH
 };
 
 class Shaders: public Render {
@@ -28,7 +30,7 @@ class Shaders: public Render {
 
         void loadFiles(const std::string vrtxShaders, const std::string fagShaders);
 
-        void loadFiles(const std::string vrtxShaders, const std::string fagShaders, const std::string extraString);
+        void loadFiles(const std::string vrtxShaders, const std::string fagShaders, const std::string extraString, const ShaderType fv);
 
         bool loadedShaders() const;
     private:

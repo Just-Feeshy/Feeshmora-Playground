@@ -23,8 +23,8 @@ GLuint Shaders::link(GLuint vrtxID, GLuint fragID) {
 }
 
 void Shaders::loadFiles(const std::string vrtxShaders, const std::string fagShaders) {
-    std::string vrtxSource = FileAssets::getTXT(vrtxShaders);
-    std::string fagSource = FileAssets::getTXT(fagShaders);
+    std::string vrtxSource = ShaderFragments::getVersion() + FileAssets::getTXT(vrtxShaders);
+    std::string fagSource = ShaderFragments::getVersion() + FileAssets::getTXT(fagShaders);
 
     GLuint vrtxID = compileFile(vrtxSource.c_str(), GL_VERTEX_SHADER);
     GLuint fragID = compileFile(fagSource.c_str(), GL_FRAGMENT_SHADER);
@@ -39,9 +39,21 @@ void Shaders::loadFiles(const std::string vrtxShaders, const std::string fagShad
     loaded = true;
 }
 
-void Shaders::loadFiles(const std::string vrtxShaders, const std::string fagShaders, const std::string extraString) {
-    std::string vrtxSource = extraString + FileAssets::getTXT(vrtxShaders);
-    std::string fagSource = extraString + FileAssets::getTXT(fagShaders);
+void Shaders::loadFiles(const std::string vrtxShaders, const std::string fagShaders, const std::string extraString, const ShaderType fv) {
+    std::string vsExtra;
+    std::string fsExtra;
+
+    if(fv == VERTICES) {
+        vsExtra = extraString;
+    }else if(fv == FRAGMENT) {
+        fsExtra = extraString;
+    }else {
+        fsExtra = extraString;
+        vsExtra = extraString;
+    }
+    
+    std::string vrtxSource = ShaderFragments::getVersion() + vsExtra + FileAssets::getTXT(vrtxShaders);
+    std::string fagSource = ShaderFragments::getVersion() + fsExtra + FileAssets::getTXT(fagShaders);
 
     GLuint vrtxID = compileFile(vrtxSource.c_str(), GL_VERTEX_SHADER);
     GLuint fragID = compileFile(fagSource.c_str(), GL_FRAGMENT_SHADER);

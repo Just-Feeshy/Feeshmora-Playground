@@ -1,4 +1,4 @@
-#version 330 core
+//Messy. Ik.
 
 #define MAXIMUM_POINTLIGHTS 1
 
