@@ -4,12 +4,7 @@
 #define LIGHT_INCLUDED
 
 #include "../Model.cpp"
-
-enum LightType {
-    NONE = -1, //Basically light Python
-    POINT = 0,
-    SPOT = 1
-};
+#include "LightType.c"
 
 class Light: public Model {
     public:

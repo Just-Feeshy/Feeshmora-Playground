@@ -29,6 +29,13 @@ class BasicStates {
         virtual void update(float elapsed) = 0;
 
         void add(auto &obj) {
+            defaultShaders.loadFiles(
+                "Shaders/DefaultShaders.glsl",
+                "Shaders/DefaultShaders.fs",
+                ShaderFragments::setMaximumLights(),
+                FRAGMENT
+            );
+                
             _objects.push_back(&obj);
 
             obj.render();

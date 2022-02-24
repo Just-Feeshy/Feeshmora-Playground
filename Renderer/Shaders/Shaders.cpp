@@ -35,6 +35,11 @@ void Shaders::loadFiles(const std::string vrtxShaders, const std::string fagShad
     glDeleteShader(fragID);
 
     glUseProgram(shader);
+
+    if(shaderProgram != 0) {
+        glDeleteShader(shaderProgram);
+    }
+    
     shaderProgram = shader;
     loaded = true;
 }
@@ -64,6 +69,11 @@ void Shaders::loadFiles(const std::string vrtxShaders, const std::string fagShad
     glDeleteShader(fragID);
 
     glUseProgram(shader);
+
+    if(shaderProgram != 0) {
+        glDeleteShader(shaderProgram);
+    }
+        
     shaderProgram = shader;
     loaded = true;
 }
@@ -82,8 +92,12 @@ void Shaders::loadFromString(const char* source, const ShaderType fv) {
     }
 
     glDeleteShader(id);
-
     glUseProgram(shader);
+
+    if(shaderProgram != 0) {
+        glDeleteShader(shaderProgram);
+    }
+    
     shaderProgram = shader;
     loaded = true;
 }
