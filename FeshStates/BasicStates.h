@@ -16,7 +16,9 @@ class BasicStates {
             if(!defaultShaders.loadedShaders()) {
                 defaultShaders.loadFiles(
                     "Shaders/DefaultShaders.glsl",
-                    "Shaders/DefaultShaders.fs"
+                    "Shaders/DefaultShaders.fs",
+                    ShaderFragments::setMaximumLights(),
+                    FRAGMENT
                 );
 
                 defaultShaders.Init();

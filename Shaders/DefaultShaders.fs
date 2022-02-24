@@ -1,7 +1,4 @@
 //Messy. Ik.
-
-#define MAXIMUM_POINTLIGHTS 1
-
 out vec4 FragColor;
 
 in vec3 globalModelPos;
