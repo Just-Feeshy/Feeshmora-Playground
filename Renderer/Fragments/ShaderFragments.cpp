@@ -14,6 +14,6 @@ const std::string ShaderFragments::getVersion() {
     return "#version " + std::string(value.GetString()) + " core\n\n";
 }
 
-const std::string ShaderFragments::setMaximumLights() {
-    return "#define MAXIMUM_POINTLIGHTS 1";
+const std::string ShaderFragments::setMaximumLights(const int p, const int s, const int d) {
+    return "#define MAXIMUM_POINTLIGHTS " + std::to_string(p) + "\n";
 }

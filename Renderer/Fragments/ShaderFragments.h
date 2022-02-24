@@ -10,6 +10,6 @@
 
 struct ShaderFragments {
     static const std::string getVersion();
-    static const std::string setMaximumLights();
+    static const std::string setMaximumLights(const int p, const int s, const int d);
 };
 #endif

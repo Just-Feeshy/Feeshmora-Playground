@@ -6,6 +6,8 @@
 #include "../Input/Controls.cpp"
 #include "../Camera.cpp"
 
+#include "../Model/Light/Light.h"
+
 #include <memory>
 
 using namespace std;
@@ -16,9 +18,7 @@ class BasicStates {
             if(!defaultShaders.loadedShaders()) {
                 defaultShaders.loadFiles(
                     "Shaders/DefaultShaders.glsl",
-                    "Shaders/DefaultShaders.fs",
-                    ShaderFragments::setMaximumLights(),
-                    FRAGMENT
+                    "Shaders/DefaultShaders.fs"
                 );
 
                 defaultShaders.Init();
@@ -29,14 +29,23 @@ class BasicStates {
         virtual void update(float elapsed) = 0;
 
         void add(auto &obj) {
-            defaultShaders.loadFiles(
-                "Shaders/DefaultShaders.glsl",
-                "Shaders/DefaultShaders.fs",
-                ShaderFragments::setMaximumLights(),
-                FRAGMENT
-            );
-                
             _objects.push_back(&obj);
+
+            //Refresh
+            if(dynamic_cast<Light*>(&obj) != nullptr) {
+                lightAmounts[0] = lightAmounts[0] + 1;
+                
+                defaultShaders.loadFiles(
+                    "Shaders/DefaultShaders.glsl",
+                    "Shaders/DefaultShaders.fs",
+                    ShaderFragments::setMaximumLights(
+                        lightAmounts[0],
+                        lightAmounts[1],
+                        1
+                    ),
+                    FRAGMENT
+                );
+            }
 
             obj.render();
         }
@@ -53,6 +62,9 @@ class BasicStates {
 
         vector<Mesh*> _objects;
         Controls control;
+
+        //Caculate lights in Application.
+        glm::vec3 lightAmounts;
     private:
         friend class Application;
 
@@ -81,9 +93,5 @@ class BasicStates {
             daCamera = make_unique<Camera>(window);
             control.bindToWindow(window);
         }
-    protected:
-
-        //Caculate lights in Application.
-        glm::vec3 lightAmounts;
 };
 #endif

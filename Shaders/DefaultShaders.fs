@@ -21,6 +21,10 @@ struct PointLight {
 
 uniform vec3 cameraPos;
 
+#ifndef MAXIMUM_POINTLIGHTS
+#define MAXIMUM_POINTLIGHTS 1
+#endif
+
 uniform PointLight pointlight[MAXIMUM_POINTLIGHTS];
 
 vec4 directionLight() {
