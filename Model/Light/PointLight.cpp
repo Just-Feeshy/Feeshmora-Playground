@@ -10,9 +10,7 @@ PointLight::~PointLight() {
     return;
 }
 
-void PointLight::draw(Shaders *shader) {
-    shader -> uniformInt("MAXIMUM_POINTLIGHT", 1);
-
+void PointLight::draw(Shaders* shader) {
     shader -> uniformInt("pointlight[0].lightEnum", getType());
 
     shader -> uniformFloat("pointlight[0].linear", linear);

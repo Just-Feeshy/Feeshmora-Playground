@@ -53,6 +53,7 @@ void WindowDisplay::setTitle(std::string title) {
         );
 
         glfwMakeContextCurrent(window);
+        glfwSwapInterval(1);
     }
 
     aTitle = nullptr;
@@ -68,6 +69,8 @@ void WindowDisplay::disableCursor() {
 }
 
 void WindowDisplay::pre_render() {
+    glfwSwapInterval(1);
+    
     gladLoadGL(glfwGetProcAddress);
     glClearColor(0.02f, 0.02f, 0.02f, 0.02f);
     glClear(GL_COLOR_BUFFER_BIT);

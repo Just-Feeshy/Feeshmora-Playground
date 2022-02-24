@@ -3,6 +3,8 @@
 #ifndef LIGHT_INCLUDED
 #define LIGHT_INCLUDED
 
+#include "../../FeshStates/BasicStates.h"
+
 #include "../Model.cpp"
 #include "LightType.c"
 

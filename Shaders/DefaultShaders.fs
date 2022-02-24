@@ -91,9 +91,11 @@ vec4 spotLight(int index) {
 }
 
 void main() {
-    if(pointlight[0].lightEnum == 0) {
-        FragColor = pointLight(0);
-    }else if(pointlight[0].lightEnum == 1) {
-        FragColor = spotLight(0);
+    vec4 lights = vec4(0.0f);
+
+    for(int i=0; i<MAXIMUM_POINTLIGHTS; i++) {
+        lights += pointLight(i);
     }
+
+    FragColor = lights;
 }

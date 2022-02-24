@@ -24,6 +24,18 @@ class BasicStates {
                 defaultShaders.Init();
             }
         };
+
+        ~BasicStates() {
+            if(daCamera != nullptr) {
+                daCamera.reset();
+            }
+
+            for(int i=0; i<_objects.size(); i++) {
+                delete _objects[i];
+            }
+
+            _objects.clear();
+        }
         
         virtual void onCreate() = 0;
         virtual void update(float elapsed) = 0;
@@ -34,12 +46,12 @@ class BasicStates {
             //Refresh
             if(dynamic_cast<Light*>(&obj) != nullptr) {
                 lightAmounts[0] = lightAmounts[0] + 1;
-                
+
                 defaultShaders.loadFiles(
                     "Shaders/DefaultShaders.glsl",
                     "Shaders/DefaultShaders.fs",
                     ShaderFragments::setMaximumLights(
-                        lightAmounts[0],
+                        1,
                         lightAmounts[1],
                         1
                     ),
@@ -79,9 +91,15 @@ class BasicStates {
             daCamera -> update(elapsed);
             defaultShaders.update();
 
+            int light = 0;
+
             for(GLuint i=0; i<_objects.size(); i++) {
                 if(&defaultShaders == nullptr) {
                     break;
+                }
+
+                if(dynamic_cast<Light*>(_objects[i]) != nullptr) {
+                    light++;
                 }
 
                 _objects[i] -> draw(&defaultShaders);
@@ -93,5 +111,7 @@ class BasicStates {
             daCamera = make_unique<Camera>(window);
             control.bindToWindow(window);
         }
+
+        void drawLight() {}
 };
 #endif

@@ -23,5 +23,7 @@ class PointLight: public Light {
     private:
         float linear = 3.0f;
         float constant = 0.7f;
+
+        unsigned int lightID = 0;
 };
 #endif
