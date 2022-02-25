@@ -12,6 +12,10 @@
 
 using namespace std;
 
+/**
+* Most messy class I've ever made.
+*/
+
 class BasicStates {
     public:
         BasicStates() {
@@ -45,7 +49,13 @@ class BasicStates {
 
             //Refresh
             if(dynamic_cast<Light*>(&obj) != nullptr) {
-                lightAmounts[0] = lightAmounts[0] + 1;
+                auto lightType = dynamic_cast<Light*>(&obj) -> getType();
+
+                if(lightType == POINT) {
+                    lightAmounts[0] = lightAmounts[0] + 1;
+                }else if(lightType == SPOT) {
+                    lightAmounts[1] = lightAmounts[1] + 1;
+                }
 
                 defaultShaders.loadFiles(
                     "Shaders/DefaultShaders.glsl",
@@ -91,7 +101,7 @@ class BasicStates {
             daCamera -> update(elapsed);
             defaultShaders.update();
 
-            int light = 0;
+            glm::vec3 light = {0, 0, 0};
 
             for(GLuint i=0; i<_objects.size(); i++) {
                 if(&defaultShaders == nullptr) {
@@ -99,11 +109,21 @@ class BasicStates {
                 }
 
                 if(dynamic_cast<Light*>(_objects[i]) != nullptr) {
-                    light++;
+                    auto lightType = dynamic_cast<Light*>(_objects[i]) -> getType();
+
+                    if(lightType == POINT) {
+                        light[0] = light[0] + 1;
+                    }else if(lightType == SPOT) {
+                        light[1] = light[1] + 1;
+                    }
 
                     auto &lightOBJ = *_objects[i];
 
-                    lightOBJ.draw(&defaultShaders, light-1);
+                    if(lightType == POINT) {
+                        lightOBJ.draw(&defaultShaders, light[0]-1);
+                    }else if(lightType == SPOT) {
+                        lightOBJ.draw(&defaultShaders, light[1]-1);
+                    }
                 }
 
                 _objects[i] -> draw(&defaultShaders);

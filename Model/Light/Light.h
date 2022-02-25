@@ -37,6 +37,10 @@ class Light: public Model {
         virtual LightType getType() const {
             return NONE;
         }
+
+        static LightType getLightType(auto& light) {
+            return light -> getType();
+        }
     protected:
         glm::vec3 color;
 
