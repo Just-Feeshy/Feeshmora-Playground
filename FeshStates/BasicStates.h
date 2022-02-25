@@ -51,7 +51,7 @@ class BasicStates {
                     "Shaders/DefaultShaders.glsl",
                     "Shaders/DefaultShaders.fs",
                     ShaderFragments::setMaximumLights(
-                        1,
+                        lightAmounts[0],
                         lightAmounts[1],
                         1
                     ),
@@ -100,6 +100,10 @@ class BasicStates {
 
                 if(dynamic_cast<Light*>(_objects[i]) != nullptr) {
                     light++;
+
+                    auto &lightOBJ = *_objects[i];
+
+                    lightOBJ.draw(&defaultShaders, light-1);
                 }
 
                 _objects[i] -> draw(&defaultShaders);
@@ -111,7 +115,5 @@ class BasicStates {
             daCamera = make_unique<Camera>(window);
             control.bindToWindow(window);
         }
-
-        void drawLight() {}
 };
 #endif

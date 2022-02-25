@@ -51,6 +51,12 @@ class Mesh {
         friend class BasicStates;
 
         virtual void draw(Shaders* shader) = 0;
+
+        /**
+        For models that use a GLSL array.
+        Example: Light
+        */
+        virtual void draw(Shaders* shader, const int index) = 0;
         virtual void render() = 0;
 
         MeshInWorld movement;

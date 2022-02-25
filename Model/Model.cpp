@@ -34,6 +34,10 @@ void Model::draw(Shaders* shader) {
     }
 }
 
+void Model::draw(Shaders* shader, const int index) {
+    return;
+}
+
 void Model::create(MeshVertices &meshConfig) {
     if(!created) {
         createVAO();

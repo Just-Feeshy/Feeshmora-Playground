@@ -5,6 +5,8 @@
 
 #include "Light.h"
 
+#include <string.h>
+
 class PointLight: public Light {
     public:
         PointLight();
@@ -15,7 +17,7 @@ class PointLight: public Light {
         void setConstant(const float value);
         float getConstant() const;
 
-        void draw(Shaders* shader) override;
+        void draw(Shaders* shader, const int index) override;
 
         LightType getType() const override {
             return POINT;
@@ -23,7 +25,5 @@ class PointLight: public Light {
     private:
         float linear = 3.0f;
         float constant = 0.7f;
-
-        unsigned int lightID = 0;
 };
 #endif

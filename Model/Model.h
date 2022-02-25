@@ -21,6 +21,7 @@ class Model: public Mesh {
         void update() override;
         void render() override;
         virtual void draw(Shaders* shader) override;
+        virtual void draw(Shaders* shader, const int index) override;
 
         void create(MeshVertices &meshConfig);
 
