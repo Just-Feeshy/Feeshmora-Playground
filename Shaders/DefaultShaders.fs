@@ -21,13 +21,28 @@ struct PointLight {
     bool shouldCast;
 };
 
+struct SpotLight {
+    int lightEnum;
+
+    vec3 position;
+
+    float intensity;
+
+    bool shouldCast;
+};
+
 uniform vec3 cameraPos;
 
 #ifndef MAXIMUM_POINTLIGHTS
 #define MAXIMUM_POINTLIGHTS 1
 #endif
 
+#ifndef MAXIMUM_SPOTLIGHTS
+#define MAXIMUM_SPOTLIGHTS 1
+#endif
+
 uniform PointLight pointlight[MAXIMUM_POINTLIGHTS];
+uniform SpotLight spotlight[MAXIMUM_SPOTLIGHTS];
 
 vec4 directionLight() {
     return vec4(1.0f);
@@ -61,11 +76,11 @@ vec4 pointLight(int index) {
 
 vec4 spotLight(int index) {
     //Light and Shadow
-    float lightCone = 0.90f;
-    float shadowCone = 0.95f;
+    float lightCone = spotlight[index].intensity;
+    float shadowCone = spotlight[index].intensity + 0.05f;
 
     //LightPosition and Brightness
-    vec3 lightDirection = (pointlight[index].position - globalModelPos);
+    vec3 lightDirection = (spotlight[index].position - globalModelPos);
 
     float distance = length(lightDirection);
 
@@ -98,6 +113,12 @@ void main() {
     for(int i=0; i<MAXIMUM_POINTLIGHTS; i++) {
         if(pointlight[i].shouldCast) {
             lights += pointLight(i);
+        }
+    }
+
+    for(int i=0; i<MAXIMUM_SPOTLIGHTS; i++) {
+        if(spotlight[i].shouldCast) {
+            lights += spotLight(i);
         }
     }
 
