@@ -21,6 +21,7 @@ void PointLight::draw(Shaders* shader, const int index) {
     //Regular Light Stuff
     shader -> uniformVec3(thisPointLight + ".position", glm::vec3(movement.position.x, movement.position.y, movement.position.z));
     shader -> uniformFloat(thisPointLight + ".intensity", this -> intensity);
+    shader -> uniformInt(thisPointLight + ".shouldCast", this -> lightOn);
 }
 
 void PointLight::setLinear(const float value) {

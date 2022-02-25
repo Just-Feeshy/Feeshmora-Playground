@@ -30,6 +30,14 @@ class Light: public Model {
             this -> intensity = value;
         }
 
+        void castLight(const bool value) {
+            lightOn = value;
+        }
+
+        bool getCastingLight() const {
+            return this -> lightOn;
+        }
+
         float getIntensity() const {
             return this -> intensity;
         }
@@ -41,5 +49,7 @@ class Light: public Model {
         glm::vec3 color;
 
         float intensity = 1.0f;
+
+        bool lightOn = true;
 };
 #endif

@@ -17,6 +17,8 @@ struct PointLight {
     float intensity;
     float linear;
     float constant;
+
+    bool shouldCast;
 };
 
 uniform vec3 cameraPos;
@@ -94,7 +96,9 @@ void main() {
     vec4 lights = vec4(0.0f);
 
     for(int i=0; i<MAXIMUM_POINTLIGHTS; i++) {
-        lights += pointLight(i);
+        if(pointlight[i].shouldCast) {
+            lights += pointLight(i);
+        }
     }
 
     FragColor = lights;
