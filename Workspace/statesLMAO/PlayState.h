@@ -3,6 +3,7 @@
 
 #include "../../FeshStates/BasicStates.h"
 #include "../../Model/Light/PointLight.cpp"
+#include "../../Model/Light/SpotLight.cpp"
 
 class PlayState: public BasicStates {
     public:
@@ -16,7 +17,7 @@ class PlayState: public BasicStates {
         Model funniObject;
         Model floor;
 
-        PointLight lightsource;
+        SpotLight lightsource;
         PointLight lightsource2;
 };
 #endif

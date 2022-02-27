@@ -239,7 +239,7 @@ void PlayState::onCreate() {
 
     lightsource.setPosition(0, 0.5, 0);
     lightsource.setColor(Matrix::useVec3(1, 1, 1));
-    lightsource.setIntensity(2);
+    lightsource.setIntensity(0.9);
     this -> add(lightsource);
 
     /**

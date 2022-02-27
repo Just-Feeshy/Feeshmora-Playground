@@ -9,6 +9,7 @@
 #include "../Model/Light/Light.h"
 
 #include <memory>
+#include <cmath>
 
 using namespace std;
 
@@ -61,8 +62,8 @@ class BasicStates {
                     "Shaders/DefaultShaders.glsl",
                     "Shaders/DefaultShaders.fs",
                     ShaderFragments::setMaximumLights(
-                        lightAmounts[0],
-                        lightAmounts[1],
+                        fmax(1, lightAmounts[0]),
+                        fmax(1, lightAmounts[1]),
                         1
                     ),
                     FRAGMENT
