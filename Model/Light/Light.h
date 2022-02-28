@@ -18,6 +18,21 @@ class Light: public Model {
         //glm::mat3 getLightMatrix();
         //glm::mat4 getMatrix() override;
 
+        void setRotation(float yaw, float pitch, float roll) override {
+            movement.rotation = {yaw, pitch, roll};
+
+            glm::vec3 faceFront;
+        
+            faceFront = glm::vec3(
+                sin(glm::radians(-pitch)),
+                0,
+                cos(glm::radians(pitch))
+            );
+        
+            direction = glm::normalize(faceFront);
+            angle = glm::normalize(glm::cross(direction, upwards));
+        }
+
         void setColor(glm::vec3 color) {
             this -> color = color;
         }

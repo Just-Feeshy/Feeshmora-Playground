@@ -23,19 +23,3 @@ void PointLight::draw(Shaders* shader, const int index) {
     shader -> uniformFloat(thisPointLight + ".intensity", this -> intensity);
     shader -> uniformInt(thisPointLight + ".shouldCast", this -> lightOn);
 }
-
-void PointLight::setLinear(const float value) {
-    this -> linear = value;
-}
-
-void PointLight::setConstant(const float value) {
-    this -> constant = value;
-}
-
-float PointLight::getLinear() const {
-    return linear;
-}
-
-float PointLight::getConstant() const {
-    return constant;
-}

@@ -24,9 +24,15 @@ struct PointLight {
 struct SpotLight {
     int lightEnum;
 
+    float cutOff;
+    float outerCutOff;
+
     vec3 position;
+    vec3 direction;
 
     float intensity;
+    float linear;
+    float constant;
 
     bool shouldCast;
 };
@@ -53,7 +59,7 @@ vec4 pointLight(int index) {
     vec3 lightDirection = (pointlight[index].position - globalModelPos);
 
     float distance = length(lightDirection);
-    float intensity = pointlight[index].intensity / (pointlight[index].linear * pow(distance, 2) + pointlight[index].constant * distance);
+    float intensity = pointlight[index].intensity / (pointlight[index].linear * pow(distance, 2) + pointlight[index].constant * distance + 1.0f);
 
     vec3 normaly = normalize(normal);
     lightDirection = normalize(lightDirection);
@@ -76,8 +82,8 @@ vec4 pointLight(int index) {
 
 vec4 spotLight(int index) {
     //Light and Shadow
-    float lightCone = spotlight[index].intensity;
-    float shadowCone = spotlight[index].intensity + 0.05f;
+    float lightCone = 0.9;
+    float shadowCone = 0.95;
 
     //LightPosition and Brightness
     vec3 normaly = normalize(normal);
@@ -89,8 +95,12 @@ vec4 spotLight(int index) {
     vec3 reflectDir = reflect(-lightDirection, normaly);
     float specularAngle = pow(max(dot(cameraView, reflectDir), 0.0f), 16);
 
+    //play around with
+    float distance = length(spotlight[index].position - globalModelPos);
+    float inten = pointlight[index].intensity / (pointlight[index].linear * pow(distance, 2) + pointlight[index].constant * distance + 1.0f);
+
     //caculate intensity
-    vec3 direction = vec3(0.0, -1.0, 0.0);
+    vec3 direction = vec3(0.0f, -1.0f, 0.0f);
     float theta = dot(direction, -lightDirection);
     float intensity = clamp((theta - shadowCone) / (lightCone - shadowCone), 0.0f, 1.0f);
 

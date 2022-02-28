@@ -12,17 +12,28 @@ class PointLight: public Light {
         PointLight();
         ~PointLight();
 
-        void setLinear(const float value);
-        float getLinear() const;
-        void setConstant(const float value);
-        float getConstant() const;
+        void setLinear(const float value) {
+            this -> linear = value;
+        }
+        
+        void setConstant(const float value) {
+            this -> constant = value;
+        }
+        
+        float getLinear() const {
+            return linear;
+        }
+        
+        float getConstant() const {
+            return constant;
+        }
 
-        void draw(Shaders* shader, const int index) override;
+        virtual void draw(Shaders* shader, const int index) override;
 
-        LightType getType() const override {
+        virtual LightType getType() const override {
             return POINT;
         }
-    private:
+    protected:
         float linear = 3.0f;
         float constant = 0.7f;
 };
