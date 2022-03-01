@@ -28,7 +28,7 @@ struct SpotLight {
     float outerCutOff;
 
     vec3 position;
-    vec3 direction;
+    vec3 rotation; //Don't Change
 
     float intensity;
     float linear;
@@ -81,28 +81,26 @@ vec4 pointLight(int index) {
 }
 
 vec4 spotLight(int index) {
-    //Light and Shadow
-    float lightCone = 0.9;
-    float shadowCone = 0.95;
-
     //LightPosition and Brightness
+    vec3 lightDirection = (spotlight[index].position - globalModelPos);
+
+    float distance = length(lightDirection);
+    float intensity = spotlight[index].intensity / (spotlight[index].linear * pow(distance, 2) + spotlight[index].constant * distance + 1.0f);
+
     vec3 normaly = normalize(normal);
-    vec3 lightDirection = normalize(spotlight[index].position - globalModelPos);
+    lightDirection = normalize(lightDirection);
+    
+    vec3 cameraView = normalize(cameraPos - globalModelPos);
+
+    vec3 reflection = reflect(-lightDirection, normalize(normal));
+
     float diff = max(dot(normaly, lightDirection), 0.0f);
 
-    //Specular stuff
-    vec3 cameraView = normalize(cameraPos - globalModelPos);
-    vec3 reflectDir = reflect(-lightDirection, normaly);
-    float specularAngle = pow(max(dot(cameraView, reflectDir), 0.0f), 16) * 0.5;
+    //Spotlight Stuff
+    float theta = dot();
 
-    //play around with
-    float distance = length(spotlight[index].position - globalModelPos);
-    float inten = spotlight[index].intensity / (spotlight[index].linear * pow(distance, 2) + spotlight[index].constant * distance + 1.0f);
-
-    //caculate intensity
-    vec3 direction = vec3(0.0f, -1.0f, 0.0f);
-    float theta = dot(direction, -lightDirection);
-    float intensity = clamp((theta - shadowCone) / (lightCone - shadowCone), 0.0f, 1.0f);
+    //Play around with this more.
+    float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
 
     vec4 diffuse = texture(texture0, texCoord) * diff * intensity;
     
