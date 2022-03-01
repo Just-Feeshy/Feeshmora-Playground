@@ -51,7 +51,7 @@ uniform PointLight pointlight[MAXIMUM_POINTLIGHTS];
 uniform SpotLight spotlight[MAXIMUM_SPOTLIGHTS];
 
 vec4 directionLight() {
-    return vec4(1.0f);
+    return vec4(1.0);
 }
 
 vec4 pointLight(int index) {
@@ -59,7 +59,7 @@ vec4 pointLight(int index) {
     vec3 lightDirection = (pointlight[index].position - globalModelPos);
 
     float distance = length(lightDirection);
-    float intensity = pointlight[index].intensity / (pointlight[index].linear * pow(distance, 2) + pointlight[index].constant * distance + 1.0f);
+    float intensity = pointlight[index].intensity / (pointlight[index].linear * pow(distance, 2) + pointlight[index].constant * distance + 1.0);
 
     vec3 normaly = normalize(normal);
     lightDirection = normalize(lightDirection);
@@ -68,7 +68,7 @@ vec4 pointLight(int index) {
 
     vec3 reflection = reflect(-lightDirection, normalize(normal));
 
-    float diff = max(dot(normaly, lightDirection), 0.0f);
+    float diff = max(dot(normaly, lightDirection), 0.0);
 
     //Play around with this more.
     float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
@@ -85,7 +85,7 @@ vec4 spotLight(int index) {
     vec3 lightDirection = (spotlight[index].position - globalModelPos);
 
     float distance = length(lightDirection);
-    float intensity = spotlight[index].intensity / (spotlight[index].linear * pow(distance, 2) + spotlight[index].constant * distance + 1.0f);
+    float intensity = spotlight[index].intensity / (spotlight[index].linear * pow(distance, 2) + spotlight[index].constant * distance + 1.0);
 
     vec3 normaly = normalize(normal);
     lightDirection = normalize(lightDirection);
@@ -94,23 +94,28 @@ vec4 spotLight(int index) {
 
     vec3 reflection = reflect(-lightDirection, normalize(normal));
 
-    float diff = max(dot(normaly, lightDirection), 0.0f);
+    float diff = max(dot(normaly, lightDirection), 0.0);
 
     //Spotlight Stuff
-    float theta = dot();
+    vec3 direction = vec3(0.0, -1.0, 0.0);
+    float theta = dot(direction, -lightDirection);
+    float spotLightInten = clamp((theta - spotlight[index].outerCutOff) / (spotlight[index].cutOff - spotlight[index].outerCutOff), 0.0, 1.0);
 
     //Play around with this more.
     float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
 
-    vec4 diffuse = texture(texture0, texCoord) * diff * intensity;
+    vec4 diffuse = texture(texture0, texCoord) * diff;
     
-    vec4 specular = texture(texture1, texCoord) * specularAngle * intensity;
+    vec4 specular = texture(texture1, texCoord) * specularAngle;
+
+    diffuse *= spotLightInten * intensity;
+    specular *= spotLightInten * intensity;
 
     return (diffuse + specular);
 }
 
 void main() {
-    vec4 lights = vec4(0.0f);
+    vec4 lights = vec4(0.0);
 
     for(int i=0; i<MAXIMUM_POINTLIGHTS; i++) {
         if(pointlight[i].shouldCast) {
