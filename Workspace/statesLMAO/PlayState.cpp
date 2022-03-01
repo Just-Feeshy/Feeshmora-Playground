@@ -242,6 +242,8 @@ void PlayState::onCreate() {
     lightsource.setIntensity(2);
     lightsource.setLinear(3.0);
     lightsource.setConstant(0.7);
+    lightsource.setCutOff(0.9);
+    lightsource.setOuterCutOff(0.95);
     this -> add(lightsource);
 
     /**
