@@ -240,8 +240,8 @@ void PlayState::onCreate() {
     lightsource.setPosition(0, 0.5, 0);
     lightsource.setColor(Matrix::useVec3(1, 1, 1));
     lightsource.setIntensity(2);
-    lightsource.setLinear(0.9);
-    lightsource.setConstant(0.95);
+    lightsource.setLinear(3.0);
+    lightsource.setConstant(0.7);
     this -> add(lightsource);
 
     /**
