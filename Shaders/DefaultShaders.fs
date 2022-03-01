@@ -71,7 +71,7 @@ vec4 pointLight(int index) {
     float diff = max(dot(normaly, lightDirection), 0.0f);
 
     //Play around with this more.
-    float specularAngle = pow(max(dot(cameraView, reflection), 0), 16);
+    float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
 
     vec4 diffuse = texture(texture0, texCoord) * diff * intensity;
     
@@ -93,11 +93,11 @@ vec4 spotLight(int index) {
     //Specular stuff
     vec3 cameraView = normalize(cameraPos - globalModelPos);
     vec3 reflectDir = reflect(-lightDirection, normaly);
-    float specularAngle = pow(max(dot(cameraView, reflectDir), 0.0f), 16);
+    float specularAngle = pow(max(dot(cameraView, reflectDir), 0.0f), 16) * 0.5;
 
     //play around with
     float distance = length(spotlight[index].position - globalModelPos);
-    float inten = pointlight[index].intensity / (pointlight[index].linear * pow(distance, 2) + pointlight[index].constant * distance + 1.0f);
+    float inten = spotlight[index].intensity / (spotlight[index].linear * pow(distance, 2) + spotlight[index].constant * distance + 1.0f);
 
     //caculate intensity
     vec3 direction = vec3(0.0f, -1.0f, 0.0f);
