@@ -85,7 +85,7 @@ vec4 spotLight(int index) {
     vec3 lightDirection = (spotlight[index].position - globalModelPos);
 
     float distance = length(lightDirection);
-    float intensity = spotlight[index].intensity / (spotlight[index].linear * pow(distance, 2) + spotlight[index].constant * distance + 1.0);
+    float intensity = 1.0 / (spotlight[index].linear * pow(distance, 2) + spotlight[index].constant * distance + 1.0);
 
     vec3 normaly = normalize(normal);
     lightDirection = normalize(lightDirection);
@@ -108,8 +108,9 @@ vec4 spotLight(int index) {
     
     vec4 specular = texture(texture1, texCoord) * specularAngle;
 
-    diffuse *= spotLightInten * intensity;
-    specular *= spotLightInten * intensity;
+    //Organize intensity
+    diffuse *= (spotLightInten * intensity) * spotlight[index].intensity;
+    specular *= (spotLightInten * intensity);
 
     return (diffuse + specular);
 }

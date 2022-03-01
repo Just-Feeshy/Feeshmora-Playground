@@ -3,6 +3,8 @@
 
 - Feeshmora Playground is being developed in Repl it.
 
+- Project only runs off of eular angles only.
+
 ## Libraries
 For now.
 
