@@ -2,6 +2,7 @@
 #define PLAYSTATE_INCLUDED
 
 #include "../../FeshStates/BasicStates.h"
+#include "../../Model/Light/DirectionalLight.cpp"
 #include "../../Model/Light/PointLight.cpp"
 #include "../../Model/Light/SpotLight.cpp"
 
@@ -19,5 +20,7 @@ class PlayState: public BasicStates {
 
         SpotLight lightsource;
         PointLight lightsource2;
+
+        bool funniNum = false;
 };
 #endif

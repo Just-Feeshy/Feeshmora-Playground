@@ -237,16 +237,17 @@ void PlayState::onCreate() {
     floor.setTexture("Assets/textures/wood-disp.png", REGULAR, REPEAT, LINEAR, 1, SPECULAR);
     this -> add(floor);
 
-    lightsource.setPosition(0, 0.5, 0);
+    lightsource.setPosition(0, 0.25, 0);
     lightsource.setColor(Matrix::useVec3(1, 1, 1));
     lightsource.setIntensity(1);
     lightsource.setLinear(3.0);
     lightsource.setConstant(0.7);
+    lightsource.castLight(false);
     this -> add(lightsource);
 
     lightsource2.setPosition(0, 0.5, 0);
     lightsource2.setColor(Matrix::useVec3(1, 1, 1));
-    lightsource2.setIntensity(2);
+    lightsource2.setIntensity(5);
     this -> add(lightsource2);
 }
 

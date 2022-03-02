@@ -10,8 +10,6 @@ uniform sampler2D texture0;
 uniform sampler2D texture1;
 
 struct PointLight {
-    int lightEnum;
-
     vec3 position;
     
     float intensity;
@@ -22,8 +20,6 @@ struct PointLight {
 };
 
 struct SpotLight {
-    int lightEnum;
-
     float cutOff;
     float outerCutOff;
 
@@ -33,6 +29,12 @@ struct SpotLight {
     float intensity;
     float linear;
     float constant;
+
+    bool shouldCast;
+};
+
+struct DirecLight {
+    float intensity;
 
     bool shouldCast;
 };
@@ -47,11 +49,29 @@ uniform vec3 cameraPos;
 #define MAXIMUM_SPOTLIGHTS 1
 #endif
 
+//Always 1. unless...
+#ifndef MAXIMUM_DIRECLIGHTS
+#define MAXIMUM_DIRECLIGHTS 1
+#endif
+
 uniform PointLight pointlight[MAXIMUM_POINTLIGHTS];
 uniform SpotLight spotlight[MAXIMUM_SPOTLIGHTS];
+uniform DirecLight direclight[MAXIMUM_DIRECLIGHTS];
 
-vec4 directionLight() {
-    return vec4(1.0);
+vec4 directionLight(int index) {
+    vec3 normaly = normalize(normal);
+    vec3 lightDirection = normalize(vec3(1.0, 1.0, 0.0));
+    float diff = max(dot(normaly, lightDirection), 0.0);
+
+    //Specular but Organized
+    vec3 cameraView = normalize(cameraPos - globalModelPos);
+    vec3 reflection = reflect(-lightDirection, normalize(normal));
+    float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
+
+    vec4 diffuse = texture(texture0, texCoord) * diff * direclight[index].intensity;
+    vec4 specular = texture(texture1, texCoord) * specularAngle * direclight[index].intensity;
+
+    return (diffuse + specular);
 }
 
 vec4 pointLight(int index) {
@@ -70,7 +90,6 @@ vec4 pointLight(int index) {
 
     float diff = max(dot(normaly, lightDirection), 0.0);
 
-    //Play around with this more.
     float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
 
     vec4 diffuse = texture(texture0, texCoord) * diff * intensity;
@@ -96,7 +115,6 @@ vec4 spotLight(int index) {
 
     float diff = max(dot(normaly, lightDirection), 0.0);
 
-    //Play around with this more.
     float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
 
     //Spotlight Stuff
@@ -128,6 +146,10 @@ void main() {
         if(spotlight[i].shouldCast) {
             lights += spotLight(i);
         }
+    }
+
+    if(direclight[0].shouldCast) {
+        lights += directionLight(0);
     }
 
     FragColor = lights;
