@@ -239,26 +239,28 @@ void PlayState::onCreate() {
 
     lightsource.setPosition(0, 0.5, 0);
     lightsource.setColor(Matrix::useVec3(1, 1, 1));
-    lightsource.setIntensity(5);
+    lightsource.setIntensity(1);
     lightsource.setLinear(3.0);
     lightsource.setConstant(0.7);
     this -> add(lightsource);
 
-    /**
     lightsource2.setPosition(0, 0.5, 0);
     lightsource2.setColor(Matrix::useVec3(1, 1, 1));
     lightsource2.setIntensity(2);
     this -> add(lightsource2);
-    */
 }
 
 void PlayState::update(float elapsed) {
-    daCamera -> setRotation(control.getMouseRot(Y) * 100, control.getMouseRot(X) * 100, 0.0f);
+    daCamera -> setRotation(control.getMouseRot(Y) * 100, (control.getMouseRot(X) * 100), 0.0f);
 
     if(true) {
         square.setRotation(0, square.getRotation(Y) + (elapsed * 100), 0.0f);
 
         funniObject.setRotation(0, funniObject.getRotation(Y) - (elapsed * 100), 0.0f);
+
+        lightsource.setRotation(0, 180, 0);
+
+        lightsource.setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z));
     }
 
     if(control.GetKeyHolding(Keys::S)) {

@@ -28,7 +28,7 @@ struct SpotLight {
     float outerCutOff;
 
     vec3 position;
-    vec3 rotation; //Don't Change
+    vec3 direction;
 
     float intensity;
     float linear;
@@ -100,7 +100,7 @@ vec4 spotLight(int index) {
     float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
 
     //Spotlight Stuff
-    vec3 direction = vec3(0.0, -1.0, 0.0);
+    vec3 direction = vec3(spotlight[index].direction.x, -1.0, spotlight[index].direction.z);
     float theta = dot(direction, -lightDirection);
     float spotLightInten = (spotlight[index].outerCutOff - (spotlight[index].outerCutOff - theta)/(spotlight[index].outerCutOff - spotlight[index].cutOff));
 
