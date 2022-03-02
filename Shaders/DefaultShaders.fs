@@ -96,21 +96,23 @@ vec4 spotLight(int index) {
 
     float diff = max(dot(normaly, lightDirection), 0.0);
 
+    //Play around with this more.
+    float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
+
     //Spotlight Stuff
     vec3 direction = vec3(0.0, -1.0, 0.0);
     float theta = dot(direction, -lightDirection);
-    float spotLightInten = clamp((theta - spotlight[index].outerCutOff) / (spotlight[index].cutOff - spotlight[index].outerCutOff), 0.0, 1.0);
+    //float spotLightInten = clamp((theta - spotlight[index].outerCutOff) / (spotlight[index].cutOff - spotlight[index].outerCutOff), 0.0, 1.0);
 
-    //Play around with this more.
-    float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
+    float spotLightInten = (1.0 - (1.0 - theta)/(1.0 - spotlight[index].cutOff));
 
     vec4 diffuse = texture(texture0, texCoord) * diff;
     
     vec4 specular = texture(texture1, texCoord) * specularAngle;
 
     //Organize intensity
-    diffuse *= (spotLightInten * intensity) * spotlight[index].intensity;
-    specular *= (spotLightInten * intensity);
+    diffuse *= (intensity * spotlight[index].intensity) * spotLightInten;
+    specular *= intensity * spotLightInten;
 
     return (diffuse + specular);
 }
