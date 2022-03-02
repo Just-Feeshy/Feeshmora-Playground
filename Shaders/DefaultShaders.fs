@@ -102,9 +102,7 @@ vec4 spotLight(int index) {
     //Spotlight Stuff
     vec3 direction = vec3(0.0, -1.0, 0.0);
     float theta = dot(direction, -lightDirection);
-    //float spotLightInten = clamp((theta - spotlight[index].outerCutOff) / (spotlight[index].cutOff - spotlight[index].outerCutOff), 0.0, 1.0);
-
-    float spotLightInten = (1.0 - (1.0 - theta)/(1.0 - spotlight[index].cutOff));
+    float spotLightInten = (spotlight[index].outerCutOff - (spotlight[index].outerCutOff - theta)/(spotlight[index].outerCutOff - spotlight[index].cutOff));
 
     vec4 diffuse = texture(texture0, texCoord) * diff;
     
