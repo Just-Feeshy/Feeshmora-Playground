@@ -130,5 +130,5 @@ void main() {
         }
     }
 
-    FragColor = lights;
+    FragColor = lights + 0.1f;
 }
