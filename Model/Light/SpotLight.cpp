@@ -18,8 +18,8 @@ void SpotLight::draw(Shaders* shader, const int index) {
     shader -> uniformFloat(thisSpotLight + ".linear", linear);
     shader -> uniformFloat(thisSpotLight + ".constant", constant);
 
-    shader -> uniformFloat(thisSpotLight + ".cutOff", cutOff);
-    shader -> uniformFloat(thisSpotLight + ".outerCutOff", outerCutOff);
+    shader -> uniformFloat(thisSpotLight + ".cutOff", 0.9f);
+    shader -> uniformFloat(thisSpotLight + ".outerCutOff", 1.0f);
     
     shader -> uniformVec3(thisSpotLight + ".direction", direction);
 
