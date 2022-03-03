@@ -71,8 +71,7 @@ vec4 directionLight(int index) {
     vec4 diffuse = texture(texture0, texCoord) * diff * direclight[index].intensity;
     vec4 specular = texture(texture1, texCoord) * specularAngle * direclight[index].intensity;
 
-    //return (diffuse + specular);
-    return vec4(1.0);
+    return (diffuse + specular);
 }
 
 vec4 pointLight(int index) {
