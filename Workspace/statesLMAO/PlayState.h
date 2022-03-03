@@ -21,6 +21,8 @@ class PlayState: public BasicStates {
         SpotLight lightsource;
         PointLight lightsource2;
 
+        DirectionalLight sun;
+
         bool funniNum = false;
 };
 #endif

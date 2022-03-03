@@ -124,6 +124,8 @@ class BasicStates {
                         lightOBJ.draw(&defaultShaders, light[0]-1);
                     }else if(lightType == SPOT) {
                         lightOBJ.draw(&defaultShaders, light[1]-1);
+                    }else {
+                        lightOBJ.draw(&defaultShaders, 0);
                     }
                 }
 

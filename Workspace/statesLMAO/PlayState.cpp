@@ -236,7 +236,7 @@ void PlayState::onCreate() {
     floor.setTexture("Assets/textures/wood.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     floor.setTexture("Assets/textures/wood-disp.png", REGULAR, REPEAT, LINEAR, 1, SPECULAR);
     this -> add(floor);
-
+    
     lightsource.setPosition(0, 0.25, 0);
     lightsource.setColor(Matrix::useVec3(1, 1, 1));
     lightsource.setIntensity(1);
@@ -249,6 +249,10 @@ void PlayState::onCreate() {
     lightsource2.setColor(Matrix::useVec3(1, 1, 1));
     lightsource2.setIntensity(5);
     this -> add(lightsource2);
+    
+
+    sun.setIntensity(1);
+    this -> add(sun);
 }
 
 void PlayState::update(float elapsed) {
