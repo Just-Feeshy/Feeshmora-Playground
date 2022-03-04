@@ -250,7 +250,7 @@ void PlayState::onCreate() {
     lightsource2.setIntensity(5);
     this -> add(lightsource2);
 
-    sun.setIntensity(0.2);
+    sun.setIntensity(0.15);
     this -> add(sun);
 }
 

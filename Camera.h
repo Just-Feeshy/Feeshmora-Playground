@@ -13,6 +13,8 @@ class Camera: public Model {
 
         void setRotation(float yaw, float pitch, float roll) override;
 
+        void draw(Shaders* shader) override;
+
         void update(float elapsed);
 
         glm::mat4 getMatrix() override;

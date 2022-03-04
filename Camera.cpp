@@ -49,6 +49,11 @@ void Camera::addShaders(const Shaders shader) {
     shaderGroup.push_back(shader);
 }
 
+void Camera::draw(Shaders* shader) {
+    shader -> uniformFloat("depthy.near", 0.1f);
+    shader -> uniformFloat("depthy.far", 1600.0f);
+}
+
 void Camera::update(float elapsed) {
     if(shaderGroup.size() > 0) {
         std::for_each(shaderGroup.begin(), shaderGroup.end(), [](Shaders &shader) {

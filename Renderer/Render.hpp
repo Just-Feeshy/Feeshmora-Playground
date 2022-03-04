@@ -29,16 +29,8 @@ class Render {
 
         void Init() {
             glEnable(GL_DEPTH_TEST);
-            glMatrixMode(GL_MODELVIEW);
 
-            //glEnable(GL_STENCIL_TEST);
-            //glEnable(GL_BLEND);
-            //glEnable(GL_LINE_SMOOTH);
-            //glEnable(GL_MULTISAMPLE);
-            //glEnable();
-
-            //glDepthFunc(GL_LESS);
-            //glFrontFace(GL_CW);
+            glDepthFunc(GL_LESS);
         }
 
         void useShaderProgram() {

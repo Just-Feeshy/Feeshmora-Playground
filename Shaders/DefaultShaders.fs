@@ -9,6 +9,9 @@ in vec3 normal;
 uniform sampler2D texture0;
 uniform sampler2D texture1;
 
+//uniform float near;
+//uniform float far;
+
 struct PointLight {
     vec3 position;
     
@@ -40,6 +43,7 @@ struct DirecLight {
 };
 
 uniform vec3 cameraPos;
+//uniform vec3 colors;
 
 #ifndef MAXIMUM_POINTLIGHTS
 #define MAXIMUM_POINTLIGHTS 1
@@ -133,6 +137,19 @@ vec4 spotLight(int index) {
     return (diffuse + specular);
 }
 
+float linearDepth(float depth) {
+    float near = 0.1;
+    float far = 2000.0;
+
+    return (2.0 * near * far) / (far + near - (depth * 2.0 - 1.0) * (far - near));
+}
+
+
+float logDepth(float depth, float steepness, float offset) {
+    float zVal = linearDepth(depth);
+	return (1.0 / (1.0 + exp(-steepness * (zVal - offset))));
+}
+
 void main() {
     vec4 lights = vec4(0.0);
 
@@ -152,5 +169,6 @@ void main() {
         lights += directionLight(0);
     }
 
-    FragColor = lights;
+    float depth = logDepth(gl_FragCoord.z, 0.5, 5.0);
+    FragColor = lights * (1.0 - depth) + vec4(depth * vec3(0.0, 0.0, 0.0), 1.0);
 }
