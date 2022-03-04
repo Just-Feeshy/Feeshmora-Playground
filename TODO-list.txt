@@ -1,6 +1,6 @@
-Main Game.
+Main Game:
 1) Make a model loader.
 
-Features.
+Features:
 1) Add DOF distance property.
 2) custom color fog.
