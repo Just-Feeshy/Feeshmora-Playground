@@ -100,7 +100,9 @@ class BasicStates {
             defaultShaders.uniformVec3("cameraPos", Matrix::useVec3(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z)));
 
             daCamera -> update(elapsed);
+            
             defaultShaders.update();
+            defaultShaders.SetDepthTestEnable(true);
 
             glm::vec3 light = {0, 0, 0};
 

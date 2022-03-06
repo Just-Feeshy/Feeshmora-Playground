@@ -29,16 +29,33 @@ class Render {
 
         void Init() {
             glEnable(GL_DEPTH_TEST);
+            glEnable(GL_STENCIL_TEST);
 
             glDepthFunc(GL_LESS);
+
+            glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+            glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
         }
 
         void useShaderProgram() {
             glUseProgram(shaderProgram);
         }
 
+        void SetDepthTestEnable(const bool enable) {
+            if(isUsingDepthTest != enable) {
+                if(enable) {
+                    glEnable(GL_DEPTH_TEST);
+                }else {
+                    glDisable(GL_DEPTH_TEST);
+                }
+
+                isUsingDepthTest = enable;
+            }
+        }
+
         void update() {
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+            
             useShaderProgram();
         }
 
@@ -93,5 +110,7 @@ class Render {
         }
     protected:
         GLuint shaderProgram = 0;
+    private:
+        bool isUsingDepthTest = true;
 };
 #endif

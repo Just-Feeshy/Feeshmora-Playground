@@ -3,4 +3,6 @@ Main Game:
 
 Features:
 1) Add DOF distance property.
-2) custom color fog.
+2) Custom color fog.
+
+3) Make AdvanceStates.

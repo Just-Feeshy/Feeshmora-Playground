@@ -170,5 +170,5 @@ void main() {
     }
 
     float depth = logDepth(gl_FragCoord.z, 0.5, 5.0);
-    FragColor = lights * (1.0 - depth) + vec4(depth * vec3(0.0, 0.0, 0.0), 1.0);
+    FragColor = lights * (1.0 - depth) + vec4(depth * vec3(0.02, 0.02, 0.02), 1.0);
 }
