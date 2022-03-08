@@ -102,7 +102,6 @@ class BasicStates {
             daCamera -> update(elapsed);
             
             defaultShaders.update();
-            defaultShaders.SetDepthTestEnable(true);
 
             glm::vec3 light = {0, 0, 0};
 

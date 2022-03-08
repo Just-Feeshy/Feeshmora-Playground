@@ -33,15 +33,15 @@ class Render {
 
             glDepthFunc(GL_LESS);
 
-            glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-            glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+            //glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+            //glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
         }
 
         void useShaderProgram() {
             glUseProgram(shaderProgram);
         }
 
-        void SetDepthTestEnable(const bool enable) {
+        void setDepthTestEnable(const bool enable) {
             if(isUsingDepthTest != enable) {
                 if(enable) {
                     glEnable(GL_DEPTH_TEST);
@@ -50,6 +50,14 @@ class Render {
                 }
 
                 isUsingDepthTest = enable;
+            }
+        }
+
+        void setStencilMask(const GLuint mask) {
+            if(w_daStencilMask != mask) {
+                glStencilMask(mask);
+                
+                w_daStencilMask = mask;
             }
         }
 
@@ -112,5 +120,12 @@ class Render {
         GLuint shaderProgram = 0;
     private:
         bool isUsingDepthTest = true;
+
+        //OpenGL Stuff
+        GLuint w_daStencilMask = 0;
+        GLuint t_daStencilMask = 0;
+        GLint daStencilComparison = 0;
+
+        GLenum daStencilFunc;
 };
 #endif
