@@ -1,7 +1,7 @@
 #ifndef RENDER_INCLUDED
 #define RENDER_INCLUDED
 
-#include "../Libraries/Libs.hpp"
+#include "../Stencil/StencilBuffers.cpp"
 #include "../Libraries/glmLibs.hpp"
 
 #include <vector>
@@ -28,7 +28,8 @@ class Render {
         };
 
         void Init() {
-            glEnable(GL_DEPTH_TEST);
+            StencilBuffers::enableDepthTest(true);
+            
             glEnable(GL_STENCIL_TEST);
 
             glDepthFunc(GL_LESS);
@@ -39,26 +40,6 @@ class Render {
 
         void useShaderProgram() {
             glUseProgram(shaderProgram);
-        }
-
-        void setDepthTestEnable(const bool enable) {
-            if(isUsingDepthTest != enable) {
-                if(enable) {
-                    glEnable(GL_DEPTH_TEST);
-                }else {
-                    glDisable(GL_DEPTH_TEST);
-                }
-
-                isUsingDepthTest = enable;
-            }
-        }
-
-        void setStencilMask(const GLuint mask) {
-            if(w_daStencilMask != mask) {
-                glStencilMask(mask);
-                
-                w_daStencilMask = mask;
-            }
         }
 
         void update() {
@@ -118,14 +99,5 @@ class Render {
         }
     protected:
         GLuint shaderProgram = 0;
-    private:
-        bool isUsingDepthTest = true;
-
-        //OpenGL Stuff
-        GLuint w_daStencilMask = 0;
-        GLuint t_daStencilMask = 0;
-        GLint daStencilComparison = 0;
-
-        GLenum daStencilFunc;
 };
 #endif
