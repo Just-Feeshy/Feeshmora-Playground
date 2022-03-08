@@ -1,7 +1,7 @@
 #ifndef RENDER_INCLUDED
 #define RENDER_INCLUDED
 
-#include "../Stencil/StencilBuffers.cpp"
+#include "../UniqueBuffers/StencilBuffers.cpp"
 #include "../Libraries/glmLibs.hpp"
 
 #include <vector>
