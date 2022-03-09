@@ -99,8 +99,7 @@ class BasicStates {
 
             defaultShaders.uniformVec3("cameraPos", Matrix::useVec3(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z)));
 
-            daCamera -> update(elapsed);
-            
+            daCamera -> update(elapsed);   
             defaultShaders.update();
 
             glm::vec3 light = {0, 0, 0};
@@ -109,6 +108,9 @@ class BasicStates {
                 if(&defaultShaders == nullptr) {
                     break;
                 }
+
+                StencilBuffers::setStencilFunc(ALWAYS, 1, 0xFF);
+                StencilBuffers::setStencilMask(0xFF);
 
                 if(dynamic_cast<Light*>(_objects[i]) != nullptr) {
                     auto lightType = dynamic_cast<Light*>(_objects[i]) -> getType();
@@ -133,6 +135,10 @@ class BasicStates {
                 _objects[i] -> draw(&defaultShaders);
                 _objects[i] -> update();
             }
+
+            StencilBuffers::setStencilMask(0xFF);
+            StencilBuffers::setStencilFunc(ALWAYS, 1, 0xFF);
+            StencilBuffers::enableDepthTest(true);
         }
 
         void configWithWindow(WindowDisplay* window) {

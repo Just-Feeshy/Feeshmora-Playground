@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef RENDER_INCLUDED
 #define RENDER_INCLUDED
 
@@ -29,13 +31,14 @@ class Render {
 
         void Init() {
             StencilBuffers::enableDepthTest(true);
-            
-            glEnable(GL_STENCIL_TEST);
+            StencilBuffers::enableStencilTest(true);
 
             glDepthFunc(GL_LESS);
 
-            //glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-            //glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+            StencilBuffers::setStencilFunc(NOT_EQUAL, 1, 0xFF);
+            StencilBuffers::setStencilOp(KEEP, KEEP, REPLACE);
+            
+            glFrontFace(GL_CW);
         }
 
         void useShaderProgram() {
