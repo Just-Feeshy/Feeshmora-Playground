@@ -3,6 +3,7 @@
 
 #include "../Renderer/Shaders/Shaders.cpp"
 #include "../Graphics/Textures/FirstTextures.cpp"
+#include "../UniqueBuffers/Objects/Outline.cpp"
 #include "../Input/Controls.cpp"
 #include "../Camera.cpp"
 

@@ -11,7 +11,9 @@ const std::string ShaderFragments::getVersion() {
 
     const rapidjson::Value& value = doc["version"]["GLSL"];
     
-    return "#version " + std::string(value.GetString()) + " core\n\n";
+    return "#version " + std::to_string(value.GetInt()) + " core\n\n";
+
+    //return "#version 330 core\n\n";
 }
 
 const std::string ShaderFragments::setMaximumLights(const int p, const int s, const int d) {

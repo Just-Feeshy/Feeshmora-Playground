@@ -16,7 +16,7 @@ class Model: public Mesh {
             upwards = {0.0f, 1.0f, 0.0f};
         };
         
-        virtual ~Model();
+        ~Model();
 
         void update() override;
         void render() override;
