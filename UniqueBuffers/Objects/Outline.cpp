@@ -13,7 +13,9 @@ Outline::~Outline() {
 }
 
 void Outline::render() {
-    //outlineShader -> 
+    //outlineShader -> loadFiles(
+    //    ""
+    //) 
 }
 
 void Outline::draw(Shaders* shader) {

@@ -21,7 +21,7 @@ class Shaders: public Render {
         Shaders() = default;
         
         Shaders(std::string vrtxShaders, std::string fagShaders);
-        ~Shaders() = default;
+        ~Shaders();
 
         GLuint link(GLuint vrtxID, GLuint fragID);
         GLuint compileFile(const char* file, GLenum shader);

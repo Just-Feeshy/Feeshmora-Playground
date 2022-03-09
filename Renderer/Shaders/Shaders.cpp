@@ -6,6 +6,12 @@ Shaders::Shaders(std::string vrtxShaders, std::string fagShaders) {
     loadFiles(vrtxShaders, fagShaders);
 }
 
+Shaders::~Shaders() {
+    //if(uniformValues.size() > 0) {
+        
+    //}
+}
+
 GLuint Shaders::link(GLuint vrtxID, GLuint fragID) {
     auto shaders = glCreateProgram();
 

@@ -1,7 +1,7 @@
 #ifndef BASICSTATE_INCLUDED
 #define BASICSTATE_INCLUDED
 
-#include "../Renderer/Shaders/Shaders.cpp"
+#include "../Renderer/Shaders/DefaultShaders.cpp"
 #include "../Graphics/Textures/FirstTextures.cpp"
 #include "../UniqueBuffers/Objects/Outline.cpp"
 #include "../Input/Controls.cpp"
@@ -82,7 +82,7 @@ class BasicStates {
 
         unique_ptr<Camera> daCamera;
     protected:
-        Shaders defaultShaders;
+        DefaultShaders defaultShaders;
 
         vector<Mesh*> _objects;
         Controls control;

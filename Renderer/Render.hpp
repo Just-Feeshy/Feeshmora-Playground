@@ -7,7 +7,7 @@
 #include "../Libraries/glmLibs.hpp"
 
 #include <vector>
-#include <iostream>
+#include <map>
 
 namespace Vertices {
     GLfloat triangleVertices[] = {
@@ -29,25 +29,11 @@ class Render {
             glDeleteProgram(shaderProgram);
         };
 
-        void Init() {
-            StencilBuffers::enableDepthTest(true);
-            StencilBuffers::enableStencilTest(true);
-
-            glDepthFunc(GL_LESS);
-
-            StencilBuffers::setStencilFunc(NOT_EQUAL, 1, 0xFF);
-            StencilBuffers::setStencilOp(KEEP, KEEP, REPLACE);
-            
-            glFrontFace(GL_CW);
-        }
-
         void useShaderProgram() {
             glUseProgram(shaderProgram);
         }
 
         void update() {
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-            
             useShaderProgram();
         }
 
@@ -101,6 +87,8 @@ class Render {
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(m));
         }
     protected:
+        std::map<char*, int> uniformValues;
+
         GLuint shaderProgram = 0;
 };
 #endif
