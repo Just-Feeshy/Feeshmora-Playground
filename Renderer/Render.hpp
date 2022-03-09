@@ -39,10 +39,12 @@ class Render {
 
         //Uniform for GLSL
         void uniformFloat(const char* name, float value) const {
+            //uniformValues.insert(std::pair<std::string, float>("woman", value));
             glUniform1f(glGetUniformLocation(shaderProgram, name), value);
         }
 
         void uniformInt(const char* name, int value) const {
+            //uniformValues[name] = &value;
             glUniform1i(glGetUniformLocation(shaderProgram, name), value);
         }
 
@@ -87,7 +89,12 @@ class Render {
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(m));
         }
     protected:
-        std::map<char*, int> uniformValues;
+
+        /**
+        * GLfloat is needed to store every 
+        * numerical value.
+        */
+        std::map<char*, float> uniformValues;
 
         GLuint shaderProgram = 0;
 };

@@ -15,9 +15,8 @@
 using namespace std;
 
 /**
-* Most messy class I've ever made.
+* Messiest class I've ever made.
 */
-
 class BasicStates {
     public:
         BasicStates() {

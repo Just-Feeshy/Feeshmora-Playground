@@ -7,9 +7,9 @@ Shaders::Shaders(std::string vrtxShaders, std::string fagShaders) {
 }
 
 Shaders::~Shaders() {
-    //if(uniformValues.size() > 0) {
-        
-    //}
+    if(uniformValues.size() > 0) {
+        uniformValues.clear();
+    }
 }
 
 GLuint Shaders::link(GLuint vrtxID, GLuint fragID) {
