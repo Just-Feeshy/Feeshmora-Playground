@@ -7,7 +7,9 @@
 #include "../Libraries/glmLibs.hpp"
 
 #include <vector>
+#include <string>
 #include <map>
+#include <iostream>
 
 namespace Vertices {
     GLfloat triangleVertices[] = {
@@ -23,9 +25,19 @@ namespace Vertices {
 */
 class Render {
     public:
-        Render() = default;
+        Render() {
+            uniformValues = new std::map<std::string, GLfloat*>;
+        };
 
         ~Render() {
+            if(uniformValues -> size() > 0) {
+                uniformValues -> clear();
+            }
+
+            if(uniformValues != nullptr) {
+                delete uniformValues;
+            }
+            
             glDeleteProgram(shaderProgram);
         };
 
@@ -39,12 +51,14 @@ class Render {
 
         //Uniform for GLSL
         void uniformFloat(const char* name, float value) const {
-            //uniformValues.insert(std::pair<std::string, float>("woman", value));
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), &value));
             glUniform1f(glGetUniformLocation(shaderProgram, name), value);
         }
 
         void uniformInt(const char* name, int value) const {
-            //uniformValues[name] = &value;
+            float fvalue = (float)value;
+            
+            //uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), &fvalue));
             glUniform1i(glGetUniformLocation(shaderProgram, name), value);
         }
 
@@ -94,7 +108,7 @@ class Render {
         * GLfloat is needed to store every 
         * numerical value.
         */
-        std::map<char*, float> uniformValues;
+        std::map<std::string, GLfloat*> *uniformValues;
 
         GLuint shaderProgram = 0;
 };

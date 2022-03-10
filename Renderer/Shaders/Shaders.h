@@ -7,9 +7,6 @@
 #include "../../Util/FileAssets.hpp"
 #include "../Render.hpp"
 
-#include <string>
-#include <iostream>
-
 enum ShaderType {
     VERTICES,
     FRAGMENT,

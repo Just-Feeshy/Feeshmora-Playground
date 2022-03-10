@@ -6,3 +6,8 @@ Features:
 2) Custom color fog.
 
 3) Make AdvanceStates.
+
+Future Projects:
+1) Advance on the math side.
+2) Make the render device it's own singular class.
+3) Don't only rely on glm.
