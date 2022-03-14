@@ -109,9 +109,9 @@ void Model::setRotation(float yaw, float pitch, float roll) {
     glm::vec3 faceFront;
 
     faceFront = glm::vec3(
-        sin(glm::radians(-pitch)),
+        cos(glm::radians(pitch)),
         0,
-        cos(glm::radians(pitch))
+        sin(glm::radians(-pitch))
     );
 
     direction = faceFront;
