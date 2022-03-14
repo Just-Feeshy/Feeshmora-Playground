@@ -90,6 +90,10 @@ class Model: public Mesh {
             return movement.rotation.x;
         }
 
+        glm::vec3 getRotation() const {
+            return movement.rotation;
+        }
+
         float getPosition(FeshAxis axis) const {
             if(axis == X) {
                 return movement.position.x;
@@ -100,6 +104,10 @@ class Model: public Mesh {
             }
 
             return movement.position.x;
+        }
+
+        glm::vec3 getPosition() const {
+            return movement.position;
         }
 
         virtual glm::mat4 getMatrix() override;

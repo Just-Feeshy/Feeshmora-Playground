@@ -5,6 +5,7 @@
 #include "../../Model/Light/DirectionalLight.cpp"
 #include "../../Model/Light/PointLight.cpp"
 #include "../../Model/Light/SpotLight.cpp"
+#include "../../FeshMath/AI/PathFinder.hpp"
 
 class PlayState: public BasicStates {
     public:
