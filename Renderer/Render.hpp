@@ -63,43 +63,71 @@ class Render {
         }
 
         void uniformVec3(const char* name, const glm::vec3 &v) const {
+            GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(v));
+            
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
             glUniform3f(glGetUniformLocation(shaderProgram, name), v.x, v.y, v.z);
         }
 
         void uniformVec4(const char* name, const glm::vec4 &v) const {
+            GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(v));
+            
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
             glUniform4f(glGetUniformLocation(shaderProgram, name), v.x, v.y, v.z, v.w);
         }
 
         void uniformMat3(const char* name, const glm::mat3 &m) const {
+            GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(m));
+            
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
             glUniformMatrix3fv(glGetUniformLocation(shaderProgram, name), 1, GL_FALSE, glm::value_ptr(m));
         }
 
         void uniformMat4(const char* name, const glm::mat4 &m) const {
+            GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(m));
+            
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name), 1, GL_FALSE, glm::value_ptr(m));
         }
 
         //uniform for GLSL but with string
         void uniformFloat(const std::string &name, float value) const {
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), &value));
             glUniform1f(glGetUniformLocation(shaderProgram, name.c_str()), value);
         }
 
         void uniformInt(const std::string &name, int value) const {
+            float fvalue = (float)value;
+            
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), &fvalue));
             glUniform1i(glGetUniformLocation(shaderProgram, name.c_str()), value);
         }
 
         void uniformVec3(const std::string &name, const glm::vec3 &v) const {
+            GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(v));
+            
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
             glUniform3f(glGetUniformLocation(shaderProgram, name.c_str()), v.x, v.y, v.z);
         }
 
         void uniformVec4(const std::string &name, const glm::vec4 &v) const {
+            GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(v));
+            
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
             glUniform4f(glGetUniformLocation(shaderProgram, name.c_str()), v.x, v.y, v.z, v.w);
         }
 
         void uniformMat3(const std::string &name, const glm::mat3 &m) const {
+            GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(m));
+            
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
             glUniformMatrix3fv(glGetUniformLocation(shaderProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(m));
         }
 
         void uniformMat4(const std::string &name, const glm::mat4 &m) const {
+            GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(m));
+            
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(m));
         }
     protected:
