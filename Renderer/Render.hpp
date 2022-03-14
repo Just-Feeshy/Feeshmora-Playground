@@ -58,7 +58,7 @@ class Render {
         void uniformInt(const char* name, int value) const {
             float fvalue = (float)value;
             
-            //uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), &fvalue));
+            uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), &fvalue));
             glUniform1i(glGetUniformLocation(shaderProgram, name), value);
         }
 

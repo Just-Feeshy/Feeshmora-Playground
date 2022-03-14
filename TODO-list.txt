@@ -11,3 +11,4 @@ Future Projects:
 1) Advance on the math side.
 2) Make the render device it's own singular class.
 3) Don't only rely on glm.
+4) Don't use GL "datavalues." Make my own.
