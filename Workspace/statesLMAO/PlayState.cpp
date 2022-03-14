@@ -294,7 +294,7 @@ void PlayState::update(float elapsed) {
 
         badman.setRotation(0, PathFinder::getAngleThroughPath(badman.getPosition(), daCamera -> getPosition()).y, 0);
 
-        //badman.setPosition(badman.getDirection(X) + badman.getPosition(X), badman.getDirection(Y) + badman.getPosition(Y), badman.getDirection(Z) + badman.getPosition(Z));
+        badman.moveForward(-elapsed/2);
     }
 
     if(control.GetKeyHolding(Keys::S)) {

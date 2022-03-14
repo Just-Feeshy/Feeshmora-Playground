@@ -5,7 +5,7 @@
 #include "../../Model/Light/DirectionalLight.cpp"
 #include "../../Model/Light/PointLight.cpp"
 #include "../../Model/Light/SpotLight.cpp"
-#include "../../FeshMath/AI/PathFinder.hpp"
+#include "../../Entities/Entity.cpp"
 
 class PlayState: public BasicStates {
     public:
@@ -18,7 +18,8 @@ class PlayState: public BasicStates {
         Model square;
         Model funniObject;
         Model floor;
-        Model badman;
+
+        Entity badman;
 
         SpotLight lightsource;
         PointLight lightsource2;
