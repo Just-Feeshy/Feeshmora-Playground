@@ -9,7 +9,5 @@
 class Entity: public Model {
     public:
         Entity() = default;
-
-        void setRotation(float yaw, float pitch, float roll) override;
 };
 #endif
