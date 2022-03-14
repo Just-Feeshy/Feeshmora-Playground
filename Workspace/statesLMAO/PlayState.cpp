@@ -221,6 +221,28 @@ void PlayState::onCreate() {
     meshConfig3.storeIndices(0, 1, 2);
     meshConfig3.storeIndices(0, 2, 3);
 
+    MeshVertices meshConfig4;
+
+    //Front
+    meshConfig4.addVertexRow(-0.25f, 0.5f, -0.25f);
+    meshConfig4.addTexCoordRow(0.0f, 1.0f);
+    meshConfig4.storeThisArray();
+
+    meshConfig4.addVertexRow(-0.25f, -0.25f, -0.25f);
+    meshConfig4.addTexCoordRow(0.0f, 0.0f);
+    meshConfig4.storeThisArray();
+
+    meshConfig4.addVertexRow(-0.25f, -0.25f, 0.25f);
+    meshConfig4.addTexCoordRow(1.0f, 0.0f);
+    meshConfig4.storeThisArray();
+
+    meshConfig4.addVertexRow(-0.25f, 0.5f, 0.25f);
+    meshConfig4.addTexCoordRow(1.0f, 1.0f);
+    meshConfig4.storeThisArray();
+
+    meshConfig4.storeIndices(0, 1, 3);
+    meshConfig4.storeIndices(3, 1, 2);
+
     square.create(meshConfig);
     square.setPosition(0, 1, -1);
     square.setTexture("Assets/images/feesh/FeeshPixel.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
@@ -230,6 +252,10 @@ void PlayState::onCreate() {
     funniObject.setPosition(-1.25, 0.75, -1);
     funniObject.setTexture("Assets/images/feesh/Feesh.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     this -> add(funniObject);
+
+    badman.create(meshConfig4);
+    badman.setTexture("Assets/images/BadManEvil.png",REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
+    this -> add(badman);
 
     floor.create(meshConfig3);
     floor.setPosition(-1.25, -0.25, -1);

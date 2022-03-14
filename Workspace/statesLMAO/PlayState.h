@@ -17,6 +17,7 @@ class PlayState: public BasicStates {
         Model square;
         Model funniObject;
         Model floor;
+        Model badman;
 
         SpotLight lightsource;
         PointLight lightsource2;
