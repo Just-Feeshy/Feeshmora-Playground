@@ -10,6 +10,6 @@ class Entity: public Model {
     public:
         Entity() = default;
 
-        glm::mat4 getMatrix() override;
+        void setRotation(float yaw, float pitch, float roll) override;
 };
 #endif

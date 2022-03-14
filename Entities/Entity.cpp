@@ -2,14 +2,17 @@
 
 #include "Entity.h"
 
-glm::mat4 Entity::getMatrix() {
-    glm::mat4 model(1.0f);
+void Entity::setRotation(float yaw, float pitch, float roll) {
+    movement.rotation = {yaw, pitch, roll};
 
-    model = glm::rotate(model, glm::radians(movement.rotation.x), {1, 0, 0});
-    model = glm::rotate(model, glm::radians(movement.rotation.y), {0, 1, 0});
-    model = glm::rotate(model, glm::radians(movement.rotation.z), {0, 0, 1});
+    glm::vec3 faceFront;
 
-    model = glm::translate(model, -movement.position);
+    faceFront = glm::vec3(
+        cos(glm::radians(pitch)),
+        0,
+        sin(glm::radians(-pitch))
+    );
 
-    return model;
+    direction = glm::normalize(faceFront);
+    angle = glm::normalize(glm::cross(direction, upwards));
 }

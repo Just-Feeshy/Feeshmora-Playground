@@ -254,7 +254,8 @@ void PlayState::onCreate() {
     this -> add(funniObject);
 
     badman.create(meshConfig4);
-    badman.setTexture("Assets/images/BadManEvil.png",REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
+    badman.setPosition(0.5, 0, 0);
+badman.setTexture("Assets/images/BadManEvil.png",REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     this -> add(badman);
 
     floor.create(meshConfig3);
@@ -294,7 +295,7 @@ void PlayState::update(float elapsed) {
 
         badman.setRotation(0, PathFinder::getAngleThroughPath(badman.getPosition(), daCamera -> getPosition()).y, 0);
 
-        badman.moveForward(-elapsed/2);
+        badman.moveForward(elapsed/2);
     }
 
     if(control.GetKeyHolding(Keys::S)) {
