@@ -34,8 +34,6 @@ class Mesh {
 
         virtual void update() = 0;
 
-        virtual glm::mat4 getMatrix() = 0;
-
         GLuint getVAO() const {
             return VAO;
         }

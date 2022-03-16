@@ -110,6 +110,6 @@ class Model: public Mesh {
             return movement.position;
         }
 
-        virtual glm::mat4 getMatrix() override;
+        virtual glm::mat4 getMatrix();
 };
 #endif

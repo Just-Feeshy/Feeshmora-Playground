@@ -3,23 +3,38 @@
 #include "Outline.h"
 
 Outline::Outline() {
-    return;
+    Shaders outline;
+    
+    shaderGroup.push_back(outline);
 }
 
 Outline::~Outline() {
-    if(outlineShader != nullptr) {
-        delete outlineShader;
+    if(shaderGroup.size() > 0) {
+        shaderGroup.clear();
     }
 }
 
 void Outline::render() {
-    //outlineShader -> loadFiles(
-    //    ""
-    //) 
+    shaderGroup[0].loadFiles(
+        "Shaders/OutlineShaders.glsl",
+        "Shaders/OutlineShaders.fs"
+    );
 }
 
 void Outline::draw(Shaders* shader) {
-    
-    
-    outlineShader -> update();
+    if(shader -> getUniformValues() -> find("cameraMatrix") != shader -> getUniformValues() -> end()) {
+        //outlineShader -> uniformMat4("cameraMatrix", shader -> getUniformValues() -> find("cameraMatrix"));
+    }
+}
+
+void Outline::update() {
+    if(shaderGroup.size() > 0) {
+        std::for_each(shaderGroup.begin(), shaderGroup.end(), [](Shaders &shader) {
+            shader.update();
+        });
+    }
+}
+
+void Outline::draw(Shaders* shader, const int index) {
+    return;
 }

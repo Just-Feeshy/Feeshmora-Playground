@@ -3,7 +3,6 @@
 
 #include "../Renderer/Shaders/DefaultShaders.cpp"
 #include "../Graphics/Textures/FirstTextures.cpp"
-#include "../UniqueBuffers/Objects/Outline.cpp"
 #include "../Input/Controls.cpp"
 #include "../Camera.cpp"
 
@@ -99,7 +98,9 @@ class BasicStates {
 
             defaultShaders.uniformVec3("cameraPos", Matrix::useVec3(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z)));
 
-            daCamera -> update(elapsed);   
+            defaultShaders.uniformMat4("cameraMatrix", daCamera -> getMatrix());
+
+            daCamera -> update(elapsed);
             defaultShaders.update();
 
             glm::vec3 light = {0, 0, 0};

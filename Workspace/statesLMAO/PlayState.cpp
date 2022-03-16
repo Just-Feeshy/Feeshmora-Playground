@@ -256,6 +256,7 @@ void PlayState::onCreate() {
     badman.create(meshConfig4);
     badman.setPosition(0.5, 0, 0);
 badman.setTexture("Assets/images/BadManEvil.png",REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
+    badman.setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1, SPECULAR);
     this -> add(badman);
 
     floor.create(meshConfig3);
@@ -279,6 +280,8 @@ badman.setTexture("Assets/images/BadManEvil.png",REGULAR, REPEAT, LINEAR, 1, DIF
 
     sun.setIntensity(0.15);
     this -> add(sun);
+
+    this -> add(outline);
 }
 
 void PlayState::update(float elapsed) {

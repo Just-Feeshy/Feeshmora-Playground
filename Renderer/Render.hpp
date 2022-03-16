@@ -85,8 +85,12 @@ class Render {
 
         void uniformMat4(const char* name, const glm::mat4 &m) const {
             GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(m));
+
+            //std::cout << value[0] << std::endl;
             
             uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
+
+            
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name), 1, GL_FALSE, glm::value_ptr(m));
         }
 
@@ -105,7 +109,7 @@ class Render {
 
         void uniformVec3(const std::string &name, const glm::vec3 &v) const {
             GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(v));
-            
+
             uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
             glUniform3f(glGetUniformLocation(shaderProgram, name.c_str()), v.x, v.y, v.z);
         }
@@ -128,7 +132,21 @@ class Render {
             GLfloat* value = const_cast<GLfloat*>(glm::value_ptr(m));
             
             uniformValues -> insert(std::pair<std::string, GLfloat*>(std::string(name), value));
+            
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(m));
+        }
+
+        std::map<std::string, GLfloat*>* getUniformValues() const {
+            return uniformValues;
+        }
+
+        //use value_ptr
+        void uniformMat3(const std::string &name, const GLfloat* m) const {
+            //glUniformMatrix3fv(glGetUniformLocation(shaderProgram, name.c_str()), 1, GL_FALSE, m);
+        }
+
+        void uniformMat4(const std::string &name, GLfloat* m) const {
+            //glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name.c_str()), 1, GL_FALSE, m);
         }
     protected:
 
@@ -136,7 +154,7 @@ class Render {
         * GLfloat is needed to store every 
         * numerical value.
         */
-        std::map<std::string, GLfloat*> *uniformValues;
+        std::map<std::string, GLfloat*>* uniformValues;
 
         GLuint shaderProgram = 0;
 };

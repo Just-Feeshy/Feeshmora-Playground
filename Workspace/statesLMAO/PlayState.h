@@ -3,6 +3,7 @@
 
 #include "../../FeshStates/BasicStates.h"
 #include "../../Model/Light/DirectionalLight.cpp"
+#include "../../UniqueBuffers/Objects/Outline.cpp"
 #include "../../Model/Light/PointLight.cpp"
 #include "../../Model/Light/SpotLight.cpp"
 #include "../../Entities/Entity.cpp"
@@ -23,6 +24,8 @@ class PlayState: public BasicStates {
 
         SpotLight lightsource;
         PointLight lightsource2;
+
+        Outline outline;
 
         DirectionalLight sun;
 
