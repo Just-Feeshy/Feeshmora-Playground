@@ -23,7 +23,7 @@ void Outline::render() {
 
 void Outline::draw(Shaders* shader) {
     if(shader -> getUniformValues() -> find("cameraMatrix") != shader -> getUniformValues() -> end()) {
-        //outlineShader -> uniformMat4("cameraMatrix", shader -> getUniformValues() -> find("cameraMatrix"));
+        shaderGroup[0].uniformMat4("cameraMatrix", shader -> getUniformValues() -> operator[]("cameraMatrix"));
     }
 }
 
