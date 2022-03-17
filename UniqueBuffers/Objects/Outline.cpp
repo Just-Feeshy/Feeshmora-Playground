@@ -22,9 +22,16 @@ void Outline::render() {
 }
 
 void Outline::draw(Shaders* shader) {
-    if(shader -> getUniformValues() -> find("cameraMatrix") != shader -> getUniformValues() -> end()) {
-        shaderGroup[0].uniformMat4("cameraMatrix", shader -> getUniformValues() -> operator[]("cameraMatrix"));
-    }
+    StencilBuffers::setStencilFunc(NOT_EQUAL, 1, 0xFF);
+    StencilBuffers::setStencilMask(0x00);
+    StencilBuffers::enableDepthTest(false);
+
+    shaderGroup[0].uniformMat4("pViewMatrix", shader -> getUniformValues() -> operator[]("pViewMatrix"));
+    shaderGroup[0].uniformMat4("modelMatrix", shader -> getUniformValues() -> operator[]("modelMatrix"));
+
+    StencilBuffers::setStencilMask(0xFF);
+    StencilBuffers::setStencilFunc(ALWAYS, 0, 0xFF);
+    StencilBuffers::enableDepthTest(true);
 }
 
 void Outline::update() {

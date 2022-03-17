@@ -94,14 +94,13 @@ class BasicStates {
         * Stuff for the Application class to handle.
         */
         void updateAllObjs(float elapsed) {
+            defaultShaders.update();
+            
             defaultShaders.uniformMat4("pViewMatrix", daCamera -> getProjectionView());
 
             defaultShaders.uniformVec3("cameraPos", Matrix::useVec3(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z)));
 
-            defaultShaders.uniformMat4("cameraMatrix", daCamera -> getMatrix());
-
             daCamera -> update(elapsed);
-            defaultShaders.update();
 
             glm::vec3 light = {0, 0, 0};
 
@@ -136,10 +135,6 @@ class BasicStates {
                 _objects[i] -> draw(&defaultShaders);
                 _objects[i] -> update();
             }
-
-            StencilBuffers::setStencilMask(0xFF);
-            StencilBuffers::setStencilFunc(ALWAYS, 1, 0xFF);
-            StencilBuffers::enableDepthTest(true);
         }
 
         void configWithWindow(WindowDisplay* window) {

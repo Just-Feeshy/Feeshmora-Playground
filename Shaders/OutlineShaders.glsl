@@ -1,11 +1,12 @@
 layout (location = 0) in vec3 VertexPosition;
 
-uniform mat4 cameraMatrix;
-uniform mat4 model;
-uniform mat4 translation;
-uniform mat4 rotation;
-uniform mat4 scale;
+uniform mat4 pViewMatrix;
+uniform mat4 modelMatrix;
+
+out vec3 globalModelPos;
 
 void main() {
-	gl_Position = cameraMatrix * vec4(vec3(model * translation * rotation * scale * vec4(aPos, 1.0f)), 1.0);
+    globalModelPos = vec3(modelMatrix * 2 * vec4(VertexPosition, 1));
+
+	//gl_Position = pViewMatrix * vec4(globalModelPos, 1);
 }

@@ -7,6 +7,8 @@
 #include "BufferFunc.hpp"
 #include "StencilFail.hpp"
 
+#include <iostream>
+
 class StencilBuffers {
     public:
         StencilBuffers() = default;
