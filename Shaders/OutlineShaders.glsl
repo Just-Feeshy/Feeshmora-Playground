@@ -8,5 +8,5 @@ out vec3 globalModelPos;
 void main() {
     globalModelPos = vec3(modelMatrix * 2 * vec4(VertexPosition, 1));
 
-	//gl_Position = pViewMatrix * vec4(globalModelPos, 1);
+	gl_Position = pViewMatrix * vec4(globalModelPos, 1);
 }

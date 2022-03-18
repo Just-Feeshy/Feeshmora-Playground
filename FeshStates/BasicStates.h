@@ -103,14 +103,14 @@ class BasicStates {
             daCamera -> update(elapsed);
 
             glm::vec3 light = {0, 0, 0};
+            
+            StencilBuffers::setStencilFunc(ALWAYS, 1, 0xFF);
+            StencilBuffers::setStencilMask(0xFF);
 
             for(GLuint i=0; i<_objects.size(); i++) {
                 if(&defaultShaders == nullptr) {
                     break;
                 }
-
-                StencilBuffers::setStencilFunc(ALWAYS, 1, 0xFF);
-                StencilBuffers::setStencilMask(0xFF);
 
                 if(dynamic_cast<Light*>(_objects[i]) != nullptr) {
                     auto lightType = dynamic_cast<Light*>(_objects[i]) -> getType();

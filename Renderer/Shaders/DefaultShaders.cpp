@@ -4,10 +4,10 @@
 
 void DefaultShaders::Init() {
     StencilBuffers::enableDepthTest(true);
-    StencilBuffers::enableStencilTest(true);
 
     glDepthFunc(GL_LESS);
 
+    StencilBuffers::enableStencilTest(true);
     StencilBuffers::setStencilFunc(NOT_EQUAL, 1, 0xFF);
     StencilBuffers::setStencilOp(KEEP, KEEP, REPLACE);
     
