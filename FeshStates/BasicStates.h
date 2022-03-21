@@ -95,7 +95,6 @@ class BasicStates {
         */
         void updateAllObjs(float elapsed) {
             defaultShaders.update();
-            
             defaultShaders.uniformMat4("pViewMatrix", daCamera -> getProjectionView());
 
             defaultShaders.uniformVec3("cameraPos", Matrix::useVec3(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z)));
@@ -103,9 +102,6 @@ class BasicStates {
             daCamera -> update(elapsed);
 
             glm::vec3 light = {0, 0, 0};
-            
-            StencilBuffers::setStencilFunc(ALWAYS, 1, 0xFF);
-            StencilBuffers::setStencilMask(0xFF);
 
             for(GLuint i=0; i<_objects.size(); i++) {
                 if(&defaultShaders == nullptr) {
@@ -131,7 +127,7 @@ class BasicStates {
                         lightOBJ.draw(&defaultShaders, 0);
                     }
                 }
-
+                
                 _objects[i] -> draw(&defaultShaders);
                 _objects[i] -> update();
             }

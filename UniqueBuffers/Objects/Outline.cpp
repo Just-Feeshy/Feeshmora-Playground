@@ -22,8 +22,8 @@ void Outline::render() {
 }
 
 void Outline::draw(Shaders* shader) {
-    StencilBuffers::setStencilFunc(NOT_EQUAL, 1, 0xFF);
     StencilBuffers::setStencilMask(0x00);
+    StencilBuffers::setStencilFunc(NOT_EQUAL, 1, 0xFF);
     StencilBuffers::enableDepthTest(false);
 
     shaderGroup[0].uniformMat4("pViewMatrix", shader -> getUniformValues() -> operator[]("pViewMatrix"));
@@ -32,6 +32,9 @@ void Outline::draw(Shaders* shader) {
     StencilBuffers::setStencilMask(0xFF);
     StencilBuffers::setStencilFunc(ALWAYS, 0, 0xFF);
     StencilBuffers::enableDepthTest(true);
+
+    StencilBuffers::setStencilFunc(ALWAYS, 1, 0xFF);
+    StencilBuffers::setStencilMask(0xFF);
 }
 
 void Outline::update() {
