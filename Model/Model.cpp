@@ -25,6 +25,9 @@ void Model::render() {
 }
 
 void Model::draw(Shaders* shader) {
+    StencilBuffers::setStencilFunc(ALWAYS, 1, 0xFF);
+    StencilBuffers::setStencilMask(0xFF);
+        
     if(VAO != 0 && VAO) {
         shader -> uniformMat4("modelMatrix", this -> getMatrix());
 

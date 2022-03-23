@@ -265,6 +265,8 @@ badman.setTexture("Assets/images/BadManEvil.png",REGULAR, REPEAT, LINEAR, 1, DIF
     floor.setTexture("Assets/textures/wood-disp.png", REGULAR, REPEAT, LINEAR, 1, SPECULAR);
     this -> add(floor);
 
+    //this -> add(outline);
+
     lightsource.setPosition(0, 0.25, 0);
     lightsource.setColor(Matrix::useVec3(1, 1, 1));
     lightsource.setIntensity(1);
@@ -280,8 +282,6 @@ badman.setTexture("Assets/images/BadManEvil.png",REGULAR, REPEAT, LINEAR, 1, DIF
 
     sun.setIntensity(0.15);
     this -> add(sun);
-
-    this -> add(outline);
 }
 
 void PlayState::update(float elapsed) {

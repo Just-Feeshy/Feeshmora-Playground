@@ -108,6 +108,9 @@ class BasicStates {
                     break;
                 }
 
+                _objects[i] -> draw(&defaultShaders);
+                _objects[i] -> update();
+
                 if(dynamic_cast<Light*>(_objects[i]) != nullptr) {
                     auto lightType = dynamic_cast<Light*>(_objects[i]) -> getType();
 
@@ -127,9 +130,6 @@ class BasicStates {
                         lightOBJ.draw(&defaultShaders, 0);
                     }
                 }
-                
-                _objects[i] -> draw(&defaultShaders);
-                _objects[i] -> update();
             }
         }
 
