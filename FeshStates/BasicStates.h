@@ -94,6 +94,10 @@ class BasicStates {
         * Stuff for the Application class to handle.
         */
         void updateAllObjs(float elapsed) {
+            for(GLuint i=0; i<_objects.size(); i++) {
+                _objects[i] -> update();
+            }
+            
             defaultShaders.update();
             defaultShaders.uniformMat4("pViewMatrix", daCamera -> getProjectionView());
 
@@ -109,7 +113,6 @@ class BasicStates {
                 }
 
                 _objects[i] -> draw(&defaultShaders);
-                _objects[i] -> update();
 
                 if(dynamic_cast<Light*>(_objects[i]) != nullptr) {
                     auto lightType = dynamic_cast<Light*>(_objects[i]) -> getType();
@@ -131,6 +134,8 @@ class BasicStates {
                     }
                 }
             }
+
+            //defaultShaders.update();
         }
 
         void configWithWindow(WindowDisplay* window) {
