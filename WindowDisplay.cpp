@@ -71,7 +71,7 @@ void WindowDisplay::disableCursor() {
 void WindowDisplay::pre_render() {
     glfwSwapInterval(1);
     
-    gladLoadGL(glfwGetProcAddress);
+    gladLoadGL();
     glClearColor(0.02f, 0.02f, 0.02f, 0.02f);
     glClear(GL_COLOR_BUFFER_BIT);
     glViewport(0, 0, width, height);
