@@ -265,8 +265,6 @@ badman.setTexture("Assets/images/BadManEvil.png",REGULAR, REPEAT, LINEAR, 1, DIF
     floor.setTexture("Assets/textures/wood-disp.png", REGULAR, REPEAT, LINEAR, 1, SPECULAR);
     this -> add(floor);
 
-    //this -> add(outline);
-
     lightsource.setPosition(0, 0.25, 0);
     lightsource.setColor(Matrix::useVec3(1, 1, 1));
     lightsource.setIntensity(1);
@@ -284,7 +282,7 @@ badman.setTexture("Assets/images/BadManEvil.png",REGULAR, REPEAT, LINEAR, 1, DIF
     this -> add(sun);
 }
 
-void PlayState::update(float elapsed) {
+void PlayState::update(float elapsed) {/**
     daCamera -> setRotation(control.getMouseRot(Y) * 100, (control.getMouseRot(X) * 100), 0.0f);
 
     if(true) {
@@ -316,6 +314,7 @@ void PlayState::update(float elapsed) {
     if(control.GetKeyHolding(Keys::W)) {
         daCamera -> moveForward(-elapsed);
     }
+    */
 
     //daCamera -> setAsFPS();
 }

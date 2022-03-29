@@ -7,6 +7,7 @@ DefaultTextures::DefaultTextures() {
 }
 
 DefaultTextures::~DefaultTextures() {
+    /**
     if(bitmap != nullptr) {
         delete bitmap;
     }
@@ -16,6 +17,7 @@ DefaultTextures::~DefaultTextures() {
     }
 
     textures.clear();
+    */
 }
 
 void DefaultTextures::loadFile(const std::string &file) {

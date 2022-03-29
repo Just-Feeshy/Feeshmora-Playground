@@ -30,15 +30,15 @@ class BasicStates {
         };
 
         ~BasicStates() {
-            if(daCamera != nullptr) {
-                daCamera.reset();
-            }
-
             for(int i=0; i<_objects.size(); i++) {
                 delete _objects[i];
             }
 
             _objects.clear();
+            
+            if(daCamera != nullptr) {
+                daCamera.reset();
+            }
         }
         
         virtual void onCreate() = 0;
@@ -72,12 +72,6 @@ class BasicStates {
             obj.render();
         }
 
-        void clear() {
-            if(_objects.size() > 0) {
-                _objects.clear();
-            }
-        }
-
         unique_ptr<Camera> daCamera;
     protected:
         DefaultShaders defaultShaders;
@@ -95,6 +89,10 @@ class BasicStates {
         */
         void updateAllObjs(float elapsed) {
             for(GLuint i=0; i<_objects.size(); i++) {
+                if(_objects[i] == nullptr) {
+                    return;
+                }
+                
                 _objects[i] -> update();
             }
             
