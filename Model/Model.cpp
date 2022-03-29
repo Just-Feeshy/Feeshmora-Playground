@@ -41,7 +41,7 @@ void Model::draw(Shaders* shader, const int index) {
     return;
 }
 
-void Model::create(MeshVertices &meshConfig) {
+Model* Model::create(MeshVertices &meshConfig) {
     if(!created) {
         createVAO();
         createBuffer(GL_ARRAY_BUFFER, meshConfig, false);
@@ -60,6 +60,8 @@ void Model::create(MeshVertices &meshConfig) {
     shader.Init();
     shaderGroup.push_back(shader);
     **/
+
+    return this;
 }
 
 void Model::bindVAO() {

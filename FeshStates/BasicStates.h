@@ -44,6 +44,7 @@ class BasicStates {
         virtual void onCreate() = 0;
         virtual void update(float elapsed) = 0;
 
+        /**
         void add(auto &obj) {
             _objects.push_back(&obj);
 
@@ -70,6 +71,35 @@ class BasicStates {
             }
 
             obj.render();
+        }
+        */
+
+        void add(auto obj) {
+            _objects.push_back(obj);
+
+            //Refresh
+            if(dynamic_cast<Light*>(obj) != nullptr) {
+                auto lightType = dynamic_cast<Light*>(obj) -> getType();
+
+                if(lightType == POINT) {
+                    lightAmounts[0] = lightAmounts[0] + 1;
+                }else if(lightType == SPOT) {
+                    lightAmounts[1] = lightAmounts[1] + 1;
+                }
+
+                defaultShaders.loadFiles(
+                    "Shaders/DefaultShaders.glsl",
+                    "Shaders/DefaultShaders.fs",
+                    ShaderFragments::setMaximumLights(
+                        fmax(1, lightAmounts[0]),
+                        fmax(1, lightAmounts[1]),
+                        1
+                    ),
+                    FRAGMENT
+                );
+            }
+
+            obj -> render();
         }
 
         unique_ptr<Camera> daCamera;

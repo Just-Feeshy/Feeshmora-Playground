@@ -15,17 +15,15 @@ class PlayState: public BasicStates {
         void onCreate() override;
         void update(float elapsed) override;
     private:
-        Model square;
-        Model funniObject;
-        Model floor;
+        Model* square;
+        Model* funniObject;
+        Model* floor;
 
-        Entity badman;
+        Entity* badman;
 
-        SpotLight lightsource;
-        PointLight lightsource2;
+        SpotLight* lightsource;
+        PointLight* lightsource2;
 
-        DirectionalLight sun;
-
-        bool funniNum = false;
+        DirectionalLight* sun;
 };
 #endif
