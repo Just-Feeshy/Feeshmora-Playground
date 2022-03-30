@@ -307,7 +307,9 @@ void PlayState::update(float elapsed) {
         lightsource -> setRotation(0, 180, 0);
 
         lightsource -> setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z));
+    }
 
+    if(PathFinder::getDistance(badman -> getPosition(), daCamera -> getPosition()) > 0.1) {
         badman -> setRotation(0, PathFinder::getAngleThroughPath(badman -> getPosition(), daCamera -> getPosition()).y, 0);
 
         badman -> moveForward(elapsed/2);
@@ -333,6 +335,7 @@ void PlayState::update(float elapsed) {
 }
 
 PlayState::~PlayState() {
+    
     /**
     * Double Check to avoid memory leaks.
     *
