@@ -4,6 +4,9 @@
 
 FaceCull RenderManager::daFaceCull; 
 
+Blend RenderManager::daSRC;
+Blend RenderManager::daDST;
+
 void RenderManager::setFaceCulling(FaceCull facecull) {
     if(facecull == CULL_NONE) {
         glDisable(GL_CULL_FACE);
@@ -17,4 +20,20 @@ void RenderManager::setFaceCulling(FaceCull facecull) {
         daFaceCull = facecull;
         glCullFace(daFaceCull);
     }
+}
+
+void RenderManager::blend(Blend src, Blend dst) {
+    if(daSRC == src && daDST == daDST) {
+        return;
+    }
+
+    if(src == BLEND_NONE || dst == BLEND_NONE) {
+        glDisable(GL_BLEND);
+        return;
+    }
+
+    glBlendFunc(src, dst);
+
+    daSRC = src;
+    daDST = dst;
 }

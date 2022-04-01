@@ -11,6 +11,8 @@ void DefaultShaders::Init() {
     StencilBuffers::setStencilOp(KEEP, KEEP, REPLACE);
     
     glFrontFace(GL_CW);
+
+    
 }
 
 void DefaultShaders::update() {
