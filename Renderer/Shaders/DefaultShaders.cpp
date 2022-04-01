@@ -8,7 +8,6 @@ void DefaultShaders::Init() {
     glDepthFunc(GL_LESS);
 
     StencilBuffers::enableStencilTest(true);
-    //StencilBuffers::setStencilFunc(NOT_EQUAL, 1, 0xFF);
     StencilBuffers::setStencilOp(KEEP, KEEP, REPLACE);
     
     glFrontFace(GL_CW);
