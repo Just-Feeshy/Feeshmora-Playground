@@ -1,10 +1,10 @@
 #pragma once
 
-#include "FaceCullHelper.h"
+#include "RenderManager.h"
 
-FaceCull FaceCullHelper::daFaceCull; 
+FaceCull RenderManager::daFaceCull; 
 
-void FaceCullHelper::setFaceCulling(FaceCull facecull) {
+void RenderManager::setFaceCulling(FaceCull facecull) {
     if(facecull == CULL_NONE) {
         glDisable(GL_CULL_FACE);
         daFaceCull = facecull;

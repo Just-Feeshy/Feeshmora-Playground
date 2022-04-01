@@ -4,11 +4,11 @@
 #define FACE_CULL_HELPER_INCLUDED
 
 #include "../../Libraries/Libs.hpp"
-#include "FaceCull.hpp"
+#include "RenderEnums.hpp"
 
-class FaceCullHelper {
+class RenderManager {
     public:
-        FaceCullHelper() = default;
+        RenderManager() = default;
 
         static void setFaceCulling(FaceCull facecull);
     private:

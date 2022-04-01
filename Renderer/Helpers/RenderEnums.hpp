@@ -10,3 +10,7 @@ enum FaceCull {
     CULL_NONE = 0
 };
 #endif
+
+#ifndef ALPHA_BLEND_INCLUDED
+#define ALPHA_BLEND_INCLUDED
+#endif

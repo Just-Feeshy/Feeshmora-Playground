@@ -108,6 +108,10 @@ void Model::compile() {
     glBindVertexArray(0);
 }
 
+void Model::setAlpha(float value) {
+    
+}
+
 void Model::setRotation(float yaw, float pitch, float roll) {
     movement.rotation = {yaw, pitch, roll};
 
