@@ -47,6 +47,8 @@ class Model: public Mesh {
 
         float alpha;
     public:
+        void setAlpha(float value);
+
         virtual void setRotation(float yaw, float pitch, float roll);
 
         void setPosition(float x, float y, float z) {
@@ -68,6 +70,8 @@ class Model: public Mesh {
         void moveRight(float elapsed) {
             movement.position += angle * elapsed;
         }
+
+        float getAlpha() const;
 
         float getDirection(FeshAxis axis) const {
             if(axis == X) {

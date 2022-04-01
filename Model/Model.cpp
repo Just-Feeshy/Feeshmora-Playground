@@ -25,6 +25,8 @@ void Model::render() {
 }
 
 void Model::draw(Shaders* shader) {
+    RenderManager::blend(BLEND_SOURCE_ALPHA, BLEND_ONE_MINUS_SOURCE_ALPHA);
+
     StencilBuffers::enableDepthTest(true);
     StencilBuffers::setStencilMask(0x00);
         
@@ -35,6 +37,8 @@ void Model::draw(Shaders* shader) {
 
         glBindVertexArray(0);
     }
+
+    RenderManager::blend(BLEND_NONE, BLEND_NONE);
 }
 
 void Model::draw(Shaders* shader, const int index) {
@@ -108,6 +112,10 @@ void Model::compile() {
     glBindVertexArray(0);
 }
 
+void Model::setAlpha(float value) {
+    alpha = value;
+}
+
 void Model::setRotation(float yaw, float pitch, float roll) {
     movement.rotation = {yaw, pitch, roll};
 
@@ -126,6 +134,10 @@ void Model::setRotation(float yaw, float pitch, float roll) {
 void Model::setTexture(const std::string file, const TexEnum type, const TexParams params, const TexParams anti, int sides, const TexMap map) {
     texture.loadFile(file);
     texture.createTexture(type, params, anti, sides, map);
+}
+
+float Model::getAlpha() const {
+    return alpha;
 }
 
 void Model::update() {
