@@ -2,7 +2,6 @@
 #define BASICSTATE_INCLUDED
 
 #include "../Renderer/Shaders/DefaultShaders.cpp"
-#include "../Renderer/Helpers/RenderManager.cpp"
 #include "../Graphics/Textures/FirstTextures.cpp"
 #include "../Input/Controls.cpp"
 #include "../Camera.cpp"
@@ -20,8 +19,6 @@ using namespace std;
 class BasicStates {
     public:
         BasicStates() {
-            RenderManager::setFaceCulling(CULL_FRONT);
-            
             if(!defaultShaders.loadedShaders()) {
                 defaultShaders.loadFiles(
                     "Shaders/DefaultShaders.glsl",

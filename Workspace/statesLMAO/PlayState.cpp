@@ -255,6 +255,7 @@ void PlayState::onCreate() {
     funniObject -> create(meshConfig2);
     funniObject -> setPosition(-1.25, 0.75, -1);
     funniObject -> setTexture("Assets/images/feesh/Feesh.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
+    funniObject -> setAlpha(0.5);
     this -> add(funniObject);
 
     badman = new Entity();
