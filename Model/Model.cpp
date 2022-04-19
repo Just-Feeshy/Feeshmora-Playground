@@ -27,9 +27,10 @@ void Model::render() {
 void Model::draw(Shaders* shader) {
     if(alpha > 0) {
         RenderManager::blend(BLEND_SOURCE_ALPHA, BLEND_ONE_MINUS_SOURCE_ALPHA);
+    }else {
+        StencilBuffers::enableDepthTest(true);
     }
 
-    StencilBuffers::enableDepthTest(true);
     StencilBuffers::setStencilMask(0x00);
         
     if(VAO != 0 && VAO) {
