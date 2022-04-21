@@ -41,6 +41,8 @@ void Model::draw(Shaders* shader) {
         glBindVertexArray(0);
     }
 
+    RenderManager::setFaceCulling(CULL_FRONT);
+    
     if(alpha > 0) {
         RenderManager::blend(BLEND_NONE, BLEND_NONE);
     }
