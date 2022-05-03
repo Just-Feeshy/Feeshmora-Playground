@@ -15,8 +15,6 @@ class Model: public Mesh {
             movement.position = {0.0f, 0.0f, 0.0f};
             direction = {0.0f, 0.0f, 0.0f};
             upwards = {0.0f, 1.0f, 0.0f};
-
-            alpha = 0;
         };
         
         ~Model();
