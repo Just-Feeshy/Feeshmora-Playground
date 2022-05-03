@@ -15,6 +15,8 @@ class Model: public Mesh {
             movement.position = {0.0f, 0.0f, 0.0f};
             direction = {0.0f, 0.0f, 0.0f};
             upwards = {0.0f, 1.0f, 0.0f};
+
+            hasCulling = true;
         };
         
         ~Model();
@@ -44,6 +46,7 @@ class Model: public Mesh {
         int totalIndices;
 
         bool created;
+        bool hasCulling;
 
         float alpha;
     public:

@@ -8,6 +8,6 @@
 
 class Entity: public Model {
     public:
-        Entity() = default;
+        Entity();
 };
 #endif
