@@ -30,6 +30,7 @@ glm::mat4 Camera::makeProjection(WindowDisplay* window) {
     float fov = (float)window -> FOV;
     float rDistance = (float)window -> renderDistance;
 
+    thisWindow = window;
     return Matrix::perspective(fov, width / height, 0.1f, rDistance * 100.0f);
 }
 
@@ -51,7 +52,7 @@ void Camera::addShaders(const Shaders shader) {
 
 void Camera::draw(Shaders* shader) {
     shader -> uniformFloat("depthy.near", 0.1f);
-    shader -> uniformFloat("depthy.far", 1600.0f);
+    shader -> uniformFloat("depthy.far", thisWindow -> renderDistance / 2);
 }
 
 void Camera::update(float elapsed) {
