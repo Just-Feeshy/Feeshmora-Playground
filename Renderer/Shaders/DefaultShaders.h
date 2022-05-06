@@ -4,6 +4,7 @@
 #define DEFAULT_SHADERS_INCLUDED
 
 #include "Shaders.cpp"
+#include "../Helpers/RenderManager.cpp"
 
 /**
 * Main Shader method storage class thing... yea.

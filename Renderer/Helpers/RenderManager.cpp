@@ -32,6 +32,7 @@ void RenderManager::blend(Blend src, Blend dst) {
         return;
     }
 
+    glEnable(GL_BLEND);
     glBlendFunc(src, dst);
 
     daSRC = src;

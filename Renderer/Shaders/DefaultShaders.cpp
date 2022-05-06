@@ -9,6 +9,8 @@ void DefaultShaders::Init() {
 
     StencilBuffers::enableStencilTest(true);
     StencilBuffers::setStencilOp(KEEP, KEEP, REPLACE);
+
+    RenderManager::setFaceCulling(CULL_FRONT);
     
     glFrontFace(GL_CW);
 

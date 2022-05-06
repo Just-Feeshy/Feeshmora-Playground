@@ -25,12 +25,18 @@ void Model::render() {
 }
 
 void Model::draw(Shaders* shader) {
-    if(alpha > 0 || !hasCulling) {
-        RenderManager::setFaceCulling(CULL_NONE);
-        RenderManager::blend(BLEND_SOURCE_ALPHA, BLEND_ONE_MINUS_SOURCE_ALPHA);
-    }else if(hasCulling) {
-        RenderManager::setFaceCulling(CULL_FRONT);
-        StencilBuffers::enableDepthTest(true);
+    if(!hasCulling || alpha < 0) {
+        //RenderManager::setFaceCulling(CULL_NONE);
+    }else if(hasCulling){
+        //RenderManager::setFaceCulling(CULL_FRONT);
+        //StencilBuffers::enableDepthTest(true);
+    }
+
+    if(alpha > 0) {
+        //StencilBuffers::enableDepthTest(false);
+        //RenderManager::blend(BLEND_SOURCE_ALPHA, BLEND_ONE_MINUS_SOURCE_ALPHA);
+    }else {
+        //RenderManager::blend(BLEND_NONE, BLEND_NONE);
     }
 
     StencilBuffers::setStencilMask(0x00);
