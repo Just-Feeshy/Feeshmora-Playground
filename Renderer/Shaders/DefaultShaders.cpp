@@ -5,16 +5,14 @@
 void DefaultShaders::Init() {
     StencilBuffers::enableDepthTest(true);
 
-    glDepthFunc(GL_LESS);
-
     StencilBuffers::enableStencilTest(true);
     StencilBuffers::setStencilOp(KEEP, KEEP, REPLACE);
 
-    RenderManager::setFaceCulling(CULL_FRONT);
+    glEnable(GL_CULL_FACE);
     
     glFrontFace(GL_CW);
 
-    
+    glDepthFunc(GL_LESS);
 }
 
 void DefaultShaders::update() {

@@ -5,6 +5,23 @@
 void PlayState::onCreate() {
     MeshVertices meshConfig;
 
+    //Top
+    meshConfig.addVertexRow(0.25f, 0.25f, 0.25f);
+    meshConfig.addTexCoordRow(0.0f, 1.0f);
+    meshConfig.storeThisArray();
+
+    meshConfig.addVertexRow(0.25f, 0.25f, -0.25f);
+    meshConfig.addTexCoordRow(0.0f, 0.0f);
+    meshConfig.storeThisArray();
+
+    meshConfig.addVertexRow(-0.25f, 0.25f, -0.25f);
+    meshConfig.addTexCoordRow(1.0f, 0.0f);
+    meshConfig.storeThisArray();
+
+    meshConfig.addVertexRow(-0.25f, 0.25f, 0.25f);
+    meshConfig.addTexCoordRow(1.0f, 1.0f);
+    meshConfig.storeThisArray();
+
     //Front
     meshConfig.addVertexRow(-0.25f, 0.25f, -0.25f);
     meshConfig.addTexCoordRow(0.0f, 1.0f);
@@ -73,23 +90,6 @@ void PlayState::onCreate() {
     meshConfig.addTexCoordRow(1.0f, 1.0f);
     meshConfig.storeThisArray();
 
-    //Top
-    meshConfig.addVertexRow(0.25f, 0.25f, 0.25f);
-    meshConfig.addTexCoordRow(0.0f, 1.0f);
-    meshConfig.storeThisArray();
-
-    meshConfig.addVertexRow(0.25f, 0.25f, -0.25f);
-    meshConfig.addTexCoordRow(0.0f, 0.0f);
-    meshConfig.storeThisArray();
-
-    meshConfig.addVertexRow(-0.25f, 0.25f, -0.25f);
-    meshConfig.addTexCoordRow(1.0f, 0.0f);
-    meshConfig.storeThisArray();
-
-    meshConfig.addVertexRow(-0.25f, 0.25f, 0.25f);
-    meshConfig.addTexCoordRow(1.0f, 1.0f);
-    meshConfig.storeThisArray();
-
     //Bottom
     meshConfig.addVertexRow(0.25f, -0.25f, 0.25f);
     meshConfig.addTexCoordRow(0.0f, 1.0f);
@@ -109,6 +109,7 @@ void PlayState::onCreate() {
 
     meshConfig.storeIndices(0, 1, 3);
     meshConfig.storeIndices(3, 1, 2);
+    /**
     meshConfig.storeIndices(4, 5, 7);
     meshConfig.storeIndices(7, 5, 6);
     meshConfig.storeIndices(8, 9, 11);
@@ -119,6 +120,7 @@ void PlayState::onCreate() {
     meshConfig.storeIndices(19, 17, 18);
     meshConfig.storeIndices(20, 21, 23);
     meshConfig.storeIndices(23, 21, 22);
+    */
 
     MeshVertices meshConfig2;
 
@@ -301,9 +303,9 @@ void PlayState::update(float elapsed) {
     daCamera -> setRotation(control.getMouseRot(Y) * 100, (control.getMouseRot(X) * 100), 0.0f);
 
     if(true) {
-        square -> setRotation(0, square -> getRotation(Y) + (elapsed * 100), 0.0f);
+        //square -> setRotation(0, square -> getRotation(Y) + (elapsed * 100), 0.0f);
 
-        funniObject -> setRotation(0, funniObject -> getRotation(Y) - (elapsed * 100), 0.0f);
+        //funniObject -> setRotation(0, funniObject -> getRotation(Y) - (elapsed * 100), 0.0f);
 
         lightsource -> setRotation(0, 180, 0);
 
@@ -330,6 +332,14 @@ void PlayState::update(float elapsed) {
 
     if(control.GetKeyHolding(Keys::W)) {
         daCamera -> moveForward(-elapsed);
+    }
+
+    if(control.GetKeyHolding(Keys::Q)) {
+        daCamera ->setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y) + elapsed, daCamera -> getPosition(Z));
+    }
+
+    if(control.GetKeyHolding(Keys::E)) {
+        daCamera -> setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y) - elapsed, daCamera -> getPosition(Z));
     }
 
     //daCamera -> setAsFPS();

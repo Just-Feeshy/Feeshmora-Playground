@@ -17,6 +17,7 @@ void RenderManager::setFaceCulling(FaceCull facecull) {
     }
 
     if(daFaceCull != facecull) {
+        glEnable(GL_CULL_FACE);
         daFaceCull = facecull;
         glCullFace(daFaceCull);
     }
