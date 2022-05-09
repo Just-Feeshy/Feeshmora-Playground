@@ -26,9 +26,9 @@ void Model::render() {
 
 void Model::draw(Shaders* shader) {
     if(!hasCulling || alpha < 0) {
-        //RenderManager::setFaceCulling(CULL_NONE);
+        RenderManager::setFaceCulling(CULL_NONE);
     }else if(hasCulling){
-        //RenderManager::setFaceCulling(CULL_FRONT);
+        RenderManager::setFaceCulling(CULL_FRONT);
         //StencilBuffers::enableDepthTest(true);
     }
 
