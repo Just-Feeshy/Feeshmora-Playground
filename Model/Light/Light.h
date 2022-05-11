@@ -13,7 +13,9 @@ class Light: public Model {
         Light() {
             createVAO();
         }
-        virtual ~Light() {};
+        virtual ~Light() {
+            
+        };
 
         //glm::mat3 getLightMatrix();
         //glm::mat4 getMatrix() override;

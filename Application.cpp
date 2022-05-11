@@ -20,7 +20,6 @@ void Application::update() {
     if(fps.framerate >= 30) {
         auto &state = *_states.back();
         state.update(fps.getDeltaTime());
-        state.updateAllObjs(fps.getDeltaTime());
         glfwSwapBuffers(daWindow -> window);
         glfwPollEvents();
     }

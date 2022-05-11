@@ -80,6 +80,8 @@ badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1,
 }
 
 void PlayState::update(float elapsed) {
+    AdvancedStates::update(elapsed);
+    
     daCamera -> setRotation(control.getMouseRot(Y) * 100, (control.getMouseRot(X) * 100), 0.0f);
 
     if(true) {
@@ -121,19 +123,9 @@ void PlayState::update(float elapsed) {
     if(control.GetKeyHolding(Keys::E)) {
         daCamera -> setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y) - elapsed, daCamera -> getPosition(Z));
     }
-
-    //daCamera -> setAsFPS();
 }
 
 PlayState::~PlayState() {
-    
-    /**
-    * Double Check to avoid memory leaks.
-    *
-    * You don't have to add this, as these if
-    * statements don't execute because the object is
-    * already deleted and won't cause memory leaks.
-    */
     if(square != nullptr) { 
         delete square;
     }

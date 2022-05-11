@@ -1,7 +1,7 @@
 #ifndef PLAYSTATE_INCLUDED
 #define PLAYSTATE_INCLUDED
 
-#include "../../FeshStates/BasicStates.h"
+#include "../../FeshStates/AdvancedStates.hpp"
 #include "../../Model/Light/DirectionalLight.cpp"
 #include "../../Model/Light/PointLight.cpp"
 #include "../../Model/Light/SpotLight.cpp"
@@ -9,7 +9,7 @@
 
 #include "../../Objects/MeshObjects.hpp"
 
-class PlayState: public BasicStates {
+class PlayState: public AdvancedStates {
     public:
         PlayState() = default;
         ~PlayState();
