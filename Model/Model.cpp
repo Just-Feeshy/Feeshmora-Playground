@@ -25,7 +25,15 @@ void Model::render() {
 }
 
 void Model::draw(Shaders* shader) {
-    //StencilBuffers::setStencilMask(0x00);
+    StencilBuffers::setStencilMask(0x00);
+
+    if(alpha > 0) {
+        RenderManager::setFaceCulling(CULL_NONE);
+        RenderManager::blend(BLEND_SOURCE_ALPHA, BLEND_ONE_MINUS_SOURCE_ALPHA);
+    }else {
+        RenderManager::setFaceCulling(CULL_BACK);
+        RenderManager::blend(BLEND_NONE, BLEND_NONE);
+    }
         
     if(VAO != 0 && VAO) {
         shader -> uniformMat4("modelMatrix", this -> getMatrix());
@@ -33,10 +41,6 @@ void Model::draw(Shaders* shader) {
         texture.Draw(VAO, GL_TRIANGLES, 2, alignment.getMeshIndices().size(), true, shader);
 
         glBindVertexArray(0);
-    }
-
-    if(alpha > 0) {
-        //RenderManager::blend(BLEND_NONE, BLEND_NONE);
     }
 }
 
