@@ -19,8 +19,8 @@ class Model: public Mesh {
         
         ~Model();
 
-        void update() override;
         void render() override;
+        virtual void update(float elapsed) override;
         virtual void draw(Shaders* shader) override;
         virtual void draw(Shaders* shader, const int index) override;
 

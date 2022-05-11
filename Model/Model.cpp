@@ -143,7 +143,7 @@ float Model::getAlpha() const {
     return alpha;
 }
 
-void Model::update() {
+void Model::update(float elapsed) {
     if(shaderGroup.size() > 0) {
         std::for_each(shaderGroup.begin(), shaderGroup.end(), [](Shaders &shader) {
             shader.update();

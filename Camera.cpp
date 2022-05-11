@@ -56,11 +56,7 @@ void Camera::draw(Shaders* shader) {
 }
 
 void Camera::update(float elapsed) {
-    if(shaderGroup.size() > 0) {
-        std::for_each(shaderGroup.begin(), shaderGroup.end(), [](Shaders &shader) {
-            shader.update();
-        });
-    }
+    Model::update(elapsed);
     
     view = getMatrix();
     projection = makeProjection(thisWindow);

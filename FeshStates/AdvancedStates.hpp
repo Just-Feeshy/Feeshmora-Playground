@@ -93,7 +93,7 @@ class AdvancedStates: public BasicStates {
                     return;
                 }
                 
-                _objects[i] -> update();
+                _objects[i] -> update(elapsed);
             }
             
             defaultShaders.update();

@@ -32,7 +32,7 @@ class Mesh {
     public:
         Mesh() = default;
 
-        virtual void update() = 0;
+        virtual void update(float elapsed) = 0;
 
         GLuint getVAO() const {
             return VAO;
