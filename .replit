@@ -1,2 +1,2 @@
 language = "cpp"
-run = "chmod +x * ; bash feesh-engine.sh"
+run = "bash feesh-engine.sh"
