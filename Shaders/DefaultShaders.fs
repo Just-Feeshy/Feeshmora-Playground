@@ -169,11 +169,11 @@ void main() {
         lights += directionLight(0);
     }
 
-    if(texture(texture0, texCoord).a <= 0) {
+    if(texture(texture0, texCoord).a < 0.1) {
         discard;
     }
 
-    if(texture(texture1, texCoord).a <= 0) {
+    if(texture(texture1, texCoord).a < 0.1) {
         discard;
     }
 
