@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Model.h"
+#include "Model.hpp"
 
 Model::~Model() {
     if(buffers.size() > 0) {
@@ -58,16 +58,6 @@ Model* Model::create(MeshVertices *meshConfig) {
         created = true;
     }
 
-    /**
-    Shaders shader(
-        "Shaders/DefaultShaders.vert",
-        "Shaders/DefaultShaders.frag"
-    );
-
-    shader.Init();
-    shaderGroup.push_back(shader);
-    **/
-
     return this;
 }
 
@@ -115,10 +105,6 @@ void Model::compile() {
     glBindVertexArray(0);
 }
 
-void Model::setAlpha(float value) {
-    alpha = value;
-}
-
 void Model::setRotation(float yaw, float pitch, float roll) {
     movement.rotation = {yaw, pitch, roll};
 
@@ -137,10 +123,6 @@ void Model::setRotation(float yaw, float pitch, float roll) {
 void Model::setTexture(const std::string file, const TexEnum type, const TexParams params, const TexParams anti, int sides, const TexMap map) {
     texture.loadFile(file);
     texture.createTexture(type, params, anti, sides, map);
-}
-
-float Model::getAlpha() const {
-    return alpha;
 }
 
 void Model::update(float elapsed) {

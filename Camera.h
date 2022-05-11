@@ -1,7 +1,7 @@
 #ifndef CAM_INCLUDED
 #define CAM_INCLUDED
 
-#include "Model/Model.h"
+#include "Model/Model.hpp"
 #include "WindowDisplay.cpp"
 
 #include <algorithm>
@@ -25,7 +25,7 @@ class Camera: public Model {
         */
         glm::mat4 getProjection(WindowDisplay* window) const {
             return projection;
-        };
+        }
 
         glm::mat4 getView() const {
             return view;  
