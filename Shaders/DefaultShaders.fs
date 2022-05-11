@@ -153,6 +153,14 @@ float logDepth(float depth, float steepness, float offset) {
 void main() {
     vec4 lights = vec4(0.0);
 
+    if(texture(texture0, texCoord).a < 0.1) {
+        discard;
+    }
+
+    if(texture(texture1, texCoord).a < 0.1) {
+        discard;
+    }
+
     for(int i=0; i<MAXIMUM_POINTLIGHTS; i++) {
         if(pointlight[i].shouldCast) {
             lights += pointLight(i);
@@ -167,14 +175,6 @@ void main() {
 
     if(direclight[0].shouldCast) {
         lights += directionLight(0);
-    }
-
-    if(texture(texture0, texCoord).a < 0.1) {
-        discard;
-    }
-
-    if(texture(texture1, texCoord).a < 0.1) {
-        discard;
     }
 
     float depth = logDepth(gl_FragCoord.z, 0.5, 5.0);
