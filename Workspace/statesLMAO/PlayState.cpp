@@ -83,9 +83,9 @@ void PlayState::update(float elapsed) {
     daCamera -> setRotation(control.getMouseRot(Y) * 100, (control.getMouseRot(X) * 100), 0.0f);
 
     if(true) {
-        //square -> setRotation(0, square -> getRotation(Y) + (elapsed * 100), 0.0f);
+        square -> setRotation(0, square -> getRotation(Y) + (elapsed * 100), 0.0f);
 
-        //funniObject -> setRotation(0, funniObject -> getRotation(Y) - (elapsed * 100), 0.0f);
+        funniObject -> setRotation(0, funniObject -> getRotation(Y) - (elapsed * 100), 0.0f);
 
         lightsource -> setRotation(0, 180, 0);
 

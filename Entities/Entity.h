@@ -7,7 +7,6 @@
 #include "../FeshMath/AI/PathFinder.hpp"
 
 class Entity: public Model {
-    public:
-        Entity();
+
 };
 #endif
