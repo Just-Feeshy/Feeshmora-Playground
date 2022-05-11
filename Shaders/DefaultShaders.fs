@@ -75,10 +75,6 @@ vec4 directionLight(int index) {
     vec4 diffuse = texture(texture0, texCoord) * diff * direclight[index].intensity;
     vec4 specular = texture(texture1, texCoord) * specularAngle * direclight[index].intensity;
 
-    if(texture(texture0, texCoord).a <= 0) {
-        discard;
-    }
-
     return (diffuse + specular);
 }
 
@@ -171,6 +167,14 @@ void main() {
 
     if(direclight[0].shouldCast) {
         lights += directionLight(0);
+    }
+
+    if(texture(texture0, texCoord).a <= 0) {
+        discard;
+    }
+
+    if(texture(texture1, texCoord).a <= 0) {
+        discard;
     }
 
     float depth = logDepth(gl_FragCoord.z, 0.5, 5.0);
