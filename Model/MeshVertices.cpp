@@ -1,3 +1,5 @@
+#pragma once
+
 #include "MeshVertices.h"
 
 MeshVertices::MeshVertices() {

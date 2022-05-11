@@ -7,6 +7,8 @@
 #include "../../Model/Light/SpotLight.cpp"
 #include "../../Entities/Entity.cpp"
 
+#include "../../Objects/MeshObjects.hpp"
+
 class PlayState: public BasicStates {
     public:
         PlayState() = default;

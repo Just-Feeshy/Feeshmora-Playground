@@ -44,11 +44,11 @@ void Model::draw(Shaders* shader, const int index) {
     return;
 }
 
-Model* Model::create(MeshVertices &meshConfig) {
+Model* Model::create(MeshVertices *meshConfig) {
     if(!created) {
         createVAO();
-        createBuffer(GL_ARRAY_BUFFER, meshConfig, false);
-        createBuffer(GL_ELEMENT_ARRAY_BUFFER, meshConfig, true);
+        createBuffer(GL_ARRAY_BUFFER, *meshConfig, false);
+        createBuffer(GL_ELEMENT_ARRAY_BUFFER, *meshConfig, true);
         compile();
         
         created = true;

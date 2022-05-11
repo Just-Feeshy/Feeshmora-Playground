@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef MESH_VERTICES_INCLUDED
 #define MESH_VERTICES_INCLUDED
 

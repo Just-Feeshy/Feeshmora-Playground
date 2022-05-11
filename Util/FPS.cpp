@@ -1,3 +1,5 @@
+#pragma once
+
 #include "FPS.h"
 
 namespace GlobalFPS {
