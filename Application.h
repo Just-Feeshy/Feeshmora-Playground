@@ -25,7 +25,7 @@ class Application {
 
         template<typename T, typename...obj> void switchState(obj&&...args);
 
-        template<typename T> static void addEvent(T event, void (*call)());
+        template<class T> static void addEvent(T event, void (*call)(T));
         
         void destroyState();
 

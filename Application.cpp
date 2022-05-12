@@ -16,7 +16,7 @@ template<typename T, typename...obj> void Application::switchState(obj&&...args)
   daState -> onCreate();
 }
 
-template<class T> void Application::addEvent(T event, void (*call)()) {
+template<class T> void Application::addEvent(T event, void (*call)(T)) {
     events.push_back(event);
 }
 
