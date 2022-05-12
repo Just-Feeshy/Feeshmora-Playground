@@ -2,10 +2,10 @@
 #define APP_INCLUDED
 
 #include "FeshStates/BasicStates.h"
+#include "FeshEvents/Event.h"
 #include "Util/FPS.cpp"
 
 #include <memory>
-#include <functional>
 #include <vector>
 
 using namespace std;
@@ -39,5 +39,7 @@ class Application {
     private:
         vector<unique_ptr<BasicStates>> _states;
         FPS fps;
+    public:
+        static vector<Event> events;
 };
 #endif
