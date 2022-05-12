@@ -73,7 +73,7 @@ vec4 directionLight(int index) {
     float specularAngle = pow(max(dot(cameraView, reflection), 0), 16) * 0.5;
 
     vec4 diffuse = texture(texture0, texCoord) * diff * direclight[index].intensity;
-    vec4 specular = texture(texture1, texCoord) * specularAngle * direclight[index].intensity;
+    float specular = texture(texture1, texCoord).a * specularAngle * direclight[index].intensity;
 
     return (diffuse + specular);
 }
@@ -98,7 +98,7 @@ vec4 pointLight(int index) {
 
     vec4 diffuse = texture(texture0, texCoord) * diff * intensity;
     
-    vec4 specular = texture(texture1, texCoord) * specularAngle * intensity;
+    float specular = texture(texture1, texCoord).a * specularAngle * intensity;
 
     return (diffuse + specular);
 }
@@ -128,7 +128,7 @@ vec4 spotLight(int index) {
 
     vec4 diffuse = texture(texture0, texCoord) * diff;
     
-    vec4 specular = texture(texture1, texCoord) * specularAngle;
+    float specular = texture(texture1, texCoord).a * specularAngle;
 
     //Organize intensity
     diffuse *= (intensity * spotlight[index].intensity) * spotLightInten;
