@@ -7,12 +7,13 @@
 #include "Keys.hpp"
 
 #include <iostream>
-#include <map>
+#include <functional>
+#include <vector>
 
 class Controls {
     public:
         Controls() = default;
-        ~Controls() = default;
+        ~Controls();
 
         bool GetKeyPressed(short key);
         bool GetKeyHolding(short key);
@@ -27,7 +28,6 @@ class Controls {
         void resetBinds();
     private:
         WindowDisplay* daWindow;
-
         glm::vec2 prevMousePos;
 };
 #endif

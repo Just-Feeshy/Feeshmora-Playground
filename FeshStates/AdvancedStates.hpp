@@ -71,8 +71,6 @@ class AdvancedStates: public BasicStates {
 
             obj -> render();
         }
-
-        unique_ptr<Camera> daCamera;
     protected:
         DefaultShaders defaultShaders;
         vector<Mesh*> _objects;
@@ -81,6 +79,8 @@ class AdvancedStates: public BasicStates {
 
         //Caculate lights in Application.
         glm::vec3 lightAmounts;
+
+        unique_ptr<Camera> daCamera;
     private:
         friend class Application;
 
@@ -95,13 +95,15 @@ class AdvancedStates: public BasicStates {
                 
                 _objects[i] -> update(elapsed);
             }
-            
-            defaultShaders.update();
-            defaultShaders.uniformMat4("pViewMatrix", daCamera -> getProjectionView());
 
-            defaultShaders.uniformVec3("cameraPos", Matrix::useVec3(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z)));
-
-            daCamera -> update(elapsed);
+            if(daCamera != nullptr) {
+                defaultShaders.update();
+                defaultShaders.uniformMat4("pViewMatrix", daCamera -> getProjectionView());
+    
+                defaultShaders.uniformVec3("cameraPos", Matrix::useVec3(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z)));
+    
+                daCamera -> update(elapsed);
+            }
 
             glm::vec3 light = {0, 0, 0};
 
@@ -136,7 +138,7 @@ class AdvancedStates: public BasicStates {
             //defaultShaders.update();
         }
 
-        void configWithWindow(WindowDisplay* window) override {
+        virtual void configWithWindow(WindowDisplay* window) override {
             daCamera = make_unique<Camera>(window);
             control.bindToWindow(window);
         }

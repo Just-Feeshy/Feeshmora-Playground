@@ -3,6 +3,8 @@
 #include "../../Model/Model.cpp"
 
 void PlayState::onCreate() {
+    
+    
     MeshVertices meshConfig4;
 
     //Front

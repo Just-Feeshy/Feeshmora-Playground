@@ -23,6 +23,7 @@ class PlayState: public AdvancedStates {
 
         Entity* badman;
 
+
         SpotLight* lightsource;
         PointLight* lightsource2;
 

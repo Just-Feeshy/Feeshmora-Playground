@@ -1,5 +1,9 @@
 #include "Controls.h"
 
+Controls::~Controls() {
+    return;
+}
+
 bool Controls::GetKeyPressed(short keys) {
     int keyResult = glfwGetKey(daWindow -> window, (int)keys);
     return (keyResult == GLFW_PRESS);

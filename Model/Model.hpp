@@ -7,8 +7,6 @@
 #include "../Renderer/Helpers/RenderManager.cpp"
 #include "MeshVertices.cpp"
 
-#include "../Util/Direction.hpp"
-
 #include <cmath>
 
 class Model: public Mesh {
@@ -53,19 +51,6 @@ class Model: public Mesh {
 
         void setPosition(float x, float y, float z) {
             movement.position = {x, y, z};
-        }
-
-        void move(Direction look, float elapsed) {
-            switch(look) {
-                case LEFT:
-                    moveLeft(elapsed);
-                case DOWN:
-                    moveBackwards(elapsed);
-                case FORWARD:
-                    moveForward(elapsed);
-                case BACKWARDS:
-                    moveBackwards(elapsed);
-            }
         }
 
         void moveForward(float elapsed) {
