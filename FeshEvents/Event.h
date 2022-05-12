@@ -6,15 +6,15 @@
 class Application;
 
 struct Event {
-    virtual void getEvent();
+    virtual void update(float elapsed);
 
     protected:
         void execute() {
-            (*callback)(); 
+            (*callback)(this); 
         }
     private:
         friend class Application;
 
-        void (*callback)();
+        void (*callback)(Event*);
 };
 #endif
