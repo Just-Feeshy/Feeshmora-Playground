@@ -5,6 +5,7 @@
 #include "Util/FPS.cpp"
 
 #include <memory>
+#include <functional>
 #include <vector>
 
 using namespace std;
@@ -23,6 +24,8 @@ class Application {
         bool isOpen();
 
         template<typename T, typename...obj> void switchState(obj&&...args);
+
+        template<typename T> static void addEvent(T event, void (*call)());
         
         void destroyState();
 

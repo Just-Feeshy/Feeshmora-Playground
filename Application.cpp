@@ -16,6 +16,10 @@ template<typename T, typename...obj> void Application::switchState(obj&&...args)
   daState -> onCreate();
 }
 
+template<typename T> void Application::addEvent(T event, void (*call)()) {
+    
+}
+
 void Application::update() {
     if(fps.framerate >= 30) {
         auto &state = *_states.back();
