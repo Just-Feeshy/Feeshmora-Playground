@@ -9,8 +9,6 @@
 
 using namespace std;
 
-float extern elasped;
-
 /**
 * Not the best Application class.
 */
@@ -35,7 +33,7 @@ class Application {
         * close.
         */
         WindowDisplay* daWindow = 0;
-    protected:
+    private:
         vector<unique_ptr<BasicStates>> _states;
         FPS fps;
 };
