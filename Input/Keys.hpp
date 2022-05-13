@@ -1,4 +1,9 @@
-namespace Keys {
+#pragma once
+
+#ifndef FEESHMORA_KEYS_INCLUDED
+#define FEESHMORA_KEYS_INCLUDED
+
+namespace Feeshmora::Keys {
     const short UNKNOWN = -1;
     const short SPACE = 32;
     const short APOSTROPHE = 39;
@@ -63,3 +68,4 @@ namespace Keys {
     
     //More to be added.
 };
+#endif
