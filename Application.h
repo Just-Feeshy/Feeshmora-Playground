@@ -26,7 +26,6 @@ class Application {
         template<typename T, typename...obj> void switchState(obj&&...args);
 
         template<class T> static void addEvent(T event, void (*call)(T));
-        
         void destroyState();
 
         /**
@@ -38,8 +37,9 @@ class Application {
         WindowDisplay* daWindow = 0;
     private:
         vector<unique_ptr<BasicStates>> _states;
-        FPS fps;
-    public:
         static vector<Event> events;
+        FPS fps;
+
+        void updateEvents(float elapsed);
 };
 #endif

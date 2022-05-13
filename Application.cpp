@@ -2,6 +2,8 @@
 
 #include "Application.h"
 
+vector<Event> Application::events;
+
 Application::Application(WindowDisplay &window) : daWindow(&window) {
     daWindow -> pre_render();
 }
@@ -20,10 +22,21 @@ template<class T> void Application::addEvent(T event, void (*call)(T)) {
     events.push_back(event);
 }
 
+void Application::updateEvents(float elapsed) {
+    int index = 0;
+    
+    while(index < events.size()) {
+        events[index].update(daWindow, elapsed);
+        
+        index++;
+    }
+}
+
 void Application::update() {
-    if(fps.framerate >= 30) {
+    if(fps.getFramerate() >= 30) {
         auto &state = *_states.back();
         state.update(fps.getDeltaTime());
+        updateEvents(fps.getDeltaTime());
         glfwSwapBuffers(daWindow -> window);
         glfwPollEvents();
     }

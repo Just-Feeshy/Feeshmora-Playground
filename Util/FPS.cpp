@@ -20,6 +20,10 @@ void FPS::caculateFPS() {
     }
 }
 
+int FPS::getFramerate() const {
+    return framerate;
+}
+
 float FPS::getDeltaTime() { //Simple
     float curTick = glfwGetTime();
     float returnTick = curTick - lastTick;

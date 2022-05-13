@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 
 #ifndef EVENT_TEMPLATE_INCLUDED
 #define EVENT_TEMPLATE_INCLUDED
