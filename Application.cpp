@@ -38,6 +38,7 @@ void Application::update() {
         state.update(fps.getDeltaTime());
         updateEvents(fps.getDeltaTime());
         glfwSwapBuffers(daWindow -> window);
+
         glfwPollEvents();
     }
 
@@ -45,6 +46,7 @@ void Application::update() {
 }
 
 void Application::close() {
+    events.clear();
     destroyState();
 
     glfwSetWindowShouldClose(daWindow -> window, GLFW_TRUE);
@@ -52,7 +54,7 @@ void Application::close() {
     glfwDestroyWindow(daWindow -> window);
     glfwTerminate();
 
-    daWindow = nullptr;
+    daWindow = 0;
     delete daWindow;
 }
 

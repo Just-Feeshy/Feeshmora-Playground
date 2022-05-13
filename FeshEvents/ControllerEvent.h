@@ -6,12 +6,10 @@
 #include "Event.h"
 
 struct ControllerEvent: public Event {
-    virtual ~ControllerEvent() {}
+    void update(WindowDisplay* window, const float elapsed) override;
 
-    void update(WindowDisplay* window, float elapsed) override;
-
-    static ControllerEvent keyDown();
-    static ControllerEvent keyUp();
+    static ControllerEvent keyDown(const short key);
+    static ControllerEvent keyUp(const short key);
 
     short getKeyID() const;
 

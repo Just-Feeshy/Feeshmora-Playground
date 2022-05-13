@@ -3,7 +3,6 @@
 
 #include "../Renderer/Shaders/DefaultShaders.cpp"
 #include "../Graphics/Textures/FirstTextures.cpp"
-#include "../Input/Controls.cpp"
 #include "../Camera.cpp"
 #include "BasicStates.h"
 
@@ -75,8 +74,6 @@ class AdvancedStates: public BasicStates {
         DefaultShaders defaultShaders;
         vector<Mesh*> _objects;
 
-        Controls control;
-
         //Caculate lights in Application.
         glm::vec3 lightAmounts;
 
@@ -140,7 +137,6 @@ class AdvancedStates: public BasicStates {
 
         virtual void configWithWindow(WindowDisplay* window) override {
             daCamera = make_unique<Camera>(window);
-            control.bindToWindow(window);
         }
 };
 #endif

@@ -22,6 +22,8 @@ struct WindowDisplay {
     void disableCursor();
     void pre_render();
 
+    int getKeyboard();
+
     GLFWwindow* window = 0;
 };
 #endif

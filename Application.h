@@ -36,8 +36,9 @@ class Application {
         */
         WindowDisplay* daWindow = 0;
     private:
-        vector<unique_ptr<BasicStates>> _states;
         static vector<Event> events;
+
+        vector<unique_ptr<BasicStates>> _states;
         FPS fps;
 
         void updateEvents(float elapsed);

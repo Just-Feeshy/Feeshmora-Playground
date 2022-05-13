@@ -9,19 +9,22 @@ short ControllerEvent::getKeyID() const {
     return keyID;
 }
 
-ControllerEvent ControllerEvent::keyDown() {
+ControllerEvent ControllerEvent::keyDown(const short key) {
     ControllerEvent event;
     event.keyPhase = true;
     return event;
 }
 
-ControllerEvent ControllerEvent::keyUp() {
+ControllerEvent ControllerEvent::keyUp(const short key) {
     ControllerEvent event;
     event.keyPhase = false;
     return event;
 }
 
-void ControllerEvent::update(WindowDisplay* window, float elapsed) {
+void ControllerEvent::update(WindowDisplay* window, const float elapsed) {
     
+    
+    Event::update(window, elapsed);
 }
+
 #endif

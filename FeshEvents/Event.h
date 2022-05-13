@@ -8,7 +8,7 @@
 class Application;
 
 struct Event {
-    virtual void update(WindowDisplay* window, float elapsed) = 0;
+    virtual void update(WindowDisplay* window, const float elapsed) {glfwPollEvents();}
 
     protected:
         void execute() {

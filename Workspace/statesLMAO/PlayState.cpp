@@ -83,8 +83,6 @@ badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1,
 
 void PlayState::update(float elapsed) {
     AdvancedStates::update(elapsed);
-    
-    daCamera -> setRotation(control.getMouseRot(Y) * 100, (control.getMouseRot(X) * 100), 0.0f);
 
     if(true) {
         square -> setRotation(0, square -> getRotation(Y) + (elapsed * 100), 0.0f);
@@ -100,30 +98,6 @@ void PlayState::update(float elapsed) {
         badman -> setRotation(0, PathFinder::getAngleThroughPath(badman -> getPosition(), daCamera -> getPosition()).y, 0);
 
         badman -> moveForward(elapsed/2);
-    }
-
-    if(control.GetKeyHolding(Keys::S)) {
-        daCamera -> moveBackwards(-elapsed);
-    }
-
-    if(control.GetKeyHolding(Keys::A)) {
-        daCamera -> moveLeft(-elapsed);
-    }
-
-    if(control.GetKeyHolding(Keys::D)) {
-        daCamera -> moveRight(-elapsed);
-    }
-
-    if(control.GetKeyHolding(Keys::W)) {
-        daCamera -> moveForward(-elapsed);
-    }
-
-    if(control.GetKeyHolding(Keys::Q)) {
-        daCamera ->setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y) + elapsed, daCamera -> getPosition(Z));
-    }
-
-    if(control.GetKeyHolding(Keys::E)) {
-        daCamera -> setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y) - elapsed, daCamera -> getPosition(Z));
     }
 }
 
