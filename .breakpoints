@@ -1,11 +1,35 @@
 {
   "files": {
+    ".replit": [
+      {
+        "id": "d2ed9018-dbf0-4e26-9408-ff8ec439cfc0",
+        "line": 2,
+        "version": 24,
+        "index": 17
+      }
+    ],
     "Camera.cpp": [
       {
         "id": "02d5af66-142c-4744-8e34-07fa91708978",
         "line": 68,
         "version": 241,
         "index": 1858
+      }
+    ],
+    "FeshEvents/ControllerEvent.cpp": [
+      {
+        "id": "f4f7e9f8-973a-43e7-aabb-5f2511a0d40a",
+        "line": 21,
+        "version": 229,
+        "index": 317
+      }
+    ],
+    "FeshMath/AI/PathFinder.hpp": [
+      {
+        "id": "74b5ec72-8ceb-46bf-b6ca-f6142b4fe652",
+        "line": 25,
+        "version": 791,
+        "index": 580
       }
     ],
     "Workspace/statesLMAO/PlayState.cpp": [

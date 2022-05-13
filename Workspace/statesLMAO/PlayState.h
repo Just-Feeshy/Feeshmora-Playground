@@ -3,6 +3,7 @@
 
 #include "../../FeshStates/AdvancedStates.hpp"
 #include "../../Model/Light/DirectionalLight.cpp"
+#include "../../FeshEvents/ControllerEvent.cpp"
 #include "../../Model/Light/PointLight.cpp"
 #include "../../Model/Light/SpotLight.cpp"
 #include "../../Entities/Entity.cpp"

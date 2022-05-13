@@ -17,5 +17,5 @@ class Player: public Entity {
         unique_ptr<Camera> daCamera;
 
         
-}
+};
 #endif
