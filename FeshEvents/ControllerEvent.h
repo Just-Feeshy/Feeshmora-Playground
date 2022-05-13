@@ -8,7 +8,7 @@
 struct ControllerEvent: public Event {
     virtual ~ControllerEvent() {}
 
-    void update(float elapsed) override;
+    void update(WindowDisplay* window, float elapsed) override;
 
     static ControllerEvent keyDown();
     static ControllerEvent keyUp();

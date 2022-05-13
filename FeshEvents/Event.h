@@ -3,10 +3,12 @@
 #ifndef EVENT_TEMPLATE_INCLUDED
 #define EVENT_TEMPLATE_INCLUDED
 
+#include "../WindowDisplay.cpp"
+
 class Application;
 
 struct Event {
-    virtual void update(float elapsed) = 0;
+    virtual void update(WindowDisplay* window, float elapsed) = 0;
 
     protected:
         void execute() {

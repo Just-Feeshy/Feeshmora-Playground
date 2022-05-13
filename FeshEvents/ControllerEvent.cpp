@@ -21,7 +21,7 @@ ControllerEvent ControllerEvent::keyUp() {
     return event;
 }
 
-void ControllerEvent::update(float elapsed) {
+void ControllerEvent::update(WindowDisplay* window, float elapsed) {
     
 }
 #endif
