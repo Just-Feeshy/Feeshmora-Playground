@@ -7,7 +7,7 @@
 #include "../WindowDisplay.cpp"
 
 namespace Feeshmora::Input {
-    bool getKeyAction(WindowDisplay* window, const short key, const bool phase) {
+    bool getKeyAction(WindowDisplay* window, const short &key, const bool &phase) {
         if(phase) {
             return (glfwGetKey(window -> window, key) >= int(phase));
         }else {
@@ -15,7 +15,7 @@ namespace Feeshmora::Input {
         }
     }
 
-    double getMousePosXY(WindowDisplay* window, FeshAxis axis) {
+    double getMousePosXY(WindowDisplay* window, const FeshAxis axis) {
         double pos;
         
         switch(axis) {
@@ -31,8 +31,16 @@ namespace Feeshmora::Input {
         }
     }
 
-    void setMousePos(WindowDisplay* window, double x, double y) {
+    void setMousePos(WindowDisplay* window, const double x, const double y) {
         glfwSetCursorPos(window -> window, x, y);
+    }
+
+    bool getMouseButton(WindowDisplay* window, const short &button, const short &action) {
+        if(action > 1) {
+            return (glfwGetMouseButton(window -> window, button) == GLFW_PRESS || glfwGetMouseButton(window -> window, button) == GLFW_REPEAT);
+        }
+        
+        return (glfwGetMouseButton(window -> window, button) == action);
     }
 }
 #endif

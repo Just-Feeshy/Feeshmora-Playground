@@ -105,10 +105,6 @@ class AdvancedStates: public BasicStates {
             glm::vec3 light = {0, 0, 0};
 
             for(GLuint i=0; i<_objects.size(); i++) {
-                if(&defaultShaders == nullptr) {
-                    break;
-                }
-
                 _objects[i] -> draw(&defaultShaders);
 
                 if(dynamic_cast<Light*>(_objects[i]) != nullptr) {

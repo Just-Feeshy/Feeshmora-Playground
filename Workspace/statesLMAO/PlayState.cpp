@@ -2,6 +2,14 @@
 
 #include "../../Model/Model.cpp"
 
+void PlayState::test1(Event* event) {
+    std::cout << "oh no" << std::endl;
+}
+
+void test2(Event* event) {
+    //test1(event);
+}
+
 void PlayState::onCreate() {
     
     
@@ -79,6 +87,8 @@ badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1,
     
     sun -> setIntensity(0.15);
     this -> add(sun);
+
+    Application::addEvent<MouseEvent>(MouseEvent::CURSOR(), &test2);
 }
 
 void PlayState::update(float elapsed) {

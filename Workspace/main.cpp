@@ -18,7 +18,5 @@ int main(int argv, char** argc) {
         game.update();
     }
 
-    game.close();
-
     return 0;
 }

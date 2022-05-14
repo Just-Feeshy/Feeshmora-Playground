@@ -16,16 +16,16 @@ using namespace std;
 class Application {
     public:
         Application(WindowDisplay &window);
+        ~Application();
 
         void compile();
         void update();
         void customEvents();
-        void close();
         bool isOpen();
 
         template<typename T, typename...obj> void switchState(obj&&...args);
 
-        template<class T> static void addEvent(T event, void (*call)(T));
+        template<typename T> static void addEvent(T* event, void (*call)(Event*));
 
         static void clearEvents();
 
@@ -37,13 +37,14 @@ class Application {
         * the first place, the program it self will
         * close.
         */
-        WindowDisplay* daWindow = 0;
+        WindowDisplay* daWindow;
     private:
-        static vector<Event> events;
+        static vector<Event*> events;
 
         vector<unique_ptr<BasicStates>> _states;
         FPS fps;
 
         void updateEvents(float elapsed);
+        void close();
 };
 #endif

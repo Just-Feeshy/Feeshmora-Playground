@@ -1,11 +1,18 @@
 #pragma once
 
+#ifndef APP_CPP_INCLUDED
+#define APP_CPP_INCLUDED
+
 #include "Application.h"
 
-vector<Event> Application::events;
+vector<Event*> Application::events;
 
-Application::Application(WindowDisplay &window) : daWindow(&window) {
+Application::Application(WindowDisplay &window): daWindow(&window)  {
     daWindow -> pre_render();
+}
+
+Application::~Application() {
+    close();
 }
 
 template<typename T, typename...obj> void Application::switchState(obj&&...args) {
@@ -18,7 +25,8 @@ template<typename T, typename...obj> void Application::switchState(obj&&...args)
   daState -> onCreate();
 }
 
-template<class T> void Application::addEvent(T event, void (*call)(T)) {
+template<typename T> void Application::addEvent(T* event, void (*call)(Event*)) {
+    event -> callback = call;
     events.push_back(event);
 }
 
@@ -27,10 +35,10 @@ void Application::clearEvents() {
 }
 
 void Application::updateEvents(float elapsed) {
-    int index = 0;
+    GLuint index = 0;
     
     while(index < events.size()) {
-        events[index].update(daWindow, elapsed);
+        events[index] -> update(daWindow, elapsed);
         
         index++;
     }
@@ -50,7 +58,6 @@ void Application::update() {
 }
 
 void Application::close() {
-    events.clear();
     destroyState();
 
     glfwSetWindowShouldClose(daWindow -> window, GLFW_TRUE);
@@ -60,6 +67,16 @@ void Application::close() {
 
     daWindow = 0;
     delete daWindow;
+
+    int index = 0;
+    
+    while(index < events.size()) {
+        delete events[index];
+        
+        index++;
+    }
+
+    events.clear();
 }
 
 void Application::destroyState() {
@@ -81,3 +98,4 @@ bool Application::isOpen() {
 
     return false;
 }
+#endif

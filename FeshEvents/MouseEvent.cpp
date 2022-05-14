@@ -9,15 +9,15 @@ MouseEvent::MouseEvent() {
     sensitivity = 0.5f;
 }
 
-MouseEvent MouseEvent::CLICK() {
-    MouseEvent event;
-    event.eventType = "click";
+MouseEvent* MouseEvent::CLICK() {
+    MouseEvent* event = new MouseEvent();
+    event -> eventType = "click";
     return event;
 }
 
-MouseEvent MouseEvent::CURSOR() {
-    MouseEvent event;
-    event.eventType = "cursor";
+MouseEvent* MouseEvent::CURSOR() {
+    MouseEvent* event = new MouseEvent();
+    event -> eventType = "cursor";
     return event;
 }
 
@@ -59,9 +59,14 @@ void MouseEvent::update(WindowDisplay* window, const float elapsed) {
     }
 
     if(eventType == "click") {
-        
+        if(Input::getMouseButton(window, 1, 1)) {
+            execute();
+        }
     }
-    
+
+    prevMousePosition.x = x;
+    prevMousePosition.y = y;
+    Input::setMousePos(window, (double)window -> width / 2, (double)window -> height / 2);
     Event::update(window, elapsed);
 }
 #endif

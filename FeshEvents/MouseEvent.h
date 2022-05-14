@@ -12,8 +12,8 @@
 using namespace Feeshmora;
 
 struct MouseEvent: public Event {
-    static MouseEvent CLICK();
-    static MouseEvent CURSOR();
+    static MouseEvent* CLICK();
+    static MouseEvent* CURSOR();
 
     void update(WindowDisplay* window, const float elapsed) override;
 

@@ -12,10 +12,10 @@
 * Made uppercase methods to signify contructors
 */
 struct ControllerEvent: public Event {
-    void update(WindowDisplay* window, const float elapsed) override;
+    static ControllerEvent* KEYDOWN(const short key);
+    static ControllerEvent* KEYUP(const short key);
 
-    static ControllerEvent KEYDOWN(const short key);
-    static ControllerEvent KEYUP(const short key);
+    void update(WindowDisplay* window, const float elapsed) override;
 
     short getKeyID() const;
     bool getKeyPhase() const;

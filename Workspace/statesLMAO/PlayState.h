@@ -8,8 +8,11 @@
 #include "../../Model/Light/PointLight.cpp"
 #include "../../Model/Light/SpotLight.cpp"
 #include "../../Entities/Entity.cpp"
+#include "../../Application.cpp"
 
 #include "../../Objects/MeshObjects.hpp"
+
+#include <iostream>
 
 class PlayState: public AdvancedStates {
     public:
@@ -18,6 +21,8 @@ class PlayState: public AdvancedStates {
 
         void onCreate() override;
         void update(float elapsed) override;
+
+        void test1(Event* event);
     private:
         Model* square;
         Model* funniObject;

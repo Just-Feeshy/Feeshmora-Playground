@@ -15,17 +15,17 @@ bool ControllerEvent::getKeyPhase() const {
     return keyPhase;
 }
 
-ControllerEvent ControllerEvent::KEYDOWN(const short key) {
-    ControllerEvent event;
-    event.keyPhase = true;
-    event.keyID = key;
+ControllerEvent* ControllerEvent::KEYDOWN(const short key) {
+    ControllerEvent* event = new ControllerEvent();
+    event -> keyPhase = true;
+    event -> keyID = key;
     return event;
 }
 
-ControllerEvent ControllerEvent::KEYUP(const short key) {
-    ControllerEvent event;
-    event.keyPhase = false;
-    event.keyID = key;
+ControllerEvent* ControllerEvent::KEYUP(const short key) {
+    ControllerEvent* event = new ControllerEvent();
+    event -> keyPhase = false;
+    event -> keyID = key;
     return event;
 }
 
