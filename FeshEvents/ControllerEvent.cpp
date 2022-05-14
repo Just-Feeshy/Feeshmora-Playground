@@ -5,24 +5,34 @@
 
 #include "ControllerEvent.h"
 
+using namespace Feeshmora;
+
 short ControllerEvent::getKeyID() const {
     return keyID;
 }
 
-ControllerEvent ControllerEvent::keyDown(const short key) {
+bool ControllerEvent::getKeyPhase() const {
+    return keyPhase;
+}
+
+ControllerEvent ControllerEvent::KEYDOWN(const short key) {
     ControllerEvent event;
     event.keyPhase = true;
+    event.keyID = key;
     return event;
 }
 
-ControllerEvent ControllerEvent::keyUp(const short key) {
+ControllerEvent ControllerEvent::KEYUP(const short key) {
     ControllerEvent event;
     event.keyPhase = false;
+    event.keyID = key;
     return event;
 }
 
 void ControllerEvent::update(WindowDisplay* window, const float elapsed) {
-    
+    if(Input::getKeyAction(window, getKeyID(), keyPhase)) {
+        execute();
+    }
     
     Event::update(window, elapsed);
 }

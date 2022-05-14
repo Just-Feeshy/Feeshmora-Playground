@@ -22,6 +22,10 @@ template<class T> void Application::addEvent(T event, void (*call)(T)) {
     events.push_back(event);
 }
 
+void Application::clearEvents() {
+    events.clear();
+}
+
 void Application::updateEvents(float elapsed) {
     int index = 0;
     

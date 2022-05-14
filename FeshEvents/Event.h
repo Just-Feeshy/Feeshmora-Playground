@@ -11,6 +11,8 @@ struct Event {
     virtual void update(WindowDisplay* window, const float elapsed) {glfwPollEvents();}
 
     protected:
+        Event() {};
+
         void execute() {
             (*callback)(this); 
         }

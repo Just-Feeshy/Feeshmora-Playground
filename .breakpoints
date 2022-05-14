@@ -19,9 +19,9 @@
     "FeshEvents/ControllerEvent.cpp": [
       {
         "id": "f4f7e9f8-973a-43e7-aabb-5f2511a0d40a",
-        "line": 26,
-        "version": 482,
-        "index": 498
+        "line": 30,
+        "version": 765,
+        "index": 593
       }
     ],
     "FeshMath/AI/PathFinder.hpp": [
@@ -36,14 +36,14 @@
       {
         "id": "498fea03-f50f-4e4d-933d-039e0e2aadcb",
         "line": 57,
-        "version": 5703,
+        "version": 5712,
         "index": 1719
       },
       {
         "id": "755b8e75-35e6-4af9-a9a7-347dc445aa2c",
-        "line": 158,
-        "version": 5703,
-        "index": 4531
+        "line": 132,
+        "version": 5712,
+        "index": 3719
       }
     ]
   }
