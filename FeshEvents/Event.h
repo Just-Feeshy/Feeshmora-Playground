@@ -14,11 +14,9 @@ struct Event {
         Event() {};
 
         void execute() {
-            (*callback)(this); 
+            //(*callback)(this); 
         }
     private:
         friend class Application;
-
-        void (*callback)(Event*);
 };
 #endif

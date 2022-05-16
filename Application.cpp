@@ -26,7 +26,6 @@ template<typename T, typename...obj> void Application::switchState(obj&&...args)
 }
 
 template<typename T> void Application::addEvent(T* event, void (*call)(Event*)) {
-    event -> callback = call;
     events.push_back(event);
 }
 

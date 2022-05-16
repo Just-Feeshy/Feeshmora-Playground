@@ -66,7 +66,7 @@ void MouseEvent::update(WindowDisplay* window, const float elapsed) {
 
     prevMousePosition.x = x;
     prevMousePosition.y = y;
-    Input::setMousePos(window, (double)window -> width / 2, (double)window -> height / 2);
+    
     Event::update(window, elapsed);
 }
 #endif
