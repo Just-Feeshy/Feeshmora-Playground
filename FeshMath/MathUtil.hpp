@@ -4,7 +4,7 @@
 #define MATH_UTIL_INCLUDED
 
 namespace Feeshmora::MathUtil {
-    template<typename T> T clamp(const T& value, const T& min, T& max) {
+    template<typename T> T clamp(const T& value, const T& min, const T& max) {
         if(value > max) {
             return max;
         }

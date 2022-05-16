@@ -20,20 +20,13 @@ struct MouseEvent: public Event {
     double getX() const;
     double getY() const;
 
-    float getSensitivity() const;
-    void setSensitivity(const float s);
-
     glm::vec2 getMouseAxis();
 
     private:
-        MouseEvent();
-
         std::string eventType;
 
         double x;
         double y;
-    
-        float sensitivity;
     
         glm::vec2 prevMousePosition;
 };

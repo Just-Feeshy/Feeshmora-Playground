@@ -13,5 +13,7 @@ class EventObject {
 
         virtual void onKeyboardEvent() = 0;
         virtual void onMouseEvent() = 0;
+    private:
+        float mouse_sensivity = 0.5;
 };
 #endif

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef PLAYER_INCLUDED
-#define PLAYER_INCLUDED
+#ifndef PLAYER_BEHAVIOR_INCLUDED
+#define PLAYER_BEHAVIOR_INCLUDED
 
 #include "../Objects/EventObject.h"
 #include "../Camera.cpp"
@@ -11,9 +11,9 @@
 
 class Player: public Entity, public EventObject {
     public:
-        Player();
-
-        void attachCamera(std::unique_ptr<Camera> camera);
+        void attachCamera(std::unique_ptr<Camera> camera) {
+            daCamera = std::move(camera);
+        }
     protected:
         std::unique_ptr<Camera> daCamera;
 };

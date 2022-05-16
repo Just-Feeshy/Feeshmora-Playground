@@ -5,9 +5,7 @@
 
 #include "MouseEvent.h"
 
-MouseEvent::MouseEvent() {
-    sensitivity = 0.5f;
-}
+#define DEFAULT_MOUSE_SENSITIVITY 0.5f
 
 MouseEvent* MouseEvent::CLICK() {
     MouseEvent* event = new MouseEvent();
@@ -21,10 +19,6 @@ MouseEvent* MouseEvent::CURSOR() {
     return event;
 }
 
-void MouseEvent::setSensitivity(const float s) {
-    this -> sensitivity = s;
-}
-
 double MouseEvent::getX() const {
     return x;
 }
@@ -33,17 +27,13 @@ double MouseEvent::getY() const {
     return y;
 }
 
-float MouseEvent::getSensitivity() const {
-    return sensitivity;
-}
-
 glm::vec2 MouseEvent::getMouseAxis() {
     glm::vec2 diff = glm::vec2((float)(x - prevMousePosition.x), (float)(y - prevMousePosition.y));
 
-    diff.x = MathUtil::clamp(diff.x, -sensitivity, sensitivity);
-    diff.x = MathUtil::remap(diff.x, -sensitivity, sensitivity, -1.0f, 1.0f);
-    diff.y = MathUtil::clamp(diff.y, -sensitivity, sensitivity);
-    diff.y = MathUtil::remap(diff.y, -sensitivity, sensitivity, -1.0f, 1.0f);
+    diff.x = MathUtil::clamp(diff.x, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY);
+    diff.x = MathUtil::remap(diff.x, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY, -1.0f, 1.0f);
+    diff.y = MathUtil::clamp(diff.y, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY);
+    diff.y = MathUtil::remap(diff.y, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY, -1.0f, 1.0f);
 
     prevMousePosition = glm::vec2(x, y);
     

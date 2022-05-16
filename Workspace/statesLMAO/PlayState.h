@@ -2,15 +2,17 @@
 #define PLAYSTATE_INCLUDED
 
 #include "../../FeshStates/AdvancedStates.hpp"
+#include "../../Objects/MeshObjects.hpp"
 #include "../../Model/Light/DirectionalLight.cpp"
 #include "../../FeshEvents/ControllerEvent.cpp"
 #include "../../FeshEvents/MouseEvent.cpp"
 #include "../../Model/Light/PointLight.cpp"
 #include "../../Model/Light/SpotLight.cpp"
-#include "../../Entities/Player.cpp"
+#include "../../Entities/Entity.cpp"
 #include "../../Application.cpp"
 
-#include "../../Objects/MeshObjects.hpp"
+//Workspace Objects
+
 
 #include <iostream>
 
