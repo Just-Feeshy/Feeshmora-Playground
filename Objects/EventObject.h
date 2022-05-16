@@ -3,7 +3,10 @@
 #ifndef EVENT_OBJECT_INCLUDED
 #define EVENT_OBJECT_INCLUDED
 
-struct Event;
+/*List of events*/
+struct ControllerEvent;
+struct MouseEvent;
+
 
 /**
 * This is a interface.. lol
@@ -13,8 +16,8 @@ class EventObject {
         EventObject() = default;
         ~EventObject() = default;
 
-        virtual void onKeyboardEvent(Event* event) = 0;
-        virtual void onMouseEvent(Event* event) = 0;
+        virtual void onKeyboardEvent(ControllerEvent* event) = 0;
+        virtual void onMouseEvent(MouseEvent* event) = 0;
     private:
         float mouse_sensivity = 0.5;
 };

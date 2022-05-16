@@ -21,7 +21,7 @@ struct MouseEvent: public Event {
     double getX() const;
     double getY() const;
 
-    float getMouseAxis(FeshAxis& axis);
+    float getMouseAxis(const FeshAxis& axis);
 
     private:
         std::string eventType;

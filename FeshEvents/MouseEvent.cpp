@@ -27,7 +27,7 @@ double MouseEvent::getY() const {
     return y;
 }
 
-float MouseEvent::getMouseAxis(FeshAxis& axis) {
+float MouseEvent::getMouseAxis(const FeshAxis& axis) {
     glm::vec2 diff = glm::vec2((float)(x - prevMousePosition.x), (float)(y - prevMousePosition.y));
 
     diff.x = MathUtil::clamp(diff.x, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY);

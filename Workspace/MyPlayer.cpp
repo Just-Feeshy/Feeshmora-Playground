@@ -9,7 +9,7 @@ MyPlayer::MyPlayer() {
     mouse_sensitivity = 5;
 }
 
-void MyPlayer::onMouseEvent(Event* event) {
-    
+void MyPlayer::onMouseEvent(MouseEvent* event) {
+    float mouseX = event -> getMouseAxis(X);
 }
 #endif
