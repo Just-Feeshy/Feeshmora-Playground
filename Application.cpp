@@ -6,8 +6,10 @@
 #include "Application.h"
 
 vector<Event*> Application::events;
+WindowDisplay* Application::daWindow;
 
-Application::Application(WindowDisplay &window): daWindow(&window)  {
+Application::Application(WindowDisplay &window)  {
+    daWindow = &window;
     daWindow -> pre_render();
 }
 
@@ -21,7 +23,7 @@ template<typename T, typename...obj> void Application::switchState(obj&&...args)
 
   //Auto keyword is good.
   auto &daState = _states.back();
-  daState -> configWithWindow(daWindow);
+  daState -> setWindow(daWindow);
   daState -> onCreate();
 }
 

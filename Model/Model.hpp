@@ -9,6 +9,8 @@
 
 #include <cmath>
 
+using namespace std;
+
 class Model: public Mesh {
     public:
         Model() {
@@ -23,6 +25,7 @@ class Model: public Mesh {
         virtual void update(float elapsed) override;
         virtual void draw(Shaders* shader) override;
         virtual void draw(Shaders* shader, const int index) override;
+        virtual void implementWindow(WindowDisplay* window) override;
 
         Model* create(MeshVertices *meshConfig);
 

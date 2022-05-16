@@ -16,6 +16,6 @@ class BasicStates {
     protected:
         friend class Application;
 
-        virtual void configWithWindow(WindowDisplay* window) = 0;
+        virtual void setWindow(WindowDisplay* window) = 0;
 };
 #endif

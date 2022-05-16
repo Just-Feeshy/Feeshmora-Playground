@@ -10,9 +10,7 @@ void test2(Event* event) {
     //test1(event);
 }
 
-void PlayState::onCreate() {
-    
-    
+void PlayState::onCreate() {  
     MeshVertices meshConfig4;
 
     //Front

@@ -15,3 +15,4 @@ Future Projects:
 4) Don't use GL "datavalues." Make my own.
 5) Be more dynamic/object orientated and make classes that implements and simplifies library features rather than using the library.
 6) Make model it's own stucture in GLSL.
+7) Make multi-window a feature.

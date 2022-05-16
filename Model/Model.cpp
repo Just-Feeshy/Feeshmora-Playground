@@ -48,6 +48,10 @@ void Model::draw(Shaders* shader, const int index) {
     return;
 }
 
+void Model::implementWindow(WindowDisplay* window) {
+    return;
+}
+
 Model* Model::create(MeshVertices *meshConfig) {
     if(!created) {
         createVAO();
@@ -127,7 +131,7 @@ void Model::setTexture(const std::string file, const TexEnum type, const TexPara
 
 void Model::update(float elapsed) {
     if(shaderGroup.size() > 0) {
-        std::for_each(shaderGroup.begin(), shaderGroup.end(), [](Shaders &shader) {
+        for_each(shaderGroup.begin(), shaderGroup.end(), [](Shaders &shader) {
             shader.update();
         });
     }

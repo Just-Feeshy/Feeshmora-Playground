@@ -40,6 +40,8 @@ class Mesh {
 
         virtual void draw(Shaders* shader) = 0;
 
+        virtual void implementWindow(WindowDisplay* window) = 0;
+
         /**
         For models that use a GLSL array.
         Example: Light

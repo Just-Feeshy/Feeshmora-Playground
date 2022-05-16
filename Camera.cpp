@@ -1,11 +1,12 @@
 #include "Camera.h"
 
-Camera::Camera(WindowDisplay* window) {
-    projection = makeProjection(window);
-
-    thisWindow = window;
-    
+Camera::Camera() {
     movement.position = {0.0f, 0.0f, 0.0f};
+}
+
+void Camera::implementWindow(WindowDisplay* window) {
+    thisWindow = window;
+    projection = makeProjection();
 }
 
 void Camera::setRotation(float yaw, float pitch, float roll) {
@@ -24,13 +25,12 @@ void Camera::setRotation(float yaw, float pitch, float roll) {
     cameraUP = glm::normalize(glm::cross(angle, direction));
 }
 
-glm::mat4 Camera::makeProjection(WindowDisplay* window) {
-    float width = (float)window -> width;
-    float height = (float)window -> height;
-    float fov = (float)window -> FOV;
-    float rDistance = (float)window -> renderDistance;
+glm::mat4 Camera::makeProjection() {
+    float width = (float)thisWindow -> width;
+    float height = (float)thisWindow -> height;
+    float fov = (float)thisWindow -> FOV;
+    float rDistance = (float)thisWindow -> renderDistance;
 
-    thisWindow = window;
     return Matrix::perspective(fov, width / height, 0.1f, rDistance * 100.0f);
 }
 
@@ -59,10 +59,6 @@ void Camera::update(float elapsed) {
     Model::update(elapsed);
     
     view = getMatrix();
-    projection = makeProjection(thisWindow);
+    projection = makeProjection();
     pView = projection * view;
-}
-
-void Camera::setAsFPS() {
-    glfwSetCursorPos(thisWindow -> window, thisWindow -> width / 2, thisWindow -> height / 2);
 }

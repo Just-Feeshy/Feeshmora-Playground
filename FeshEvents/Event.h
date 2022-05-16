@@ -5,8 +5,6 @@
 
 #include "../WindowDisplay.cpp"
 
-class Application;
-
 struct Event {
     virtual void update(WindowDisplay* window, const float elapsed) {glfwPollEvents();}
 
@@ -14,9 +12,7 @@ struct Event {
         Event() {};
 
         void execute() {
-            //(*callback)(this); 
+            
         }
-    private:
-        friend class Application;
 };
 #endif

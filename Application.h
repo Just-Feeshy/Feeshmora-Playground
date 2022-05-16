@@ -37,7 +37,7 @@ class Application {
         * the first place, the program it self will
         * close.
         */
-        WindowDisplay* daWindow;
+        static WindowDisplay* daWindow;
     private:
         static vector<Event*> events;
 

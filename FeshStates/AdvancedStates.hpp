@@ -1,6 +1,7 @@
 #ifndef ADVANCEDSTATES_INCLUDED
 #define ADVANCEDSTATES_INCLUDED
 
+#include "../Application.cpp"
 #include "../Renderer/Shaders/DefaultShaders.cpp"
 #include "../Graphics/Textures/FirstTextures.cpp"
 #include "../Camera.cpp"
@@ -19,6 +20,9 @@ using namespace std;
 class AdvancedStates: public BasicStates {
     public:
         AdvancedStates() {
+            daCamera = make_unique<Camera>();
+            daCamera -> implementWindow(Application::daWindow);
+            
             if(!defaultShaders.loadedShaders()) {
                 defaultShaders.loadFiles(
                     "Shaders/DefaultShaders.glsl",
@@ -43,7 +47,7 @@ class AdvancedStates: public BasicStates {
             updateAllObjs(elapsed);
         }
 
-        void add(auto obj) {
+        void add(auto obj) {  
             _objects.push_back(obj);
 
             //Refresh
@@ -68,7 +72,12 @@ class AdvancedStates: public BasicStates {
                 );
             }
 
+            obj -> implementWindow(Application::daWindow);
             obj -> render();
+        }
+
+        virtual void setWindow(WindowDisplay* window) override {
+            
         }
     protected:
         DefaultShaders defaultShaders;
@@ -79,8 +88,6 @@ class AdvancedStates: public BasicStates {
 
         unique_ptr<Camera> daCamera;
     private:
-        friend class Application;
-
         /**
         * Stuff for the Application class to handle.
         */
@@ -127,12 +134,6 @@ class AdvancedStates: public BasicStates {
                     }
                 }
             }
-
-            //defaultShaders.update();
-        }
-
-        virtual void configWithWindow(WindowDisplay* window) override {
-            daCamera = make_unique<Camera>(window);
         }
 };
 #endif

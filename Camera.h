@@ -8,12 +8,14 @@
 
 class Camera: public Model {
     public:
-        Camera(WindowDisplay* window);
+        Camera();
         ~Camera() = default;
 
         void setRotation(float yaw, float pitch, float roll) override;
 
         void draw(Shaders* shader) override;
+
+        void implementWindow(WindowDisplay* window) override;
 
         void update(float elapsed);
 
@@ -39,18 +41,16 @@ class Camera: public Model {
             return shaderGroup;
         }
 
-        glm::mat4 makeProjection(WindowDisplay* window);
+        glm::mat4 makeProjection();
 
         void addShaders(const Shaders shader);
-        
-        void setAsFPS();
     private:
         glm::mat4 projection;
         glm::mat4 view;
         glm::mat4 pView;
 
         glm::vec3 cameraUP;
-    public:
+
         WindowDisplay* thisWindow = 0;
 };
 #endif
