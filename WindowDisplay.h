@@ -18,8 +18,6 @@ struct WindowDisplay {
     void init();
     void createSize(int width, int height, bool fullscreen);
     void setTitle(std::string title);
-    void enableCursor();
-    void disableCursor();
     void pre_render();
 
     int getKeyboard();

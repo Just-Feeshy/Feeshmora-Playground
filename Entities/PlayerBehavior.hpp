@@ -10,6 +10,8 @@
 
 #include <memory>
 
+using namespace Feeshmora;
+
 class PlayerBehavior: public Entity, public EventObject {
     public:
         PlayerBehavior() = default;
@@ -19,13 +21,17 @@ class PlayerBehavior: public Entity, public EventObject {
             _window = this -> camera -> getWindow();
         }
 
-        void lockCursor() const {
-            
+        void lockCursor(const bool condition) {
+            Input::setMousePos(_window, (double)_window -> width / 2, (double)_window -> height / 2); 
         }
 
         void implementWindow(WindowDisplay* window) {
             camera -> implementWindow(window);
             _window = camera -> getWindow();
+        }
+
+        virtual void update(const float elapsed) {
+            
         }
     protected:
         std::unique_ptr<Camera> camera;

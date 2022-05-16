@@ -60,14 +60,6 @@ void WindowDisplay::setTitle(std::string title) {
     delete aTitle;
 }
 
-void WindowDisplay::enableCursor() {
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-}
-
-void WindowDisplay::disableCursor() {
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-}
-
 void WindowDisplay::pre_render() {
     glfwSwapInterval(1);
     
