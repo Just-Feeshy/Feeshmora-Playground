@@ -9,10 +9,11 @@
 #include "../../Model/Light/PointLight.cpp"
 #include "../../Model/Light/SpotLight.cpp"
 #include "../../Entities/Entity.cpp"
+#include "../../Model/Model.cpp"
 #include "../../Application.cpp"
 
 //Workspace Objects
-
+#include "../MyPlayer.cpp"
 
 #include <iostream>
 

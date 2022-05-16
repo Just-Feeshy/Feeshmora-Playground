@@ -6,6 +6,7 @@
 #include "../Libraries/glm-master/glm/vec2.hpp"
 #include "../Inputs/InputBackend.cpp"
 #include "../FeshMath/MathUtil.hpp"
+#include "../Util/FeshAxis.hpp"
 
 #include "Event.h"
 
@@ -20,7 +21,7 @@ struct MouseEvent: public Event {
     double getX() const;
     double getY() const;
 
-    glm::vec2 getMouseAxis();
+    float getMouseAxis(FeshAxis& axis);
 
     private:
         std::string eventType;

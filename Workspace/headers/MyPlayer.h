@@ -9,8 +9,8 @@ class MyPlayer: public PlayerBehavior {
     public:
         MyPlayer();
 
-        
+        void onMouseEvent(Event* event) override;
     private:
         float mouse_sensitivity;
-}
+};
 #endif

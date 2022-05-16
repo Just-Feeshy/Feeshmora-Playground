@@ -4,11 +4,6 @@
 #define PLAYSTATE_CPP_INCLUDED
 
 #include "../headers/PlayState.h"
-#include "../../Model/Model.cpp"
-
-void PlayState::test1(Event* event) {
-    std::cout << "oh no" << std::endl;
-}
 
 void test2(Event* event) {
     //test1(event);

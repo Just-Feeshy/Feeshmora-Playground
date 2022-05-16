@@ -2,6 +2,9 @@
 
 #include "Model.hpp"
 
+#ifndef MODEL_CPP_INCLUDED
+#define MODEL_CPP_INCLUDED
+
 Model::~Model() {
     if(buffers.size() > 0) {
         glDeleteBuffers(static_cast<GLsizei>(buffers.size()), buffers.data());
@@ -136,3 +139,4 @@ void Model::update(float elapsed) {
         });
     }
 }
+#endif

@@ -9,8 +9,10 @@
 
 #include <memory>
 
-class Player: public Entity, public EventObject {
+class PlayerBehavior: public Entity, public EventObject {
     public:
+        PlayerBehavior() = default;
+
         void attachCamera(std::unique_ptr<Camera> camera) {
             daCamera = std::move(camera);
         }
