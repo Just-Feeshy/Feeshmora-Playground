@@ -16,5 +16,8 @@ class MyPlayer: public PlayerBehavior {
         void onMouseEvent(MouseEvent* event) override;
     private:
         float mouse_sensitivity;
+
+        float xRotate;
+        float yRotate;
 };
 #endif

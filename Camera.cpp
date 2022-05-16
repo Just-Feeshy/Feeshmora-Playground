@@ -14,6 +14,10 @@ void Camera::implementWindow(WindowDisplay* window) {
     projection = makeProjection();
 }
 
+WindowDisplay* Camera::getWindow() const {
+    return thisWindow;
+}
+
 void Camera::setRotation(float yaw, float pitch, float roll) {
     movement.rotation = {yaw, pitch, roll};
 

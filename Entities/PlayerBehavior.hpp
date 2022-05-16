@@ -4,6 +4,7 @@
 #define PLAYER_BEHAVIOR_INCLUDED
 
 #include "../Objects/EventObject.h"
+#include "../Inputs/InputBackend.cpp"
 #include "../Camera.cpp"
 #include "Entity.cpp"
 
@@ -14,9 +15,21 @@ class PlayerBehavior: public Entity, public EventObject {
         PlayerBehavior() = default;
 
         void attachCamera(std::unique_ptr<Camera> camera) {
-            daCamera = std::move(camera);
+            this -> camera = std::move(camera);
+            _window = this -> camera -> getWindow();
+        }
+
+        void lockCursor() const {
+            
+        }
+
+        void implementWindow(WindowDisplay* window) {
+            camera -> implementWindow(window);
+            _window = camera -> getWindow();
         }
     protected:
-        std::unique_ptr<Camera> daCamera;
+        std::unique_ptr<Camera> camera;
+    private:
+        WindowDisplay* _window = 0;
 };
 #endif

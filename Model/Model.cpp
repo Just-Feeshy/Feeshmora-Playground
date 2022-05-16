@@ -132,7 +132,7 @@ void Model::setTexture(const std::string file, const TexEnum type, const TexPara
     texture.createTexture(type, params, anti, sides, map);
 }
 
-void Model::update(float elapsed) {
+void Model::update(const float& elapsed) {
     if(shaderGroup.size() > 0) {
         for_each(shaderGroup.begin(), shaderGroup.end(), [](Shaders &shader) {
             shader.update();

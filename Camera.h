@@ -17,6 +17,8 @@ class Camera: public Model {
 
         void implementWindow(WindowDisplay* window) override;
 
+        WindowDisplay* getWindow() const;
+
         void update(float elapsed);
 
         glm::mat4 getMatrix() override;

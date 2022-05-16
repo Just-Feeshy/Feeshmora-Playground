@@ -53,6 +53,7 @@ void PlayState::onCreate() {
     badman -> setPosition(0.5, 0, 0);
 badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1, SPECULAR);
+    badman -> setWalkspeed(0.5);
     this -> add(badman);
 
     floor = new Model();
@@ -104,7 +105,7 @@ void PlayState::update(float elapsed) {
     if(PathFinder::getDistance(badman -> getPosition(), daCamera -> getPosition()) > 0.1) {
         badman -> setRotation(0, PathFinder::getAngleThroughPath(badman -> getPosition(), daCamera -> getPosition()).y, 0);
 
-        badman -> moveForward(elapsed/2);
+        badman -> moveForward(elapsed);
     }
 }
 

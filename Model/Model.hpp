@@ -22,7 +22,7 @@ class Model: public Mesh {
         ~Model();
 
         void render() override;
-        virtual void update(float elapsed) override;
+        virtual void update(const float& elapsed) override;
         virtual void draw(Shaders* shader) override;
         virtual void draw(Shaders* shader, const int index) override;
         virtual void implementWindow(WindowDisplay* window) override;
@@ -56,19 +56,19 @@ class Model: public Mesh {
             movement.position = {x, y, z};
         }
 
-        void moveForward(float elapsed) {
+        virtual void moveForward(const float elapsed) {
             movement.position += direction * elapsed;
         }
 
-        void moveBackwards(float elapsed) {
+        virtual void moveBackwards(const float elapsed) {
             movement.position -= direction * elapsed;
         }
 
-        void moveLeft(float elapsed) {
+        virtual void moveLeft(const float elapsed) {
             movement.position -= angle * elapsed;
         }
 
-        void moveRight(float elapsed) {
+        virtual void moveRight(const float elapsed) {
             movement.position += angle * elapsed;
         }
 
