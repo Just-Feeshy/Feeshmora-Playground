@@ -4,6 +4,7 @@
 #define PLAYER_INCLUDED
 
 #include "../Objects/EventObject.h"
+#include "../Camera.cpp"
 #include "Entity.cpp"
 
 #include <memory>

@@ -6,6 +6,10 @@
 #include "Player.h"
 
 Player::Player() {
-    daCamera = std::make_unique<Camera>();
+    return;
+}
+
+void Player::attachCamera(std::unique_ptr<Camera> camera) {
+    daCamera = std::move(camera);
 }
 #endif

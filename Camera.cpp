@@ -1,3 +1,8 @@
+#pragma once
+
+#ifndef CAMERA_CPP_INCLUDED
+#define CAMERA_CPP_INCLUDED
+
 #include "Camera.h"
 
 Camera::Camera() {
@@ -62,3 +67,4 @@ void Camera::update(float elapsed) {
     projection = makeProjection();
     pView = projection * view;
 }
+#endif
