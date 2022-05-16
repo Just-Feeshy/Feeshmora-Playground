@@ -7,6 +7,10 @@
 
 class MyPlayer: public PlayerBehavior {
     public:
+        MyPlayer();
+
         
+    private:
+        float mouse_sensitivity;
 }
 #endif

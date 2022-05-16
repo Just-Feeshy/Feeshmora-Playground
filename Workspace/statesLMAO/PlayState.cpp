@@ -1,5 +1,9 @@
-#include "PlayState.h"
+#pragma once
 
+#ifndef PLAYSTATE_CPP_INCLUDED
+#define PLAYSTATE_CPP_INCLUDED
+
+#include "../headers/PlayState.h"
 #include "../../Model/Model.cpp"
 
 void PlayState::test1(Event* event) {
@@ -138,3 +142,4 @@ PlayState::~PlayState() {
         delete sun;
     }
 }
+#endif
