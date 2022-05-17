@@ -23,7 +23,11 @@ struct MouseEvent: public Event {
 
     float getMouseAxis(const FeshAxis& axis);
 
+    void execute() override {}
+
     private:
+        //MouseEvent() {};
+
         std::string eventType;
 
         double x;

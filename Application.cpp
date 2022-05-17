@@ -6,8 +6,7 @@
 #include "Application.h"
 #include "CursorStatus.cpp"
 
-vector<Event*> Application::events;
-
+vector<unique_ptr<Event>> Application::events;
 WindowDisplay* Application::daWindow;
 
 Application::Application(WindowDisplay &window)  {
@@ -29,8 +28,8 @@ template<typename T, typename...obj> void Application::switchState(obj&&...args)
   daState -> onCreate();
 }
 
-template<typename T, typename K> void Application::addEvent(T* event, K* EventObject) {
-    events.push_back(event);
+template<typename T, typename K> void Application::addEvent(T* event, K& eventValue) {
+    events.push_back(make_unique<T>());
 }
 
 void Application::clearEvents() {
@@ -73,12 +72,6 @@ void Application::close() {
     delete daWindow;
 
     int index = 0;
-    
-    while(index < events.size()) {
-        delete events[index];
-        
-        index++;
-    }
 
     events.clear();
 }

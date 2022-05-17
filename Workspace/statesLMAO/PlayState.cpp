@@ -34,6 +34,7 @@ void PlayState::onCreate() {
 
     player = new MyPlayer();
     player -> attachCamera(daCamera);
+    this -> add(player);
 
     square = new Model();
     
@@ -89,7 +90,7 @@ badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1,
     sun -> setIntensity(0.15);
     this -> add(sun);
 
-    Application::addEvent<MouseEvent>(MouseEvent::CURSOR(), &test2);
+    Application::addEvent(MouseEvent::CURSOR(), player);
 }
 
 void PlayState::update(float elapsed) {
@@ -139,6 +140,10 @@ PlayState::~PlayState() {
 
     if(sun != nullptr) {
         delete sun;
+    }
+
+    if(player != nullptr) {
+        delete player;
     }
 }
 #endif
