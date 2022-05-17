@@ -1,11 +1,13 @@
 #pragma once
 
-#ifndef APP_CPP_INCLUDED
-#define APP_CPP_INCLUDED
+#ifndef APPLICATION_CPP_INCLUDED
+#define APPLICATION_CPP_INCLUDED
 
 #include "Application.h"
+#include "CursorStatus.cpp"
 
 vector<Event*> Application::events;
+
 WindowDisplay* Application::daWindow;
 
 Application::Application(WindowDisplay &window)  {
@@ -27,7 +29,7 @@ template<typename T, typename...obj> void Application::switchState(obj&&...args)
   daState -> onCreate();
 }
 
-template<typename T> void Application::addEvent(T* event, void (*call)(Event*)) {
+template<typename T, typename K> void Application::addEvent(T* event, K* EventObject) {
     events.push_back(event);
 }
 
@@ -50,6 +52,7 @@ void Application::update() {
         auto &state = *_states.back();
         state.update(fps.getDeltaTime());
         updateEvents(fps.getDeltaTime());
+        CursorStatus::update();
         glfwSwapBuffers(daWindow -> window);
 
         glfwPollEvents();

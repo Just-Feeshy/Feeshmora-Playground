@@ -42,5 +42,12 @@ namespace Feeshmora::Input {
         
         return (glfwGetMouseButton(window -> window, button) == action);
     }
+
+    void setMouseVisible(WindowDisplay* window, const bool condition) {
+        if(condition)
+            glfwSetInputMode(window -> window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+        else
+            glfwSetInputMode(window -> window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    }
 }
 #endif

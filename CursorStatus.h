@@ -4,6 +4,7 @@
 #define CURSOR_STATUS_INCLUDED
 
 #include "Inputs/InputBackend.cpp"
+#include "Application.cpp"
 
 struct CursorStatus {
     public:
@@ -12,6 +13,9 @@ struct CursorStatus {
     private:
         friend class Application;
 
+        static void update();
+
         static bool _lockedState;
         static bool _visible;
-}
+};
+#endif

@@ -10,6 +10,8 @@ using namespace Feeshmora;
 
 MyPlayer::MyPlayer() {
     mouse_sensitivity = 5;
+
+    CursorStatus::lockCursor(true);
 }
 
 void MyPlayer::onMouseEvent(MouseEvent* event) {
@@ -22,7 +24,7 @@ void MyPlayer::onMouseEvent(MouseEvent* event) {
     xRotate = MathUtil::clamp(xRotate, -80.0f, 80.0f);
 
     if(this -> camera != nullptr) {
-        
+        this -> camera -> setRotation(xRotate, yRotate, 0.0f);
     }
 }
 #endif

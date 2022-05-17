@@ -12,7 +12,7 @@
 #include "../../Model/Model.cpp"
 #include "../../Application.cpp"
 
-//Workspace Objects
+/*Workspace Objects*/
 #include "../MyPlayer.cpp"
 
 #include <iostream>
@@ -32,7 +32,7 @@ class PlayState: public AdvancedStates {
         Model* floor;
 
         Entity* badman;
-
+        MyPlayer* player;
 
         SpotLight* lightsource;
         PointLight* lightsource2;

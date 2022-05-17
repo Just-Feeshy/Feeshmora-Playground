@@ -1,5 +1,7 @@
-#ifndef APP_INCLUDED
-#define APP_INCLUDED
+#pragma once
+
+#ifndef APPLICATION_INCLUDED
+#define APPLICATION_INCLUDED
 
 #include "FeshStates/BasicStates.h"
 #include "FeshEvents/Event.h"
@@ -25,7 +27,7 @@ class Application {
 
         template<typename T, typename...obj> void switchState(obj&&...args);
 
-        template<typename T> static void addEvent(T* event, void (*call)(Event*));
+        template<typename T, typename K> static void addEvent(T* event, K* EventObject);
 
         static void clearEvents();
 

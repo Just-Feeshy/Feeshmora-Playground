@@ -5,6 +5,7 @@
 
 /*Include necessary libraries*/
 #include "../../Entities/PlayerBehavior.hpp"
+#include "../../CursorStatus.cpp"
 
 /*Include necessary events*/
 #include "../../FeshEvents/MouseEvent.cpp"

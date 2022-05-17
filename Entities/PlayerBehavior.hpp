@@ -26,12 +26,11 @@ class PlayerBehavior: public Entity, public EventObject {
         }
 
         void implementWindow(WindowDisplay* window) {
-            camera -> implementWindow(window);
-            _window = camera -> getWindow();
-        }
-
-        virtual void update(const float elapsed) {
-            
+            if(camera == nullptr) {
+                camera -> implementWindow(window);
+            }
+                
+            _window = window;
         }
     protected:
         std::unique_ptr<Camera> camera;
