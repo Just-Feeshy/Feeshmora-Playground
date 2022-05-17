@@ -8,16 +8,18 @@
 #include "../Camera.cpp"
 #include "Entity.cpp"
 
-#include <memory>
-
 using namespace Feeshmora;
 
 class PlayerBehavior: public Entity, public EventObject {
     public:
         PlayerBehavior() = default;
 
-        void attachCamera(std::unique_ptr<Camera> camera) {
-            this -> camera = std::move(camera);
+        ~PlayerBehavior() {
+            camera = nullptr;
+        }
+
+        void attachCamera(Camera* camera) {
+            this -> camera = camera;
             _window = this -> camera -> getWindow();
         }
 
@@ -33,7 +35,7 @@ class PlayerBehavior: public Entity, public EventObject {
             _window = window;
         }
     protected:
-        std::unique_ptr<Camera> camera;
+        Camera* camera;
     private:
         WindowDisplay* _window = 0;
 };

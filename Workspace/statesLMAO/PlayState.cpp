@@ -32,6 +32,9 @@ void PlayState::onCreate() {
     meshConfig4.storeIndices(0, 1, 3);
     meshConfig4.storeIndices(3, 1, 2);
 
+    player = new MyPlayer();
+    player -> attachCamera(daCamera);
+
     square = new Model();
     
     square -> create(MeshObjects::Cube());

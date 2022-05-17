@@ -15,6 +15,7 @@ class MyPlayer: public PlayerBehavior {
         MyPlayer();
 
         void onMouseEvent(MouseEvent* event) override;
+        void onKeyboardEvent(ControllerEvent* event) override {}
     private:
         float mouse_sensitivity;
 

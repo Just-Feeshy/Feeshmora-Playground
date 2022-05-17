@@ -20,7 +20,7 @@ using namespace std;
 class AdvancedStates: public BasicStates {
     public:
         AdvancedStates() {
-            daCamera = make_unique<Camera>();
+            daCamera = new Camera();
             daCamera -> implementWindow(Application::daWindow);
             
             if(!defaultShaders.loadedShaders()) {
@@ -37,7 +37,7 @@ class AdvancedStates: public BasicStates {
             _objects.clear();
             
             if(daCamera != nullptr) {
-                daCamera.reset();
+                delete daCamera;
             }
         }
         
@@ -86,7 +86,7 @@ class AdvancedStates: public BasicStates {
         //Caculate lights in Application.
         glm::vec3 lightAmounts;
 
-        unique_ptr<Camera> daCamera;
+        Camera* daCamera;
     private:
         /**
         * Stuff for the Application class to handle.
