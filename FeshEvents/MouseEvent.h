@@ -11,8 +11,6 @@
 
 #include "Event.h"
 
-#include <iostream>
-
 using namespace Feeshmora;
 
 struct MouseEvent: public Event {
@@ -23,7 +21,12 @@ struct MouseEvent: public Event {
 
     double getX() const;
     double getY() const;
+    double getRawX() const;
+    double getRawY() const;
+    double getRawX(WindowDisplay* window) const;
+    double getRawY(WindowDisplay* window) const;
 
+    void setMouseAxis(const float& x, const float &y);
     float getMouseAxis(const FeshAxis& axis);
 
     void execute() override;
@@ -34,6 +37,6 @@ struct MouseEvent: public Event {
         double x;
         double y;
     
-        glm::vec2 prevMousePosition;
+        glm::vec2 _axisMousePosition;
 };
 #endif
