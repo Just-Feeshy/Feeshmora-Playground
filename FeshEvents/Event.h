@@ -10,16 +10,17 @@
 
 class Application;
 
-struct Event {
-    virtual void update(WindowDisplay* window, const float elapsed) {glfwPollEvents();}
-
-    protected:
-        Event() {};
-
-        friend class Application;
-
-        virtual void execute() = 0;
-
-        EventObject* eventOBJ;
+class Event {
+    public:
+        virtual void update(WindowDisplay* window, const float elapsed) {glfwPollEvents();}
+    
+        protected:
+            Event() {};
+    
+            friend class Application;
+    
+            virtual void execute() = 0;
+    
+            EventObject* eventOBJ;
 };
 #endif

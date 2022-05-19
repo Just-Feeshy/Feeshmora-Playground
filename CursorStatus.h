@@ -3,8 +3,6 @@
 #ifndef CURSOR_STATUS_INCLUDED
 #define CURSOR_STATUS_INCLUDED
 
-#include "Inputs/InputBackend.cpp"
-
 struct CursorStatus {
     public:
         static void lockCursor(const bool mouse);

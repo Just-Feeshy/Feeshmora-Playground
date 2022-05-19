@@ -5,8 +5,6 @@
 
 #include "CursorStatus.h"
 
-using namespace Feeshmora;
-
 bool CursorStatus::_lockedState = false;
 bool CursorStatus::_visible = true;
 
@@ -15,7 +13,6 @@ void CursorStatus::lockCursor(const bool mouse) {
         return;
     
     _lockedState = mouse;
-    Input::setMouseCursorMode(Application::daWindow, DISABLED);
 }
 
 void CursorStatus::setVisible(const bool mouse) {

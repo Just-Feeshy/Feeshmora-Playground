@@ -10,19 +10,17 @@ using namespace Feeshmora;
 
 MyPlayer::MyPlayer() {
     mouse_sensitivity = 5;
-
-    //CursorStatus::lockCursor(true);
 }
 
 void MyPlayer::onMouseEvent(MouseEvent* event) {
-    //event -> setMouseAxis(event -> getRawX(), event -> getRawY());
-    
-    float mouseX = event -> getMouseAxis(X) * mouse_sensitivity;
+
+    //float mouseX = event -> getMouseAxis(X) * mouse_sensitivity;
     float mouseY = event -> getMouseAxis(Y) * mouse_sensitivity;
 
-    yRotate += mouseX;
+    //yRotate += mouseX;
     xRotate -= mouseY;
 
+    //std::cout << yRotate << std::endl;
     xRotate = MathUtil::clamp(xRotate, -80.0f, 80.0f);
 
     if(this -> camera != nullptr) {

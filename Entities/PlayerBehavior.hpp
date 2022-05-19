@@ -4,11 +4,8 @@
 #define PLAYER_BEHAVIOR_INCLUDED
 
 #include "../Objects/EventObject.h"
-#include "../Inputs/InputBackend.cpp"
 #include "../Camera.cpp"
 #include "Entity.cpp"
-
-using namespace Feeshmora;
 
 class PlayerBehavior: public Entity, public EventObject {
     public:
@@ -21,10 +18,6 @@ class PlayerBehavior: public Entity, public EventObject {
         void attachCamera(Camera* camera) {
             this -> camera = camera;
             _window = this -> camera -> getWindow();
-        }
-
-        void lockCursor(const bool condition) {
-            Input::setMousePos(_window, (double)_window -> width / 2, (double)_window -> height / 2); 
         }
 
         void implementWindow(WindowDisplay* window) {

@@ -3,15 +3,20 @@
 #ifndef CONTROLLER_EVENT_INCLUDED
 #define CONTROLLER_EVENT_INCLUDED
 
-#include "../Inputs/InputBackend.cpp"
+#include "../Inputs/InputBackend.hpp"
 #include "../Inputs/Keys.cpp"
 
 #include "Event.h"
 
+using namespace Feeshmora;
+
 /**
 * Made uppercase methods to signify contructors
 */
-struct ControllerEvent: public Event {
+class ControllerEvent: public Event {
+    ControllerEvent();
+    ~ControllerEvent();
+
     static ControllerEvent* KEYDOWN(const short key);
     static ControllerEvent* KEYUP(const short key);
 
@@ -22,7 +27,7 @@ struct ControllerEvent: public Event {
 
     void execute() override;
     private:
-        //ControllerEvent() {};
+        InputBackend* Input;
 
         bool keyPhase;
 

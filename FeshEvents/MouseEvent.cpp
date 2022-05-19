@@ -7,6 +7,16 @@
 
 #define DEFAULT_MOUSE_SENSITIVITY 0.5f
 
+MouseEvent::MouseEvent() {
+    Input = new InputBackend();
+}
+
+MouseEvent::~MouseEvent() {
+    if(Input != nullptr) {
+        delete Input;
+    }
+}
+
 MouseEvent* MouseEvent::CLICK() {
     MouseEvent* event = new MouseEvent();
     event -> eventType = "click";
@@ -28,19 +38,19 @@ double MouseEvent::getY() const {
 }
 
 double MouseEvent::getRawX() const {
-    return Input::getMousePosXY(Application::daWindow, X);
+    return Input -> getMousePosXY(Application::daWindow, X);
 }
 
 double MouseEvent::getRawY() const {
-    return Input::getMousePosXY(Application::daWindow, Y);
+    return Input -> getMousePosXY(Application::daWindow, Y);
 }
 
 double MouseEvent::getRawX(WindowDisplay* window) const {
-    return Input::getMousePosXY(window, X);
+    return Input -> getMousePosXY(window, X);
 }
 
 double MouseEvent::getRawY(WindowDisplay* window) const {
-    return Input::getMousePosXY(window, Y);
+    return Input -> getMousePosXY(window, Y);
 }
 
 void MouseEvent::execute() {
@@ -61,10 +71,11 @@ float MouseEvent::getMouseAxis(const FeshAxis& axis) {
 
     _axisMousePosition = glm::vec2(x, y);
 
-    if(axis == Y)
+    if(axis == Y) {
         return diff.y;
-    else
+    }else {
         return diff.x;
+    }
 }
 
 void MouseEvent::update(WindowDisplay* window, const float elapsed) {
@@ -76,7 +87,7 @@ void MouseEvent::update(WindowDisplay* window, const float elapsed) {
     }
 
     if(eventType == "click") {
-        if(Input::getMouseButton(window, 1, 1)) {
+        if(Input -> getMouseButton(window, 1, 1)) {
             execute();
         }
     }

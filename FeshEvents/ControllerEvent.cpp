@@ -7,6 +7,16 @@
 
 using namespace Feeshmora;
 
+ControllerEvent::ControllerEvent() {
+    Input = new InputBackend();
+}
+
+ControllerEvent::~ControllerEvent() {
+    if(Input != nullptr) {
+        delete Input;
+    }
+}
+
 short ControllerEvent::getKeyID() const {
     return keyID;
 }
@@ -34,7 +44,7 @@ void ControllerEvent::execute() {
 }
 
 void ControllerEvent::update(WindowDisplay* window, const float elapsed) {
-    if(Input::getKeyAction(window, getKeyID(), keyPhase)) {
+    if(Input -> getKeyAction(window, getKeyID(), keyPhase)) {
         execute();
     }
     
