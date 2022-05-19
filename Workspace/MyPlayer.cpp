@@ -14,10 +14,10 @@ MyPlayer::MyPlayer() {
 
 void MyPlayer::onMouseEvent(MouseEvent* event) {
 
-    //float mouseX = event -> getMouseAxis(X) * mouse_sensitivity;
+    float mouseX = event -> getMouseAxis(X) * mouse_sensitivity;
     float mouseY = event -> getMouseAxis(Y) * mouse_sensitivity;
 
-    //yRotate += mouseX;
+    yRotate += mouseX;
     xRotate -= mouseY;
 
     //std::cout << yRotate << std::endl;

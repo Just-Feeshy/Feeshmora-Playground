@@ -62,19 +62,23 @@ void MouseEvent::setMouseAxis(const float& x, const float &y) {
 }
 
 float MouseEvent::getMouseAxis(const FeshAxis& axis) {
-    glm::vec2 diff = glm::vec2((float)(x - _axisMousePosition.x), (float)(y - _axisMousePosition.y));
-
-    diff.x = MathUtil::clamp(diff.x, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY);
-    diff.x = MathUtil::remap(diff.x, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY, -1.0f, 1.0f);
-    diff.y = MathUtil::clamp(diff.y, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY);
-    diff.y = MathUtil::remap(diff.y, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY, -1.0f, 1.0f);
-
-    _axisMousePosition = glm::vec2(x, y);
+    float diff;
 
     if(axis == Y) {
-        return diff.y;
+        diff = (float)(y - _axisMousePosition.y);
     }else {
-        return diff.x;
+        diff = (float)(x - _axisMousePosition.x);
+    }
+
+    diff = MathUtil::clamp(diff, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY);
+    diff = MathUtil::remap(diff, -DEFAULT_MOUSE_SENSITIVITY, DEFAULT_MOUSE_SENSITIVITY, -1.0f, 1.0f);
+
+    if(axis == Y) {
+        _axisMousePosition.y = y;
+        return -diff;
+    }else {
+        _axisMousePosition.x = x;
+        return diff;
     }
 }
 
