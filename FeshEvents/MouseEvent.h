@@ -32,6 +32,8 @@ class MouseEvent: public Event {
     
         void setMouseAxis(const float& x, const float &y);
         float getMouseAxis(const FeshAxis& axis);
+
+        void setCursorMode(CursorMode cursorMode);
     
         void execute() override;
 
@@ -44,5 +46,6 @@ class MouseEvent: public Event {
         double y;
     
         glm::vec2 _axisMousePosition;
+        CursorMode _cursorMode;
 };
 #endif

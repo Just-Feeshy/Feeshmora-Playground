@@ -82,7 +82,16 @@ float MouseEvent::getMouseAxis(const FeshAxis& axis) {
     }
 }
 
+void MouseEvent::setCursorMode(CursorMode cursorMode) {
+    if(_cursorMode == cursorMode)
+        return;
+    
+    _cursorMode = cursorMode;
+}
+
 void MouseEvent::update(WindowDisplay* window, const float elapsed) {
+    Input -> setMouseCursorMode(window, _cursorMode);
+    
     x = getRawX(window);
     y = getRawY(window);
     

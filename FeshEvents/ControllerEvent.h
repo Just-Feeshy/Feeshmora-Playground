@@ -14,18 +14,19 @@ using namespace Feeshmora;
 * Made uppercase methods to signify contructors
 */
 class ControllerEvent: public Event {
-    ControllerEvent();
-    ~ControllerEvent();
-
-    static ControllerEvent* KEYDOWN(const short key);
-    static ControllerEvent* KEYUP(const short key);
-
-    void update(WindowDisplay* window, const float elapsed) override;
-
-    short getKeyID() const;
-    bool getKeyPhase() const;
-
-    void execute() override;
+    public:
+        ControllerEvent();
+        ~ControllerEvent();
+    
+        static ControllerEvent* KEYDOWN(const short key);
+        static ControllerEvent* KEYUP(const short key);
+    
+        void update(WindowDisplay* window, const float elapsed) override;
+    
+        short getKeyID() const;
+        bool getKeyPhase() const;
+    
+        void execute() override;
     private:
         InputBackend* Input;
 

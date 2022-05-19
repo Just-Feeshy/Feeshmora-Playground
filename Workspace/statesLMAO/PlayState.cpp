@@ -91,6 +91,7 @@ badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1,
     this -> add(sun);
 
     Application::addEvent(MouseEvent::CURSOR(), player);
+    Application::addEvent(ControllerEvent::KEYDOWN(Keys::W), player);
 }
 
 void PlayState::update(float elapsed) {

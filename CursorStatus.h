@@ -3,6 +3,9 @@
 #ifndef CURSOR_STATUS_INCLUDED
 #define CURSOR_STATUS_INCLUDED
 
+#include "Libraries/Libs.hpp"
+#include "Application.cpp"
+
 struct CursorStatus {
     public:
         static void lockCursor(const bool mouse);

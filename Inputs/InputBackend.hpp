@@ -54,8 +54,14 @@ namespace Feeshmora {
             }
         
             void setMouseCursorMode(WindowDisplay* window, CursorMode cursorMode) {
+                if(_cursorMode == cursorMode)
+                    return;
+
+                _cursorMode = cursorMode;
                 glfwSetInputMode(window -> window, GLFW_CURSOR, cursorMode);
             }
+        private:
+            CursorMode _cursorMode;
     };
 }
 #endif

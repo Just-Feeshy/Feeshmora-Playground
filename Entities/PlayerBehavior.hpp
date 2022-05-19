@@ -9,7 +9,10 @@
 
 class PlayerBehavior: public Entity, public EventObject {
     public:
-        PlayerBehavior() = default;
+        PlayerBehavior() {
+            cameraOffsetX = 0;
+            cameraOffsetY = 0;
+        };
 
         ~PlayerBehavior() {
             camera = nullptr;
@@ -20,16 +23,24 @@ class PlayerBehavior: public Entity, public EventObject {
             _window = this -> camera -> getWindow();
         }
 
-        void implementWindow(WindowDisplay* window) {
+        void implementWindow(WindowDisplay* window) override {
             if(camera == nullptr) {
                 camera -> implementWindow(window);
             }
                 
             _window = window;
         }
+
+        virtual void update(const float& elapsed) override {
+            camera -> setPosition(movement.position.x - cameraOffsetX, movement.position.y - cameraOffsetY, movement.position.z - cameraOffsetZ);
+        }
     protected:
         Camera* camera;
     private:
         WindowDisplay* _window = 0;
+
+        float cameraOffsetX;
+        float cameraOffsetY;
+        float cameraOffsetZ;
 };
 #endif
