@@ -10,6 +10,8 @@
 /*Include necessary events*/
 #include "../../FeshEvents/MouseEvent.cpp"
 
+#include <iostream>
+
 class MyPlayer: public PlayerBehavior {
     public:
         MyPlayer();

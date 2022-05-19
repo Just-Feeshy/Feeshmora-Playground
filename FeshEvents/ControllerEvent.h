@@ -20,7 +20,7 @@ struct ControllerEvent: public Event {
     short getKeyID() const;
     bool getKeyPhase() const;
 
-    void execute() override {}
+    void execute() override;
     private:
         //ControllerEvent() {};
 

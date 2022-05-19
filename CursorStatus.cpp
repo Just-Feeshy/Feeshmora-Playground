@@ -15,7 +15,7 @@ void CursorStatus::lockCursor(const bool mouse) {
         return;
     
     _lockedState = mouse;
-    setVisible(!_lockedState);
+    Input::setMouseCursorMode(Application::daWindow, DISABLED);
 }
 
 void CursorStatus::setVisible(const bool mouse) {
@@ -23,12 +23,5 @@ void CursorStatus::setVisible(const bool mouse) {
         return;
 
     _visible = mouse;
-    Input::setMouseVisible(Application::daWindow, _visible);
-}
-
-void CursorStatus::update() {
-    if(_lockedState) {
-        Input::setMousePos(Application::daWindow, (double)Application::daWindow -> width / 2, (double)Application::daWindow -> height / 2);
-    }
 }
 #endif

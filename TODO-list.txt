@@ -9,10 +9,11 @@ Features:
 3) Make AdvanceStates.
 
 Future Projects:
-1) Advance on the math side.
-2) Make the render device it's own singular class.
-3) Don't only rely on glm.
-4) Don't use GL "datavalues." Make my own.
-5) Be more dynamic/object orientated and make classes that implements and simplifies library features rather than using the library.
-6) Make model it's own stucture in GLSL.
-7) Make multi-window a feature.
+1) Create an engine flowchart before starting.
+2) Advance on the math side.
+3) Make the render device it's own singular class.
+4) Don't only rely on glm.
+5) Don't use GL "datavalues." Make my own.
+6) Be more dynamic/object orientated and make classes that implements and simplifies library features rather than using the library.
+7) Make model it's own stucture in GLSL.
+8) Make multi-window a feature.

@@ -8,7 +8,6 @@
 #include "Util/FPS.cpp"
 
 #include <memory>
-#include <functional>
 #include <vector>
 
 using namespace std;
@@ -28,7 +27,7 @@ class Application {
 
         template<typename T, typename...obj> void switchState(obj&&...args);
 
-        template<typename T, typename K> static void addEvent(T* event, K& eventValue);
+        template<typename T, typename K> static void addEvent(T* event, K* eventValue);
 
         static void clearEvents();
 
@@ -42,9 +41,10 @@ class Application {
         */
         static WindowDisplay* daWindow;
     private:
-        static vector<unique_ptr<Event>> events;
+        static vector<Event*> events;
 
         vector<unique_ptr<BasicStates>> _states;
+
         FPS fps;
 
         void updateEvents(float elapsed);

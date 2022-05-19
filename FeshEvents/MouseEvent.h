@@ -7,8 +7,11 @@
 #include "../Inputs/InputBackend.cpp"
 #include "../FeshMath/MathUtil.hpp"
 #include "../Util/FeshAxis.hpp"
+#include "../Application.cpp"
 
 #include "Event.h"
+
+#include <iostream>
 
 using namespace Feeshmora;
 
@@ -23,11 +26,9 @@ struct MouseEvent: public Event {
 
     float getMouseAxis(const FeshAxis& axis);
 
-    void execute() override {}
+    void execute() override;
 
     private:
-        //MouseEvent() {};
-
         std::string eventType;
 
         double x;

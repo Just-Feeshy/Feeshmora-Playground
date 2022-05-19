@@ -6,7 +6,7 @@
 #include "Application.h"
 #include "CursorStatus.cpp"
 
-vector<unique_ptr<Event>> Application::events;
+vector<Event*> Application::events;
 WindowDisplay* Application::daWindow;
 
 Application::Application(WindowDisplay &window)  {
@@ -28,11 +28,20 @@ template<typename T, typename...obj> void Application::switchState(obj&&...args)
   daState -> onCreate();
 }
 
-template<typename T, typename K> void Application::addEvent(T* event, K& eventValue) {
-    events.push_back(make_unique<T>());
+template<typename T, typename K> void Application::addEvent(T* event, K* eventValue) {
+    event -> eventOBJ = eventValue;
+    events.push_back(event);
 }
 
 void Application::clearEvents() {
+    GLuint index = 0;
+
+    while(index < events.size()) {
+        delete events[index];
+
+        index++;
+    }
+    
     events.clear();
 }
 
@@ -51,7 +60,6 @@ void Application::update() {
         auto &state = *_states.back();
         state.update(fps.getDeltaTime());
         updateEvents(fps.getDeltaTime());
-        CursorStatus::update();
         glfwSwapBuffers(daWindow -> window);
 
         glfwPollEvents();

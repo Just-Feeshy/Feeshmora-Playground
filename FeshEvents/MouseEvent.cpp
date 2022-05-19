@@ -27,6 +27,10 @@ double MouseEvent::getY() const {
     return y;
 }
 
+void MouseEvent::execute() {
+    eventOBJ -> onMouseEvent(this);
+}
+
 float MouseEvent::getMouseAxis(const FeshAxis& axis) {
     glm::vec2 diff = glm::vec2((float)(x - prevMousePosition.x), (float)(y - prevMousePosition.y));
 
@@ -56,9 +60,6 @@ void MouseEvent::update(WindowDisplay* window, const float elapsed) {
             execute();
         }
     }
-
-    prevMousePosition.x = x;
-    prevMousePosition.y = y;
     
     Event::update(window, elapsed);
 }

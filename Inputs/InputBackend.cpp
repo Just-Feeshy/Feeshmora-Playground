@@ -4,6 +4,7 @@
 #define INPUT_BACKENDED_INCLUDED
 
 #include "../Util/FeshAxis.hpp"
+#include "../Util/CursorMode.hpp"
 #include "../WindowDisplay.cpp"
 
 namespace Feeshmora::Input {
@@ -48,6 +49,10 @@ namespace Feeshmora::Input {
             glfwSetInputMode(window -> window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
         else
             glfwSetInputMode(window -> window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    }
+
+    void setMouseCursorMode(WindowDisplay* window, CursorMode cursorMode) {
+        glfwSetInputMode(window -> window, GLFW_CURSOR, cursorMode);
     }
 }
 #endif

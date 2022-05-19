@@ -29,6 +29,10 @@ ControllerEvent* ControllerEvent::KEYUP(const short key) {
     return event;
 }
 
+void ControllerEvent::execute() {
+    eventOBJ -> onKeyboardEvent(this);
+}
+
 void ControllerEvent::update(WindowDisplay* window, const float elapsed) {
     if(Input::getKeyAction(window, getKeyID(), keyPhase)) {
         execute();
