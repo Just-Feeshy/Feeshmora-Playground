@@ -16,8 +16,8 @@ namespace Feeshmora::MathUtil {
         return min;
     }
 
-    template<typename T> T remap(const T& value, const T& fromL, const T& fromH, const T& toL, const T& toH) {
-        return toL + (value - fromL) * (toH - toL) / (fromH - fromL);
+    template<typename T> T remap(const T& value, const T& iL, const T& iH, const T& oL, const T& oH) {
+        return oL + (value - iL) * (oH - oL) / (iH - iL);
     } 
 }
 #endif
