@@ -12,6 +12,7 @@ class PlayerBehavior: public Entity, public EventObject {
         PlayerBehavior() {
             cameraOffsetX = 0;
             cameraOffsetY = 0;
+            cameraOffsetZ = 0;
         };
 
         ~PlayerBehavior() {
