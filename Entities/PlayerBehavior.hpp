@@ -48,7 +48,7 @@ class PlayerBehavior: public Entity, public EventObject {
             camera -> setPosition(
                 getPosition(X) - (cameraOffsetX + cameraOffsetZ) * cos(glm::radians(getRotation(X))),
                 getPosition(Y) + cameraOffsetY - (cameraOffsetX + cameraOffsetZ) * sin(glm::radians(getRotation(Y))),
-                getPosition(Z)
+                getPosition(Z) - (cameraOffsetX + cameraOffsetZ) * sin(glm::radians(-getRotation(Z)))
             );
         }
     protected:
