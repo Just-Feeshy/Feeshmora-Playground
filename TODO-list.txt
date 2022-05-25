@@ -16,3 +16,4 @@ Future Projects:
 7) Be more dynamic/object orientated and make classes that implements and simplifies library features rather than using the library.
 8) Make model it's own stucture in GLSL.
 9) Make multi-window a feature.
+10) Don't rely TOO much on c++.

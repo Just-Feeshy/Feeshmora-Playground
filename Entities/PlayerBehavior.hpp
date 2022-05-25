@@ -12,18 +12,13 @@
 class PlayerBehavior: public Entity, public EventObject {
     public:
         PlayerBehavior() {
-            cameraOffsetX = 0;
-            cameraOffsetY = 0;
-            cameraOffsetZ = 0;
+            cameraOffsetPosition = {0.0f, 0.0f, 0.0f};
+            cameraRotation = {0.0f, 0.0f, 0.0f};
+            playerHead_y = 0.0f;
         };
 
         ~PlayerBehavior() {
             camera = nullptr;
-        }
-
-        void attachCamera(Camera* camera) {
-            this -> camera = camera;
-            _window = this -> camera -> getWindow();
         }
 
         void implementWindow(WindowDisplay* window) override {
@@ -36,28 +31,38 @@ class PlayerBehavior: public Entity, public EventObject {
 
         void setRotation(float yaw, float pitch, float roll) override {
             Model::setRotation(yaw, pitch, roll);
-
-            camera -> setRotation(
-                camera -> getPosition(X) + yaw,
-                camera -> getPosition(Y) + pitch,
-                camera -> getPosition(Z) + roll
-            );
         }
 
         virtual void update(const float& elapsed) override {
-            camera -> setPosition(
-                getPosition(X) - (cameraOffsetX + cameraOffsetZ) * cos(glm::radians(getRotation(X))),
-                getPosition(Y) + cameraOffsetY - (cameraOffsetX + cameraOffsetZ) * sin(glm::radians(getRotation(Y))),
-                getPosition(Z) - (cameraOffsetX + cameraOffsetZ) * sin(glm::radians(-getRotation(Z)))
-            );
+            if(camera != nullptr) {
+                cameraRotation = {
+                    camera -> getRotation(X),
+                    camera -> getRotation(Y),
+                    camera -> getRotation(Z)
+                };
+                
+                camera -> setPosition(
+                    getPosition(X) - (cameraOffsetPosition.x + cameraOffsetPosition.z) * cos(glm::radians(getRotation(X))),
+                    getPosition(Y) + cameraOffsetPosition.y - (cameraOffsetPosition.x + cameraOffsetPosition.z) * sin(glm::radians(getRotation(Y))),
+                    getPosition(Z) - (cameraOffsetPosition.x + cameraOffsetPosition.z) * sin(glm::radians(-getRotation(Z)))
+                );
+            }
         }
-    protected:
-        Camera* camera;
+
+        //Camera stuff
+        void attachCamera(Camera* camera) {
+            playerHead_y = camera -> getPosition(Y);
+            this -> camera = camera;
+            _window = this -> camera -> getWindow();
+        }
     private:
+        Camera* camera;
+
         WindowDisplay* _window = 0;
 
-        float cameraOffsetX;
-        float cameraOffsetY;
-        float cameraOffsetZ;
+        glm::vec3 cameraOffsetPosition;
+        glm::vec3 cameraRotation;
+
+        float playerHead_y;
 };
 #endif
