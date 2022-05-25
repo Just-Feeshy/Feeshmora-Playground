@@ -20,8 +20,8 @@ void MyPlayer::onMouseEvent(MouseEvent* event) {
     float mouseX = event -> getMouseAxis(X) * mouse_sensitivity;
     float mouseY = event -> getMouseAxis(Y) * mouse_sensitivity;
 
-    yRotate += mouseX / 2;
-    xRotate -= mouseY / 2;
+    yRotate += mouseX;
+    xRotate -= mouseY;
 
     //std::cout << yRotate << std::endl;
     xRotate = MathUtil::clamp(xRotate, -80.0f, 80.0f);

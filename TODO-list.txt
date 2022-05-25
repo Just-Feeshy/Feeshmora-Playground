@@ -1,6 +1,6 @@
 Main Game:
 1) Make a model loader.
-2) Expand apon MeshVertices.
+3) Fix mouse movement.
 
 Features:
 1) Add DOF distance property.
@@ -11,9 +11,10 @@ Future Projects:
 2) Use a typedef and #define to call engine inside certain package it's stored in. (Mostly the classes that are "backended")
 3) Advance on the math side.
 4) Make the render device it's own singular class.
-5) Don't only rely on glm.
+5) Don't use rely on glm.
 6) Don't use GL "datavalues." Make my own.
 7) Be more dynamic/object orientated and make classes that implements and simplifies library features rather than using the library.
 8) Make model it's own stucture in GLSL.
 9) Make multi-window a feature.
 10) Don't rely TOO much on c++.
+11) MeshVertices is USEFUL!
