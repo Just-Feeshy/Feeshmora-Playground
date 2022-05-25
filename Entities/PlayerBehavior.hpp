@@ -3,11 +3,12 @@
 #ifndef PLAYER_BEHAVIOR_INCLUDED
 #define PLAYER_BEHAVIOR_INCLUDED
 
+#include "../FeshMath/MathUtil.hpp"
 #include "../Objects/EventObject.h"
 #include "../Camera.cpp"
 #include "Entity.cpp"
 
-#include <cmath>
+using namespace Feeshmora;
 
 class PlayerBehavior: public Entity, public EventObject {
     public:
@@ -35,16 +36,10 @@ class PlayerBehavior: public Entity, public EventObject {
 
         virtual void update(const float& elapsed) override {
             if(camera != nullptr) {
-                cameraRotation = {
-                    camera -> getRotation(X),
-                    camera -> getRotation(Y),
-                    camera -> getRotation(Z)
-                };
-                
                 camera -> setPosition(
-                    getPosition(X) - (cameraOffsetPosition.x + cameraOffsetPosition.z) * cos(glm::radians(getRotation(X))),
-                    getPosition(Y) + cameraOffsetPosition.y - (cameraOffsetPosition.x + cameraOffsetPosition.z) * sin(glm::radians(getRotation(Y))),
-                    getPosition(Z) - (cameraOffsetPosition.x + cameraOffsetPosition.z) * sin(glm::radians(-getRotation(Z)))
+                    getPosition(X) - (cameraOffsetPosition.x + cameraOffsetPosition.z) * cos(glm::radians(camera -> getRotation(X))),
+                    getPosition(Y) + cameraOffsetPosition.y - (cameraOffsetPosition.x + cameraOffsetPosition.z) * sin(glm::radians(camera -> getRotation(Y))),
+                    getPosition(Z) - (cameraOffsetPosition.x + cameraOffsetPosition.z) * sin(glm::radians(-camera -> getRotation(Z)))
                 );
             }
         }
@@ -55,6 +50,8 @@ class PlayerBehavior: public Entity, public EventObject {
             this -> camera = camera;
             _window = this -> camera -> getWindow();
         }
+
+        
     protected:
         Camera* camera;
     private:
