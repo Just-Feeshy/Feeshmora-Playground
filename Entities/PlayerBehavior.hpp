@@ -55,9 +55,9 @@ class PlayerBehavior: public Entity, public EventObject {
             this -> camera = camera;
             _window = this -> camera -> getWindow();
         }
-    private:
+    protected:
         Camera* camera;
-
+    private:
         WindowDisplay* _window = 0;
 
         glm::vec3 cameraOffsetPosition;
