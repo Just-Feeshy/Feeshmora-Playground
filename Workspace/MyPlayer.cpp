@@ -27,6 +27,7 @@ void MyPlayer::onMouseEvent(MouseEvent* event) {
     xRotate = MathUtil::clamp(xRotate, -80.0f, 80.0f);
 
     if(this -> camera != nullptr) {
+        this -> setRotation(xRotate, yRotate, 0.0f);
         this -> camera -> setRotation(xRotate, yRotate, 0.0f);
     }
 }
@@ -36,6 +37,10 @@ void MyPlayer::onKeyboardEvent(ControllerEvent* event) {
 
     if(event -> getKeyID() == Keys::W) {
         this -> moveForward();
+    }
+
+    if(event -> getKeyID() == Keys::S) {
+        this -> moveBackwards();
     }
 }
 #endif

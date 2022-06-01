@@ -28,6 +28,22 @@ class PlayerBehavior: public Entity, public EventObject {
             _window = window;
         }
 
+        glm::mat4 getMatrix() override {
+            glm::mat4 model(1.0f);
+        
+            model = glm::rotate(model, glm::radians(movement.rotation.x), {1, 0, 0});
+            model = glm::rotate(model, glm::radians(movement.rotation.y), {0, 1, 0});
+            model = glm::rotate(model, glm::radians(movement.rotation.z), {0, 0, 1});
+        
+            model = glm::translate(model, -movement.position);
+        
+            return model;
+        }
+
+        void setRotation(float yaw, float pitch, float roll) override {
+            Model::setRotation(yaw, pitch, roll);
+        }
+
         virtual void update(const float& elapsed) override {
             Entity::update(elapsed);
             

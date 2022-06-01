@@ -10,16 +10,15 @@ Entity::Entity() {
     _walkspeed = 1;
 }
 
-
 void Entity::moveForward() {
     movement.position += direction * getElapsed() * _walkspeed;
 }
 
-/*
-void moveBackwards() {
-    //movement.position -= direction * elapsed;
+void Entity::moveBackwards() {
+    movement.position -= direction * getElapsed() * _walkspeed;
 }
 
+/*
 void moveLeft() {
     //movement.position -= angle * elapsed;
 }

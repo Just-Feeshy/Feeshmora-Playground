@@ -12,7 +12,7 @@ class Entity: public Model {
         virtual ~Entity() = default;
 
         virtual void moveForward() override;
-        //void moveBackwards() override;
+        virtual void moveBackwards() override;
         //void moveLeft() override;
         //void moveRight() override;
 
