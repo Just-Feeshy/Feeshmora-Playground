@@ -6,108 +6,108 @@
 #include "../Model/MeshVertices.cpp"
 
 namespace MeshObjects {
-    MeshVertices* Cube() {
+    MeshVertices* Cube(const float& scale) {
         MeshVertices* meshConfig = new MeshVertices();
 
         //Top
-        meshConfig -> addVertexRow(0.25f, 0.25f, 0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, 0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 1.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(0.25f, 0.25f, -0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, 0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(-0.25f, 0.25f, -0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, 0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(-0.25f, 0.25f, 0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, 0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 1.0f);
         meshConfig -> storeThisArray();
     
         //Front
-        meshConfig -> addVertexRow(-0.25f, 0.25f, -0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, 0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 1.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(-0.25f, -0.25f, -0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, -0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(-0.25f, -0.25f, 0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, -0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(-0.25f, 0.25f, 0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, 0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 1.0f);
         meshConfig -> storeThisArray();
     
         //Right
-        meshConfig -> addVertexRow(-0.25f, 0.25f, 0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, 0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 1.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(-0.25f, -0.25f, 0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, -0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(0.25f, -0.25f, 0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, -0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(0.25f, 0.25f, 0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, 0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 1.0f);
         meshConfig -> storeThisArray();
     
         //Left
-        meshConfig -> addVertexRow(0.25f, 0.25f, -0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, 0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 1.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(0.25f, -0.25f, -0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, -0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(-0.25f, -0.25f, -0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, -0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(-0.25f, 0.25f, -0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, 0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 1.0f);
         meshConfig -> storeThisArray();
     
         //Back
-        meshConfig -> addVertexRow(0.25f, 0.25f, 0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, 0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 1.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(0.25f, -0.25f, 0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, -0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(0.25f, -0.25f, -0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, -0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(0.25f, 0.25f, -0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, 0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 1.0f);
         meshConfig -> storeThisArray();
     
         //Bottom
-        meshConfig -> addVertexRow(0.25f, -0.25f, 0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, -0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 1.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(0.25f, -0.25f, -0.25f);
+        meshConfig -> addVertexRow(0.25f * scale, -0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(0.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(-0.25f, -0.25f, -0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, -0.25f * scale, -0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 0.0f);
         meshConfig -> storeThisArray();
     
-        meshConfig -> addVertexRow(-0.25f, -0.25f, 0.25f);
+        meshConfig -> addVertexRow(-0.25f * scale, -0.25f * scale, 0.25f * scale);
         meshConfig -> addTexCoordRow(1.0f, 1.0f);
         meshConfig -> storeThisArray();
     

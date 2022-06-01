@@ -29,6 +29,7 @@ class PlayState: public AdvancedStates {
         Model* square;
         Model* funniObject;
         Model* floor;
+        Model* compass;
 
         Entity* badman;
         MyPlayer* player;

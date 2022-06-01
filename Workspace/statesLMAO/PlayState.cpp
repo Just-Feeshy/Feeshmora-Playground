@@ -34,7 +34,7 @@ void PlayState::onCreate() {
 
     square = new Model();
     
-    square -> create(MeshObjects::Cube());
+    square -> create(MeshObjects::Cube(1.0f));
     square -> setPosition(0, 1, -1);
     square -> setTexture("Assets/images/feesh/FeeshPixel.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     this -> add(square);
@@ -46,6 +46,9 @@ void PlayState::onCreate() {
     funniObject -> setTexture("Assets/images/feesh/Feesh.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     //funniObject -> setAlpha(0.5);
     this -> add(funniObject);
+
+    compass = new Model();
+    //comass = setPosition(0, )
 
     badman = new Entity();
     
@@ -122,6 +125,10 @@ PlayState::~PlayState() {
 
     if(floor != nullptr) {
         delete floor;
+    }
+
+    if(compass != nullptr) {
+        delete compass;
     }
 
     if(badman != nullptr) {
