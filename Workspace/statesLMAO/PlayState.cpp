@@ -41,7 +41,7 @@ void PlayState::onCreate() {
 
     funniObject = new Model();
 
-    funniObject -> create(MeshObjects::Pyramid());
+    funniObject -> create(MeshObjects::Pyramid(1.0f));
     funniObject -> setPosition(-1.25, 0.75, -1);
     funniObject -> setTexture("Assets/images/feesh/Feesh.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     //funniObject -> setAlpha(0.5);
@@ -61,7 +61,7 @@ badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1,
 
     floor = new Model();
 
-    floor -> create(MeshObjects::Floor());
+    floor -> create(MeshObjects::Floor(3.0f));
     floor -> setPosition(-1.25, -0.25, -1);
     floor -> setTexture("Assets/textures/wood.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     floor -> setTexture("Assets/textures/wood-disp.png", REGULAR, REPEAT, LINEAR, 1, SPECULAR);

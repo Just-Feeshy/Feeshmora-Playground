@@ -127,75 +127,75 @@ namespace MeshObjects {
         return meshConfig;
     }
 
-    MeshVertices* Pyramid() {
+    MeshVertices* Pyramid(const float& scale) {
         MeshVertices* meshConfig2 = new MeshVertices();
 
         //Bottom
-        meshConfig2 -> addVertexRow(-0.25f, 0.0f, 0.25f);
+        meshConfig2 -> addVertexRow(-0.25f * scale, 0.0f, 0.25f * scale);
         meshConfig2 -> addTexCoordRow(0.0f, 0.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(-0.25f, 0.0f, -0.25f);
+        meshConfig2 -> addVertexRow(-0.25f * scale, 0.0f, -0.25f * scale);
         meshConfig2 -> addTexCoordRow(0.0f, 1.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(0.25f, 0.0f, -0.25f);
+        meshConfig2 -> addVertexRow(0.25f * scale, 0.0f, -0.25f * scale);
         meshConfig2 -> addTexCoordRow(1.0f, 1.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(0.25f, 0.0f, 0.25f);
+        meshConfig2 -> addVertexRow(0.25f * scale, 0.0f, 0.25f * scale);
         meshConfig2 -> addTexCoordRow(1.0f, 0.0f);
         meshConfig2 -> storeThisArray();
     
         //Left
-        meshConfig2 -> addVertexRow(-0.25f, 0.0f, 0.25f);
+        meshConfig2 -> addVertexRow(-0.25f * scale, 0.0f, 0.25f * scale);
         meshConfig2 -> addTexCoordRow(1.0f, 0.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(-0.25f, 0.0f, -0.25f);
+        meshConfig2 -> addVertexRow(-0.25f * scale, 0.0f, -0.25f * scale);
         meshConfig2 -> addTexCoordRow(0.0f, 0.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(0.0f, 0.5f, 0.0f);
+        meshConfig2 -> addVertexRow(0.0f, 0.5f * scale, 0.0f);
         meshConfig2 -> addTexCoordRow(0.5f, 1.0f);
         meshConfig2 -> storeThisArray();
     
         //Back
-        meshConfig2 -> addVertexRow(-0.25f, 0.0f, -0.25f);
+        meshConfig2 -> addVertexRow(-0.25f * scale, 0.0f, -0.25f * scale);
         meshConfig2 -> addTexCoordRow(1.0f, 0.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(0.25f, 0.0f, -0.25f);
+        meshConfig2 -> addVertexRow(0.25f * scale, 0.0f, -0.25f * scale);
         meshConfig2 -> addTexCoordRow(0.0f, 0.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(0.0f, 0.5f, 0.0f);
+        meshConfig2 -> addVertexRow(0.0f, 0.5f * scale, 0.0f);
         meshConfig2 -> addTexCoordRow(0.5f, 1.0f);
         meshConfig2 -> storeThisArray();
     
         //Right
-        meshConfig2 -> addVertexRow(0.25f, 0.0f, -0.25f);
+        meshConfig2 -> addVertexRow(0.25f * scale, 0.0f, -0.25f * scale);
         meshConfig2 -> addTexCoordRow(1.0f, 0.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(0.25f, 0.0f, 0.25f);
+        meshConfig2 -> addVertexRow(0.25f * scale, 0.0f, 0.25f * scale);
         meshConfig2 -> addTexCoordRow(0.0f, 0.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(0.0f, 0.5f, 0.0f);
+        meshConfig2 -> addVertexRow(0.0f, 0.5f * scale, 0.0f);
         meshConfig2 -> addTexCoordRow(0.5f, 1.0f);
         meshConfig2 -> storeThisArray();
     
         //Front
-        meshConfig2 -> addVertexRow(0.25f, 0.0f, 0.25f);
+        meshConfig2 -> addVertexRow(0.25f * scale, 0.0f, 0.25f * scale);
         meshConfig2 -> addTexCoordRow(1.0f, 0.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(-0.25f, 0.0f, 0.25f);
+        meshConfig2 -> addVertexRow(-0.25f * scale, 0.0f, 0.25f * scale);
         meshConfig2 -> addTexCoordRow(0.0f, 0.0f);
         meshConfig2 -> storeThisArray();
     
-        meshConfig2 -> addVertexRow(0.0f, 0.5f, 0.0f);
+        meshConfig2 -> addVertexRow(0.0f, 0.5f * scale, 0.0f);
         meshConfig2 -> addTexCoordRow(0.5f, 1.0f);
         meshConfig2 -> storeThisArray();
     
@@ -210,23 +210,23 @@ namespace MeshObjects {
         return meshConfig2;
     }
 
-    MeshVertices* Floor() {
+    MeshVertices* Floor(const float& scale) {
         MeshVertices* meshConfig3 = new MeshVertices();
 
         //Floor
-        meshConfig3 -> addVertexRow(-3.0f, 0.0f, 3.0f);
+        meshConfig3 -> addVertexRow(-1.0f * scale, 0.0f, 1.0f * scale);
         meshConfig3 -> addTexCoordRow(0.0f, 0.0f);
         meshConfig3 -> storeThisArray();
     
-        meshConfig3 -> addVertexRow(-3.0f, 0.0f, -3.0f);
+        meshConfig3 -> addVertexRow(-1.0f * scale, 0.0f, -1.0f * scale);
         meshConfig3 -> addTexCoordRow(0.0f, 6.0f);
         meshConfig3 -> storeThisArray();
     
-        meshConfig3 -> addVertexRow(3.0f, 0.0f, -3.0f);
+        meshConfig3 -> addVertexRow(1.0f * scale, 0.0f, -1.0f * scale);
         meshConfig3 -> addTexCoordRow(6.0f, 6.0f);
         meshConfig3 -> storeThisArray();
     
-        meshConfig3 -> addVertexRow(3.0f, 0.0f, 3.0f);
+        meshConfig3 -> addVertexRow(1.0f * scale, 0.0f, 1.0f * scale);
         meshConfig3 -> addTexCoordRow(6.0f, 0.0f);
         meshConfig3 -> storeThisArray();
     
