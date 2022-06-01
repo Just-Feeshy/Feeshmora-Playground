@@ -27,7 +27,7 @@ void MyPlayer::onMouseEvent(MouseEvent* event) {
     xRotate = MathUtil::clamp(xRotate, -80.0f, 80.0f);
 
     if(this -> camera != nullptr) {
-        this -> setRotation(xRotate, yRotate, 0.0f);
+        this -> setRotation(xRotate, 90 - yRotate, 0.0f);
         this -> camera -> setRotation(xRotate, yRotate, 0.0f);
     }
 }
