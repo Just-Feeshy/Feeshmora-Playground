@@ -20,8 +20,8 @@ void MyPlayer::onMouseEvent(MouseEvent* event) {
     float mouseX = event -> getMouseAxis(X) * mouse_sensitivity;
     float mouseY = event -> getMouseAxis(Y) * mouse_sensitivity;
 
-    yRotate += mouseX;
-    xRotate -= mouseY;
+    yRotate += mouseX / 2;
+    xRotate -= mouseY / 2;
 
     //std::cout << yRotate << std::endl;
     xRotate = MathUtil::clamp(xRotate, -80.0f, 80.0f);
@@ -32,6 +32,10 @@ void MyPlayer::onMouseEvent(MouseEvent* event) {
 }
 
 void MyPlayer::onKeyboardEvent(ControllerEvent* event) {
-    
+    //PathFinder::getAngleThroughPath(badman -> getPosition(), daCamera -> getPosition()).y
+
+    if(event -> getKeyID() == Keys::W) {
+        this -> moveForward();
+    }
 }
 #endif

@@ -17,9 +17,11 @@ class Model: public Mesh {
             movement.position = {0.0f, 0.0f, 0.0f};
             direction = {0.0f, 0.0f, 0.0f};
             upwards = {0.0f, 1.0f, 0.0f};
+
+            elapsed = 0.0f;
         };
         
-        ~Model();
+        virtual ~Model();
 
         void render() override;
         virtual void update(const float& elapsed) override;
@@ -36,7 +38,13 @@ class Model: public Mesh {
 
         void createBuffer(GLenum type, MeshVertices &m, bool indices);
         void setTexture(const std::string file, const TexEnum type, const TexParams params, const TexParams anti, int sides, const TexMap map);
+
+        float getElapsed() const {
+            return elapsed;
+        }
     protected:
+        float elapsed;
+
         DefaultTextures texture;
         MeshVertices alignment;
 
@@ -56,21 +64,14 @@ class Model: public Mesh {
             movement.position = {x, y, z};
         }
 
-        virtual void moveForward(const float elapsed) {
-            movement.position += direction * elapsed;
+        void setPosition(const glm::vec3 pos) {
+            movement.position = pos;
         }
 
-        virtual void moveBackwards(const float elapsed) {
-            movement.position -= direction * elapsed;
-        }
-
-        virtual void moveLeft(const float elapsed) {
-            movement.position -= angle * elapsed;
-        }
-
-        virtual void moveRight(const float elapsed) {
-            movement.position += angle * elapsed;
-        }
+        virtual void moveForward();
+        virtual void moveBackwards();
+        virtual void moveLeft();
+        virtual void moveRight();
 
         float getDirection(FeshAxis axis) const {
             if(axis == X) {
@@ -82,6 +83,10 @@ class Model: public Mesh {
             }
 
             return direction.x;
+        }
+
+        glm::vec3 getDirection() const {
+            return direction;
         }
 
         float getRotation(FeshAxis axis) const {

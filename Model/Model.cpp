@@ -112,6 +112,22 @@ void Model::compile() {
     glBindVertexArray(0);
 }
 
+void Model::moveForward() {
+    movement.position += direction * elapsed;
+}
+
+void Model::moveBackwards() {
+    movement.position -= direction * elapsed;
+}
+
+void Model::moveLeft() {
+    movement.position -= angle * elapsed;
+}
+
+void Model::moveRight() {
+    movement.position += angle * elapsed;
+}
+
 void Model::setRotation(float yaw, float pitch, float roll) {
     movement.rotation = {yaw, pitch, roll};
 
@@ -133,6 +149,8 @@ void Model::setTexture(const std::string file, const TexEnum type, const TexPara
 }
 
 void Model::update(const float& elapsed) {
+    this -> elapsed = elapsed;
+    
     if(shaderGroup.size() > 0) {
         for_each(shaderGroup.begin(), shaderGroup.end(), [](Shaders &shader) {
             shader.update();

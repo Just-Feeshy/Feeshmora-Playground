@@ -3,20 +3,23 @@
 #ifndef ENTITY_INCLUDED
 #define ENTITY_INCLUDED
 
-#include "../Model/Model.cpp"
 #include "../FeshMath/AI/PathFinder.hpp"
+#include "../Model/Model.cpp"
 
 class Entity: public Model {
     public:
         Entity();
+        virtual ~Entity() = default;
 
-        void moveForward(const float elapsed) override;
-        void moveBackwards(const float elapsed) override;
-        void moveLeft(const float elapsed) override;
-        void moveRight(const float elapsed) override;
+        virtual void moveForward() override;
+        //void moveBackwards() override;
+        //void moveLeft() override;
+        //void moveRight() override;
 
         void setWalkspeed(const float walkspeed);
         float getWalkspeed() const;
+
+        virtual void update(const float& elapsed) override;
     protected:
         float _walkspeed;
 };

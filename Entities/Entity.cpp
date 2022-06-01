@@ -6,24 +6,28 @@
 #include "Entity.h"
 
 Entity::Entity() {
+    Entity::Model();
     _walkspeed = 1;
 }
 
-void Entity::moveForward(const float elapsed) {
-    Model::moveForward(elapsed * _walkspeed);
+
+void Entity::moveForward() {
+    movement.position += direction * getElapsed() * _walkspeed;
 }
 
-void Entity::moveBackwards(const float elapsed) {
-    Model::moveBackwards(elapsed * _walkspeed);
+/*
+void moveBackwards() {
+    //movement.position -= direction * elapsed;
 }
 
-void Entity::moveLeft(const float elapsed) {
-    Model::moveLeft(elapsed * _walkspeed);
+void moveLeft() {
+    //movement.position -= angle * elapsed;
 }
 
-void Entity::moveRight(const float elapsed) {
-    Model::moveRight(elapsed * _walkspeed);
+void moveRight() {
+    //movement.position += angle * elapsed;
 }
+*/
 
 void Entity::setWalkspeed(const float walkspeed) {
     _walkspeed = walkspeed;
@@ -31,5 +35,9 @@ void Entity::setWalkspeed(const float walkspeed) {
 
 float Entity::getWalkspeed() const {
     return _walkspeed;
+}
+
+void Entity::update(const float& elapsed) {
+    Model::update(elapsed);
 }
 #endif

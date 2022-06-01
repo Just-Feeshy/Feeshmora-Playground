@@ -5,10 +5,6 @@
 
 #include "../headers/PlayState.h"
 
-void test2(Event* event) {
-    //test1(event);
-}
-
 void PlayState::onCreate() {  
     MeshVertices meshConfig4;
 
@@ -110,7 +106,7 @@ void PlayState::update(float elapsed) {
     if(PathFinder::getDistance(badman -> getPosition(), daCamera -> getPosition()) > 0.1) {
         badman -> setRotation(0, PathFinder::getAngleThroughPath(badman -> getPosition(), daCamera -> getPosition()).y, 0);
 
-        badman -> moveForward(elapsed);
+        badman -> moveForward();
     }
 }
 

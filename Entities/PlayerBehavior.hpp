@@ -8,8 +8,6 @@
 #include "../Camera.cpp"
 #include "Entity.cpp"
 
-using namespace Feeshmora;
-
 class PlayerBehavior: public Entity, public EventObject {
     public:
         PlayerBehavior() {
@@ -30,11 +28,9 @@ class PlayerBehavior: public Entity, public EventObject {
             _window = window;
         }
 
-        void setRotation(float yaw, float pitch, float roll) override {
-            Model::setRotation(yaw, pitch, roll);
-        }
-
         virtual void update(const float& elapsed) override {
+            Entity::update(elapsed);
+            
             if(camera != nullptr) {
                 camera -> setPosition(
                     getPosition(X) - (cameraOffsetPosition.x + cameraOffsetPosition.z) * cos(glm::radians(camera -> getRotation(X))),
@@ -49,9 +45,7 @@ class PlayerBehavior: public Entity, public EventObject {
             playerHead_y = camera -> getPosition(Y);
             this -> camera = camera;
             _window = this -> camera -> getWindow();
-        }
-
-        
+        }     
     protected:
         Camera* camera;
     private:
