@@ -20,6 +20,8 @@ class Entity: public Model {
         float getWalkspeed() const;
 
         virtual void update(const float& elapsed) override;
+
+        virtual glm::mat4 getMatrix() override;
     protected:
         float _walkspeed;
 };

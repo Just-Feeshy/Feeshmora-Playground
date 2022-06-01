@@ -29,11 +29,18 @@ void moveRight() {
 */
 
 void Entity::setWalkspeed(const float walkspeed) {
-    _walkspeed = walkspeed;
+    this -> _walkspeed = walkspeed;
 }
 
 float Entity::getWalkspeed() const {
     return _walkspeed;
+}
+
+/**
+* Test n' Stuff
+*/
+glm::mat4 Entity::getMatrix() {
+    return Model::getMatrix();
 }
 
 void Entity::update(const float& elapsed) {

@@ -30,13 +30,9 @@ class PlayerBehavior: public Entity, public EventObject {
 
         glm::mat4 getMatrix() override {
             glm::mat4 model(1.0f);
-        
-            model = glm::rotate(model, glm::radians(movement.rotation.x), {1, 0, 0});
-            model = glm::rotate(model, glm::radians(movement.rotation.y), {0, 1, 0});
-            model = glm::rotate(model, glm::radians(movement.rotation.z), {0, 0, 1});
-        
-            model = glm::translate(model, -movement.position);
-        
+
+            model = Matrix::transform(movement.position, Quaternion::eularAngle(movement.rotation), glm::vec3(1, 1, 1));
+
             return model;
         }
 
