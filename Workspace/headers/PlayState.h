@@ -38,5 +38,7 @@ class PlayState: public AdvancedStates {
         PointLight* lightsource2;
 
         DirectionalLight* sun;
+
+        float tickCounter;
 };
 #endif

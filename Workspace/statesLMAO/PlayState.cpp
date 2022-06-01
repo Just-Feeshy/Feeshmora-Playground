@@ -6,6 +6,8 @@
 #include "../headers/PlayState.h"
 
 void PlayState::onCreate() {  
+    tickCounter = 0;
+    
     MeshVertices meshConfig4;
 
     //Front
@@ -48,7 +50,9 @@ void PlayState::onCreate() {
     this -> add(funniObject);
 
     compass = new Model();
-    //comass = setPosition(0, )
+    compass -> create(MeshObjects::Pyramid(0.25f));
+    compass -> setTexture("Assets/images/Arrow.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
+    this -> add(compass);
 
     badman = new Entity();
     
@@ -91,11 +95,13 @@ badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1,
 
     Application::addEvent(MouseEvent::CURSOR(), player);
     Application::addEvent(ControllerEvent::KEYDOWN(Keys::W), player);
-    Application::addEvent(ControllerEvent::KEYDOWN(Keys::S), player);
+Application::addEvent(ControllerEvent::KEYDOWN(Keys::S), player);
 }
 
 void PlayState::update(float elapsed) {
     AdvancedStates::update(elapsed);
+
+    tickCounter += elapsed;
 
     if(true) {
         square -> setRotation(0, square -> getRotation(Y) + (elapsed * 100), 0.0f);
@@ -105,6 +111,9 @@ void PlayState::update(float elapsed) {
         lightsource -> setRotation(0, 180, 0);
 
         lightsource -> setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z));
+
+        compass -> setPosition(-1.25, -0.1 + sin(tickCounter) / 50, -1);
+        compass -> setRotation(180, 180 - daCamera -> getRotation(Y), 0);
     }
 
     if(PathFinder::getDistance(badman -> getPosition(), daCamera -> getPosition()) > 0.1) {
