@@ -50,7 +50,7 @@ void PlayState::onCreate() {
     this -> add(funniObject);
 
     compass = new Model();
-    compass -> create(MeshObjects::Pyramid(0.25f));
+    compass -> create(MeshObjects::Pyramid(0.1f));
     compass -> setTexture("Assets/images/Arrow.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
     this -> add(compass);
 
@@ -111,7 +111,7 @@ void PlayState::update(float elapsed) {
 
         lightsource -> setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z));
 
-        compass -> setPosition(-0.625, -0.1 + sin(tickCounter) / 50, -1);
+        compass -> setPosition(-0.625, -0.15 + sin(tickCounter) / 75, -1);
         compass -> setRotation(180, 180 - daCamera -> getRotation(Y), 0);
     }
 
