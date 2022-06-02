@@ -13,8 +13,8 @@ class Entity: public Model {
 
         virtual void moveForward() override;
         virtual void moveBackwards() override;
-        //void moveLeft() override;
-        //void moveRight() override;
+        virtual void moveLeft() override;
+        virtual void moveRight() override;
 
         void setWalkspeed(const float walkspeed);
         float getWalkspeed() const;

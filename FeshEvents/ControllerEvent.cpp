@@ -15,9 +15,17 @@ ControllerEvent::~ControllerEvent() {
     if(Input != nullptr) {
         delete Input;
     }
+
+    if(keyID != nullptr) {
+        delete keyID;
+    }
 }
 
-short ControllerEvent::getKeyID() const {
+short ControllerEvent::getKeyCode() const {
+    return keyCode;
+}
+
+short* ControllerEvent::getKeyID() const {
     return keyID;
 }
 
@@ -25,14 +33,14 @@ bool ControllerEvent::getKeyPhase() const {
     return keyPhase;
 }
 
-ControllerEvent* ControllerEvent::KEYDOWN(const short key) {
+ControllerEvent* ControllerEvent::KEYDOWN(short* key) {
     ControllerEvent* event = new ControllerEvent();
     event -> keyPhase = true;
     event -> keyID = key;
     return event;
 }
 
-ControllerEvent* ControllerEvent::KEYUP(const short key) {
+ControllerEvent* ControllerEvent::KEYUP(short* key) {
     ControllerEvent* event = new ControllerEvent();
     event -> keyPhase = false;
     event -> keyID = key;
@@ -44,8 +52,15 @@ void ControllerEvent::execute() {
 }
 
 void ControllerEvent::update(WindowDisplay* window, const float elapsed) {
-    if(Input -> getKeyAction(window, getKeyID(), keyPhase)) {
-        execute();
+    int index = 0;
+
+    while(keyID[index] != 0) {
+        if(Input -> getKeyAction(window, getKeyID()[index], keyPhase)) {
+            keyCode = keyID[index];
+            execute();
+        }
+
+        index++;
     }
     
     Event::update(window, elapsed);

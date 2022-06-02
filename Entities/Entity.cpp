@@ -18,15 +18,13 @@ void Entity::moveBackwards() {
     movement.position -= direction * getElapsed() * _walkspeed;
 }
 
-/*
-void moveLeft() {
-    //movement.position -= angle * elapsed;
+void Entity::moveRight() {
+    movement.position += angle * getElapsed() * _walkspeed;
 }
 
-void moveRight() {
-    //movement.position += angle * elapsed;
+void Entity::moveLeft() {
+    movement.position -= angle * getElapsed() * _walkspeed;
 }
-*/
 
 void Entity::setWalkspeed(const float walkspeed) {
     this -> _walkspeed = walkspeed;

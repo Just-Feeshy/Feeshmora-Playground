@@ -18,12 +18,13 @@ class ControllerEvent: public Event {
         ControllerEvent();
         ~ControllerEvent();
     
-        static ControllerEvent* KEYDOWN(const short key);
-        static ControllerEvent* KEYUP(const short key);
+        static ControllerEvent* KEYDOWN(short* key);
+        static ControllerEvent* KEYUP(short* key);
     
         void update(WindowDisplay* window, const float elapsed) override;
-    
-        short getKeyID() const;
+
+        short getKeyCode() const;
+        short* getKeyID() const;
         bool getKeyPhase() const;
     
         void execute() override;
@@ -32,6 +33,7 @@ class ControllerEvent: public Event {
 
         bool keyPhase;
 
-        short keyID;
+        short* keyID;
+        short keyCode;
 };
 #endif

@@ -35,12 +35,20 @@ void MyPlayer::onMouseEvent(MouseEvent* event) {
 void MyPlayer::onKeyboardEvent(ControllerEvent* event) {
     //PathFinder::getAngleThroughPath(badman -> getPosition(), daCamera -> getPosition()).y
 
-    if(event -> getKeyID() == Keys::W) {
+    if(event -> getKeyCode() == Keys::W) {
         this -> moveForward();
     }
 
-    if(event -> getKeyID() == Keys::S) {
+    if(event -> getKeyCode() == Keys::S) {
         this -> moveBackwards();
     }
+
+    if(event -> getKeyCode() == Keys::A) {
+        this -> moveLeft();
+    }
+
+    if(event -> getKeyCode() == Keys::D) {
+        this -> moveRight();
+    }    
 }
 #endif

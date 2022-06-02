@@ -94,8 +94,7 @@ badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1,
     this -> add(sun);
 
     Application::addEvent(MouseEvent::CURSOR(), player);
-    Application::addEvent(ControllerEvent::KEYDOWN(Keys::W), player);
-Application::addEvent(ControllerEvent::KEYDOWN(Keys::S), player);
+    Application::addEvent(ControllerEvent::KEYDOWN(new short[4]{Keys::W, Keys::S, Keys::A, Keys::D}), player);
 }
 
 void PlayState::update(float elapsed) {
@@ -112,7 +111,7 @@ void PlayState::update(float elapsed) {
 
         lightsource -> setPosition(daCamera -> getPosition(X), daCamera -> getPosition(Y), daCamera -> getPosition(Z));
 
-        compass -> setPosition(-1.25, -0.1 + sin(tickCounter) / 50, -1);
+        compass -> setPosition(-0.625, -0.1 + sin(tickCounter) / 50, -1);
         compass -> setRotation(180, 180 - daCamera -> getRotation(Y), 0);
     }
 
