@@ -18,4 +18,4 @@ Future Projects:
 9) Make multi-window a feature.
 10) Don't rely TOO much on c++.
 11) MeshVertices is USEFUL!
-12) Make render device as the main global class for rendering graphics.
+12) Make render class as the main global class for rendering graphics.
