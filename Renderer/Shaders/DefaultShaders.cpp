@@ -5,9 +5,6 @@
 void DefaultShaders::Init() {
     StencilBuffers::enableDepthTest(true);
 
-    StencilBuffers::enableStencilTest(true);
-    StencilBuffers::setStencilOp(KEEP, KEEP, REPLACE);
-
     glEnable(GL_CULL_FACE);
     
     glFrontFace(GL_CW);

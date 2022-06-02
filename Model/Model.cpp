@@ -28,8 +28,6 @@ void Model::render() {
 }
 
 void Model::draw(Shaders* shader) {
-    StencilBuffers::setStencilMask(0x00);
-
     if(alpha > 0) {
         RenderManager::setFaceCulling(CULL_NONE);
         RenderManager::blend(BLEND_SOURCE_ALPHA, BLEND_ONE_MINUS_SOURCE_ALPHA);
