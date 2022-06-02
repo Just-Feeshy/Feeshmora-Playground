@@ -47,7 +47,7 @@ class AdvancedStates: public BasicStates {
             updateAllObjs(elapsed);
         }
 
-        void add(auto obj) {  
+        template<typename T> void add(T obj) {  
             _objects.push_back(obj);
 
             //Refresh
