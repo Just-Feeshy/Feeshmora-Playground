@@ -21,7 +21,7 @@ class Model: public Mesh {
             elapsed = 0.0f;
         };
         
-        virtual ~Model();
+        virtual ~Model() {};
 
         void render() override;
         virtual void update(const float& elapsed) override;

@@ -35,8 +35,8 @@ void Camera::setRotation(float yaw, float pitch, float roll) {
 }
 
 glm::mat4 Camera::makeProjection() {
-    float width = (float)thisWindow -> width;
-    float height = (float)thisWindow -> height;
+    float width = (float)thisWindow -> getWidth();
+    float height = (float)thisWindow -> getHeight();
     float fov = (float)thisWindow -> FOV;
     float rDistance = (float)thisWindow -> renderDistance;
 

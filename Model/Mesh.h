@@ -32,6 +32,16 @@ class Mesh {
     public:
         Mesh() = default;
 
+        ~Mesh() {
+            if(buffers.size() > 0) {
+                glDeleteBuffers(static_cast<GLsizei>(buffers.size()), buffers.data());
+            }
+        
+            if(VAO != 0 && VAO) {
+                glDeleteVertexArrays(1, &VAO);
+            }
+        }
+
         virtual void update(const float& elapsed) = 0;
 
         GLuint getVAO() const {

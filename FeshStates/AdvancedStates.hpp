@@ -4,6 +4,7 @@
 #include "../Application.cpp"
 #include "../Renderer/Shaders/DefaultShaders.cpp"
 #include "../Graphics/Textures/FirstTextures.cpp"
+#include "../UniqueBuffers/FrameBuffers.cpp"
 #include "../Camera.cpp"
 #include "BasicStates.h"
 

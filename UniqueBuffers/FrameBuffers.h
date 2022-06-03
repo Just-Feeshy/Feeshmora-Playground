@@ -5,8 +5,16 @@
 
 #include "../Model/Mesh.h"
 
-class FrameBuffer: public Mesh {
+class FrameBuffers: public Mesh {
     public:
-        FrameBuffer();
+        FrameBuffers();
+        ~FrameBuffers();
+
+        void render() override;
+
+        void setFBO(GLuint FBO);
+        void setTexture(GLuint texture, GLuint colorSection, bool shouldBind);
+    private:
+        GLuint FBO;
 };
 #endif

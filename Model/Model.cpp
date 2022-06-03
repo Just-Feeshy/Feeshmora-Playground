@@ -5,16 +5,6 @@
 #ifndef MODEL_CPP_INCLUDED
 #define MODEL_CPP_INCLUDED
 
-Model::~Model() {
-    if(buffers.size() > 0) {
-        glDeleteBuffers(static_cast<GLsizei>(buffers.size()), buffers.data());
-    }
-
-    if(VAO != 0 && VAO) {
-        glDeleteVertexArrays(1, &VAO);
-    }
-}
-
 glm::mat4 Model::getMatrix() {
     glm::mat4 model(1.0f);
 
@@ -24,7 +14,11 @@ glm::mat4 Model::getMatrix() {
 }
 
 void Model::render() {
-    setRotation(0, 0, 0);
+    setRotation(
+        movement.rotation.x,
+        movement.rotation.y,
+        movement.rotation.z
+    );
 }
 
 void Model::draw(Shaders* shader) {

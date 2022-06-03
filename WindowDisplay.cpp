@@ -69,3 +69,11 @@ void WindowDisplay::pre_render() {
     glViewport(0, 0, width, height);
     glfwSwapBuffers(window);
 }
+
+int WindowDisplay::getWidth() const {
+    return width;
+}
+
+int WindowDisplay::getHeight() const {
+    return height;
+}

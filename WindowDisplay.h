@@ -9,8 +9,6 @@
 #include <string>
 
 struct WindowDisplay {
-    int width = 1280;
-    int height = 720;
     bool fullscreen = true;
     int renderDistance = 16;
     int FOV = 90;
@@ -23,5 +21,12 @@ struct WindowDisplay {
     int getKeyboard();
 
     GLFWwindow* window = 0;
+
+    int getWidth() const;
+    int getHeight() const;
+
+    private:
+        int width = 1280;
+        int height = 720;
 };
 #endif
