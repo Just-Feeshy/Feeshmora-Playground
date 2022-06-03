@@ -14,11 +14,7 @@ glm::mat4 Model::getMatrix() {
 }
 
 void Model::render() {
-    setRotation(
-        movement.rotation.x,
-        movement.rotation.y,
-        movement.rotation.z
-    );
+
 }
 
 void Model::draw(Shaders* shader) {

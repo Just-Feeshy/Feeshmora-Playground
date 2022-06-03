@@ -70,6 +70,19 @@ void WindowDisplay::pre_render() {
     glfwSwapBuffers(window);
 }
 
+void WindowDisplay::setCallbacks(WindowDisplay* window) {
+    glfwSetFramebufferSizeCallback(window -> window, window -> buffer_resize);
+    //glfwSetCursorPosCallback(window -> window, )
+}
+
+void WindowDisplay::buffer_resize(GLFWwindow* window, int width, int height) {
+    glViewport(0, 0, width, height);
+}
+
+void WindowDisplay::mouse_position(GLFWwindow* window, double xPos, double yPos) {
+    return;
+}
+
 int WindowDisplay::getWidth() const {
     return width;
 }

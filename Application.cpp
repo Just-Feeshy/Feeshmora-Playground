@@ -12,6 +12,7 @@ WindowDisplay* Application::daWindow;
 Application::Application(WindowDisplay &window)  {
     daWindow = &window;
     daWindow -> pre_render();
+    daWindow -> setCallbacks(daWindow);
 }
 
 Application::~Application() {
