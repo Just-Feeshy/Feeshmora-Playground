@@ -4,6 +4,7 @@
 #define FRAMEBUFFER_INCLUDED
 
 #include "../Model/Mesh.h"
+#include "BufferFunc.hpp"
 
 class FrameBuffers: public Mesh {
     public:
@@ -12,8 +13,11 @@ class FrameBuffers: public Mesh {
 
         void render() override;
 
+        GLuint getFBO() const;
+
         void setFBO(GLuint FBO);
-        void setTexture(GLuint texture, GLuint colorSection);
+
+        void setTexture(GLuint FBO, Attachments attach, GLuint section);
     private:
         GLuint FBO;
         GLuint RBO;

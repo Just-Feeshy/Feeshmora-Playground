@@ -14,3 +14,14 @@ enum BufferFunc {
     ALWAYS = 0x0207
 };
 #endif
+
+#ifndef ENGINE_ATTACHMENTS_INCLUDED
+#define ENGINE_ATTACHMENTS_INCLUDED
+
+enum Attachments {
+    COLOR = 0x8CE0,
+    DEPTH = 0x8D00,
+    STENCIL = 0x8D20,
+    DEPTH_STENCIL = 0x821A
+};
+#endif
