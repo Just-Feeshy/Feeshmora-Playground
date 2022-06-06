@@ -25,7 +25,9 @@ void FrameBuffers::setFBO(GLuint FBO) {
     glBindBuffer(GL_FRAMEBUFFER, this -> FBO);
 }
 
-void FrameBuffers::setTexture(GLuint texture, GLuint colorSection, bool shouldBind) {
-    
+void FrameBuffers::setTexture(GLuint texture, GLuint colorSection) {
+    //if() {
+        
+    //}
 }
 #endif

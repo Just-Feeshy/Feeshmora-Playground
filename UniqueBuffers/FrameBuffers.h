@@ -13,8 +13,9 @@ class FrameBuffers: public Mesh {
         void render() override;
 
         void setFBO(GLuint FBO);
-        void setTexture(GLuint texture, GLuint colorSection, bool shouldBind);
+        void setTexture(GLuint texture, GLuint colorSection);
     private:
         GLuint FBO;
+        GLuint RBO;
 };
 #endif

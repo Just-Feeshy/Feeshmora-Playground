@@ -19,6 +19,8 @@ class Model: public Mesh {
             upwards = {0.0f, 1.0f, 0.0f};
 
             elapsed = 0.0f;
+
+            setRotation(0,0,0);
         };
         
         virtual ~Model() {};
