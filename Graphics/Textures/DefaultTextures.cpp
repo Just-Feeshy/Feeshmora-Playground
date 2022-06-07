@@ -54,7 +54,6 @@ void DefaultTextures::createTexture(const TexEnum type, const TexParams params, 
     }
     
     glGenTextures(1, &textures.back()[0]);
-    glActiveTexture(GL_TEXTURE0 + active);
     glBindTexture(target, textures.back()[0]);
 
     if(type == CUBEMAP) {
