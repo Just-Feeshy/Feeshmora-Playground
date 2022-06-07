@@ -39,7 +39,7 @@ class Model: public Mesh {
         void compile();
 
         void createBuffer(GLenum type, MeshVertices &m, bool indices);
-        void setTexture(const std::string file, const TexEnum type, const TexParams params, const TexParams anti, int sides, const TexMap map);
+        void setTexture(const std::string file, const TexEnum type, int sides, const TexMap map);
 
         float getElapsed() const {
             return elapsed;

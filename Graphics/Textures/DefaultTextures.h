@@ -17,11 +17,11 @@ enum TexEnum {
 };
 
 enum TexParams {
-    NEAREST,
-    LINEAR,
-    MIPMAP,
-    CLAMP_TO_EDGE,
-    REPEAT
+    NEAREST = GL_NEAREST,
+    LINEAR = GL_LINEAR,
+    MIPMAP = GL_NEAREST_MIPMAP_LINEAR,
+    CLAMP_TO_EDGE = GL_CLAMP_TO_EDGE,
+    REPEAT = GL_REPEAT
 };
 
 enum TexMap {
@@ -34,7 +34,8 @@ class DefaultTextures {
         DefaultTextures();
         ~DefaultTextures();
 
-        void createTexture(const TexEnum type, const TexParams params, const TexParams anti, const int sides, const TexMap map);
+        void createTexture(const TexEnum type, const int sides, const TexMap map);
+        void setupParameters(const TexEnum type, const TexParams params, const TexParams min, const TexParams max);
         void loadFile(const std::string &file);
 
         void Draw(GLuint VAO, GLenum primType, GLuint instances, GLsizei elements, bool drawElements, Shaders* shader);

@@ -3,7 +3,6 @@
 #ifndef FRAMEBUFFER_INCLUDED
 #define FRAMEBUFFER_INCLUDED
 
-#include "../Graphics/Textures/DefaultTextures.cpp"
 #include "../Model/Mesh.h"
 #include "BufferFunc.hpp"
 

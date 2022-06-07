@@ -131,9 +131,10 @@ void Model::setRotation(float yaw, float pitch, float roll) {
     angle = glm::normalize(glm::cross(direction, upwards));
 }
 
-void Model::setTexture(const std::string file, const TexEnum type, const TexParams params, const TexParams anti, int sides, const TexMap map) {
+void Model::setTexture(const std::string file, const TexEnum type, int sides, const TexMap map) {
     texture.loadFile(file);
-    texture.createTexture(type, params, anti, sides, map);
+    texture.createTexture(type, sides, map);
+    texture.setupParameters(type, LINEAR, REPEAT, MIPMAP);
 }
 
 void Model::update(const float& elapsed) {

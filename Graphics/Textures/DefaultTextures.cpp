@@ -39,7 +39,7 @@ void DefaultTextures::loadFile(const std::string &file) {
     }
 }
 
-void DefaultTextures::createTexture(const TexEnum type, const TexParams params, const TexParams anti, int sides, const TexMap map) {
+void DefaultTextures::createTexture(const TexEnum type, int sides, const TexMap map) {
     textures.push_back({0, map});
 
     GLenum target;
@@ -79,30 +79,25 @@ void DefaultTextures::createTexture(const TexEnum type, const TexParams params, 
         target = GL_TEXTURE_CUBE_MAP;
     }
 
-    GLfloat p;
-    GLenum ant;
-
-    switch(params) {
-        case REPEAT: p = GL_REPEAT; break;
-        default: p = GL_CLAMP_TO_EDGE; break;
-    }
-
-    switch(ant) {
-        case LINEAR: ant = GL_LINEAR; break;
-        case MIPMAP: ant = GL_NEAREST_MIPMAP_LINEAR; break;
-        default: ant = GL_NEAREST; break;
-    }
-
-    //Parameter Stuff. and also do some extra touches in the future.
-    glTexParameterf(target, GL_TEXTURE_MIN_FILTER, ant);
-    glTexParameterf(target, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_LINEAR);
-    glTexParameteri(target, GL_TEXTURE_WRAP_S, params);
-    glTexParameteri(target, GL_TEXTURE_WRAP_T, params);
-    glTexParameteri(target, GL_TEXTURE_WRAP_R, params);
-
     glBindTexture(target, 0);
 
     texEnum = target;
+}
+
+void DefaultTextures::setupParameters(const TexEnum type, const TexParams params, const TexParams min, const TexParams max) {
+    GLenum target;
+
+    switch(type) {
+        case REGULAR: target = GL_TEXTURE_2D; break;
+        case CUBEMAP: target = GL_TEXTURE_CUBE_MAP; break;
+    }
+
+    //Parameter Stuff. and also do some extra touches in the future.
+    glTexParameterf(target, GL_TEXTURE_MIN_FILTER, min);
+    glTexParameterf(target, GL_TEXTURE_MAG_FILTER, max);
+    glTexParameteri(target, GL_TEXTURE_WRAP_S, params);
+    glTexParameteri(target, GL_TEXTURE_WRAP_T, params);
+    glTexParameteri(target, GL_TEXTURE_WRAP_R, params);
 }
 
 void DefaultTextures::Draw(GLuint VAO, GLenum primType, GLuint instances, GLsizei elements, bool drawElements, Shaders* shader) {

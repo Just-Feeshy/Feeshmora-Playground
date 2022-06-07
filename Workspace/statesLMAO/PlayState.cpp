@@ -38,28 +38,28 @@ void PlayState::onCreate() {
     
     square -> create(MeshObjects::Cube(1.0f));
     square -> setPosition(0, 1, -1);
-    square -> setTexture("Assets/images/feesh/FeeshPixel.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
+    square -> setTexture("Assets/images/feesh/FeeshPixel.png", REGULAR, 1, DIFFUSE);
     this -> add(square);
 
     funniObject = new Model();
 
     funniObject -> create(MeshObjects::Pyramid(1.0f));
     funniObject -> setPosition(-1.25, 0.75, -1);
-    funniObject -> setTexture("Assets/images/feesh/Feesh.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
+    funniObject -> setTexture("Assets/images/feesh/Feesh.png", REGULAR, 1, DIFFUSE);
     //funniObject -> setAlpha(0.5);
     this -> add(funniObject);
 
     compass = new Model();
     compass -> create(MeshObjects::Pyramid(0.1f));
-    compass -> setTexture("Assets/images/Arrow.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
+    compass -> setTexture("Assets/images/Arrow.png", REGULAR, 1, DIFFUSE);
     this -> add(compass);
 
     badman = new Entity();
     
     badman -> create(&meshConfig4);
     badman -> setPosition(0.5, 0, 0);
-badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
-    badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1, SPECULAR);
+badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, 1, DIFFUSE);
+    badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, 1, SPECULAR);
     badman -> setWalkspeed(0.5);
     this -> add(badman);
 
@@ -67,8 +67,8 @@ badman -> setTexture("Assets/images/BadManEvil.png", REGULAR, REPEAT, LINEAR, 1,
 
     floor -> create(MeshObjects::Floor(3.0f));
     floor -> setPosition(-1.25, -0.25, -1);
-    floor -> setTexture("Assets/textures/wood.png", REGULAR, REPEAT, LINEAR, 1, DIFFUSE);
-    floor -> setTexture("Assets/textures/wood-disp.png", REGULAR, REPEAT, LINEAR, 1, SPECULAR);
+    floor -> setTexture("Assets/textures/wood.png", REGULAR, 1, DIFFUSE);
+    floor -> setTexture("Assets/textures/wood-disp.png", REGULAR, 1, SPECULAR);
     this -> add(floor);
 
     lightsource = new SpotLight();
