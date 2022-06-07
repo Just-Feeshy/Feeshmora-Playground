@@ -29,7 +29,7 @@ GLuint FrameBuffers::getFBO() const {
     return FBO;
 }
 
-void FrameBuffers::bindTexture(Attachments attach, GLuint section, bool bind2D, int level) {
+void FrameBuffers::bindTexture(Attachments attach, int section, bool bind2D, int level) {
     GLenum attachSection = attach + section;
 
     glBindTexture(GL_TEXTURE_2D, textureBuffer);
