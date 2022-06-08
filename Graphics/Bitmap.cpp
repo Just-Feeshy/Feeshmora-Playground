@@ -2,10 +2,22 @@
 
 #include "Bitmap.h"
 
+Bitmap::Bitmap() {
+    pixels = nullptr;
+}
+
 Bitmap::~Bitmap() {
     if(pixels != nullptr) {
         stbi_image_free(pixels);
     }
+}
+
+void Bitmap::setWidth(const GLint width) {
+    this -> width = width;
+}
+
+void Bitmap::setHeight(const GLint height) {
+    this -> height = height;
 }
 
 GLint Bitmap::getWidth() {

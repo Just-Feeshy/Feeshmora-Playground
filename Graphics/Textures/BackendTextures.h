@@ -48,6 +48,8 @@ class BackendTextures {
 
         GLenum getTexEnum() const;
         GLuint getTextureByIndex(GLuint &index) const;
+
+        void setBitmap(Bitmap* bitmap);
     private:
         Bitmap* bitmap;
 

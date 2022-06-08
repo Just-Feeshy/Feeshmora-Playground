@@ -135,7 +135,7 @@ void BackendTextures::Draw(GLuint VAO, GLenum primType, GLuint instances, GLsize
 GLenum BackendTextures::getTexFormat(const TexMap map) const {
     switch(map) {
         case DIFFUSE: return GL_RGBA;
-        case SPECULAR: return GL_RGBA;
+        case SPECULAR: return GL_RGB;
         default: return GL_RGBA;
     }
 }
@@ -146,5 +146,9 @@ GLenum BackendTextures::getTexEnum() const {
 
 GLuint BackendTextures::getTextureByIndex(GLuint &index) const {
     return textures[index][0];
+}
+
+void BackendTextures::setBitmap(Bitmap* bitmap) {
+    this -> bitmap = bitmap;
 }
 #endif

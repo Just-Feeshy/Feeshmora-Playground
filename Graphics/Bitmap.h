@@ -16,8 +16,11 @@
 */
 class Bitmap {
     public:
-        Bitmap() = default;
+        Bitmap();
         ~Bitmap();
+
+        void setWidth(const GLint width);
+        void setHeight(const GLint height);
 
         GLint getWidth();
         GLint getHeight();
@@ -28,7 +31,7 @@ class Bitmap {
 
         void Draw(GLuint VAO, GLenum primType, GLuint instances, GLsizei elements, bool drawElements);
     private:
-        unsigned char* pixels = 0;
+        unsigned char* pixels;
 
         GLint width = 0;
         GLint height = 0;

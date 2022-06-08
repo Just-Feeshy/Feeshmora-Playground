@@ -4,6 +4,7 @@
 #define FRAMEBUFFER_INCLUDED
 
 #include "../Graphics/Textures/BackendTextures.cpp"
+#include "../WindowDisplay.cpp"
 #include "../Model/Mesh.h"
 #include "BufferFunc.hpp"
 
@@ -18,7 +19,7 @@ class FrameBuffers: public Mesh {
 
         void setFBO(GLuint FBO);
 
-        void setTexture(Attachments attach, int section, bool bind2D, int level);
+        void setTexture(WindowDisplay* window, Attachments attach, int section, bool bind2D, int level);
     private:
         BackendTextures texture;
 
