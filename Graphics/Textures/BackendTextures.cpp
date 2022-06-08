@@ -63,7 +63,7 @@ void BackendTextures::createTexture(const TexEnum type, int sides, const TexMap 
         target = GL_TEXTURE_CUBE_MAP_POSITIVE_X;
     }
 
-    if(map != NONE) {
+    if(map != NO_MAP) {
         for(int i=0; i<sides; i++) {
     
             //TODO: Fix this.
@@ -122,7 +122,7 @@ void BackendTextures::Draw(GLuint VAO, GLenum primType, GLuint instances, GLsize
         shader -> uniformInt("texture0", 0);
         shader -> uniformInt("texture1", 1);
         
-        glActiveTexture(GL_TEXTURE0 + textures[i][1]);
+        glActiveTexture(GL_TEXTURE0 + textures[i][1] - 1);
         glBindTexture(texEnum, textures[i][0]);
     }
 

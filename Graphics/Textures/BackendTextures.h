@@ -5,6 +5,7 @@
 
 #include "../../Util/FileAssets.hpp"
 #include "../../Renderer/Shaders/Shaders.cpp"
+#include "../../FeshMath/MathUtil.hpp"
 #include "../Bitmap.cpp"
 
 #include <string>
@@ -25,9 +26,9 @@ enum TexParams {
 };
 
 enum TexMap {
-    NONE = -1,
-    DIFFUSE = 0,
-    SPECULAR = 1
+    NO_MAP = 0,
+    DIFFUSE = 1,
+    SPECULAR = 2
 };
 
 class BackendTextures {

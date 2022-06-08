@@ -13,7 +13,7 @@ namespace Feeshmora::MathUtil {
     }
 
     template<typename T, typename T2> T lerp(const T& from, const T& to, const T2& at) {
-        return (T)(from * ((U)(1) - at) + to * at);
+        return (T)(from * ((T2)(1) - at) + to * at);
     }
     
     template<typename T> T clamp(const T& value, const T& min, const T& max) {
