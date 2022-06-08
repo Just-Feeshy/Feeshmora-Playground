@@ -121,8 +121,10 @@ void BackendTextures::Draw(GLuint VAO, GLenum primType, GLuint instances, GLsize
     for(GLuint i=0; i<textures.size(); i++) {
         shader -> uniformInt("texture0", 0);
         shader -> uniformInt("texture1", 1);
-        
-        glActiveTexture(GL_TEXTURE0 + textures[i][1] - 1);
+
+        if(textures[i][1] > 0) {
+            glActiveTexture(GL_TEXTURE0 + textures[i][1] - 1);
+        }
         glBindTexture(texEnum, textures[i][0]);
     }
 
