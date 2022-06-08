@@ -30,11 +30,11 @@ GLuint FrameBuffers::getFBO() const {
 }
 
 void FrameBuffers::setTexture(WindowDisplay* window, Attachments attach, int section, bool bind2D, int level) {
-    Bitmap* bitmap = new Bitmap();
-    bitmap -> setWidth(window -> getWidth());
-    bitmap -> setHeight(window -> getHeight());
+    Bitmap bitmap;
+    bitmap.setWidth(window -> getWidth());
+    bitmap.setHeight(window -> getHeight());
 
-    texture.setBitmap(bitmap);
+    texture.setBitmap(&bitmap);
     texture.createTexture(REGULAR, 1, SPECULAR);
 }
 #endif
