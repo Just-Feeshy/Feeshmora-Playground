@@ -25,6 +25,7 @@ enum TexParams {
 };
 
 enum TexMap {
+    NONE = -1,
     DIFFUSE = 0,
     SPECULAR = 1
 };

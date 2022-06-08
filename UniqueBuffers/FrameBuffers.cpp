@@ -22,7 +22,7 @@ void FrameBuffers::render() {
 
 void FrameBuffers::setFBO(GLuint FBO) {
     this -> FBO = FBO;
-    glBindBuffer(GL_FRAMEBUFFER, this -> FBO);
+    glBindFramebuffer(GL_FRAMEBUFFER, this -> FBO);
 }
 
 GLuint FrameBuffers::getFBO() const {

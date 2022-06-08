@@ -63,20 +63,22 @@ void BackendTextures::createTexture(const TexEnum type, int sides, const TexMap 
         target = GL_TEXTURE_CUBE_MAP_POSITIVE_X;
     }
 
-    for(int i=0; i<sides; i++) {
-
-        //TODO: Fix this.
-        if(bitmap -> getBytes()) {
-            glTexImage2D(target + (GLuint)i, 0, GL_RGBA, bitmap -> getWidth(), bitmap -> getHeight(), 0, getTexFormat(map), GL_UNSIGNED_BYTE, bitmap -> getBytes());
-        }else {
-            std::cout << "TEXTURE FAILED TO LOAD!" << std::endl;
+    if(map != NONE) {
+        for(int i=0; i<sides; i++) {
+    
+            //TODO: Fix this.
+            if(bitmap -> getBytes()) {
+                glTexImage2D(target + (GLuint)i, 0, GL_RGBA, bitmap -> getWidth(), bitmap -> getHeight(), 0, getTexFormat(map), GL_UNSIGNED_BYTE, bitmap -> getBytes());
+            }else {
+                std::cout << "TEXTURE FAILED TO LOAD!" << std::endl;
+            }
         }
+    
+        glGenerateMipmap(target);
+    
+        delete bitmap;
+        bitmap = nullptr;
     }
-
-    glGenerateMipmap(target);
-
-    delete bitmap;
-    bitmap = nullptr;
 
     if(type == CUBEMAP) {
         target = GL_TEXTURE_CUBE_MAP;
