@@ -17,11 +17,11 @@ namespace Feeshmora::MathUtil {
     }
     
     template<typename T> T clamp(const T& value, const T& min, const T& max) {
-        if(value >= max) {
+        if(value > max) {
             return max;
         }
 
-        if(value >= min) {
+        if(value > min) {
             return value;
         }
 
