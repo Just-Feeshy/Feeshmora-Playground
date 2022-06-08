@@ -1,12 +1,15 @@
 #pragma once
 
-#include "DefaultTextures.h"
+#ifndef DEFAULT_TEXTURE_INCLUDED_CPP
+#define DEFAULT_TEXTURE_INCLUDED_CPP
 
-DefaultTextures::DefaultTextures() {
+#include "BackendTextures.h"
+
+BackendTextures::BackendTextures() {
     return;
 }
 
-DefaultTextures::~DefaultTextures() {
+BackendTextures::~BackendTextures() {
     /**
     if(bitmap != nullptr) {
         delete bitmap;
@@ -20,7 +23,7 @@ DefaultTextures::~DefaultTextures() {
     */
 }
 
-void DefaultTextures::loadFile(const std::string &file) {
+void BackendTextures::loadFile(const std::string &file) {
     bitmap = new Bitmap();
     bitmap -> FlipImage(true);
 
@@ -39,7 +42,7 @@ void DefaultTextures::loadFile(const std::string &file) {
     }
 }
 
-void DefaultTextures::createTexture(const TexEnum type, int sides, const TexMap map) {
+void BackendTextures::createTexture(const TexEnum type, int sides, const TexMap map) {
     textures.push_back({0, map});
 
     GLenum target;
@@ -84,7 +87,19 @@ void DefaultTextures::createTexture(const TexEnum type, int sides, const TexMap 
     texEnum = target;
 }
 
-void DefaultTextures::setupParameters(const TexEnum type, const TexParams params, const TexParams min, const TexParams max) {
+void BackendTextures::bindTexture(GLuint textureBuffer, Attachments attach, int section, bool bind2D, int level) {
+    GLenum attachSection = attach + section;
+
+    glBindTexture(GL_TEXTURE_2D, textureBuffer);
+
+    if(bind2D) {
+        glFramebufferTexture2D(GL_FRAMEBUFFER, attachSection, GL_TEXTURE_2D, textureBuffer, level);
+    }else {
+        glFramebufferTexture(GL_FRAMEBUFFER, attachSection, textureBuffer, level);
+    }
+}
+
+void BackendTextures::setupParameters(const TexEnum type, const TexParams params, const TexParams min, const TexParams max) {
     GLenum target;
 
     switch(type) {
@@ -100,7 +115,7 @@ void DefaultTextures::setupParameters(const TexEnum type, const TexParams params
     glTexParameteri(target, GL_TEXTURE_WRAP_R, params);
 }
 
-void DefaultTextures::Draw(GLuint VAO, GLenum primType, GLuint instances, GLsizei elements, bool drawElements, Shaders* shader) {
+void BackendTextures::Draw(GLuint VAO, GLenum primType, GLuint instances, GLsizei elements, bool drawElements, Shaders* shader) {
     for(GLuint i=0; i<textures.size(); i++) {
         shader -> uniformInt("texture0", 0);
         shader -> uniformInt("texture1", 1);
@@ -112,7 +127,7 @@ void DefaultTextures::Draw(GLuint VAO, GLenum primType, GLuint instances, GLsize
     bitmap -> Draw(VAO, primType, instances, elements, drawElements);
 }
 
-GLenum DefaultTextures::getTexFormat(const TexMap map) const {
+GLenum BackendTextures::getTexFormat(const TexMap map) const {
     switch(map) {
         case DIFFUSE: return GL_RGBA;
         case SPECULAR: return GL_RGBA;
@@ -120,10 +135,11 @@ GLenum DefaultTextures::getTexFormat(const TexMap map) const {
     }
 }
 
-GLenum DefaultTextures::getTexEnum() const {
+GLenum BackendTextures::getTexEnum() const {
     return texEnum;
 }
 
-GLuint DefaultTextures::getTextureByIndex(GLuint &index) const {
+GLuint BackendTextures::getTextureByIndex(GLuint &index) const {
     return textures[index][0];
 }
+#endif

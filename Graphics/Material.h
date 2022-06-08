@@ -2,7 +2,7 @@
 #define MATERIAL_INCLUDED
 
 #include "../Libraries/Libs.hpp"
-#include "Textures/DefaultTextures.cpp"
+#include "Textures/BackendTextures.cpp"
 
 class Material {
     public:

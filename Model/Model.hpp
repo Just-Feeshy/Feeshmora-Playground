@@ -3,7 +3,7 @@
 #ifndef MODEL_INCLUDED
 #define MODEL_INCLUDED
 
-#include "../Graphics/Textures/DefaultTextures.cpp"
+#include "../Graphics/Textures/BackendTextures.cpp"
 #include "../Renderer/Helpers/RenderManager.cpp"
 #include "MeshVertices.cpp"
 
@@ -47,7 +47,7 @@ class Model: public Mesh {
     protected:
         float elapsed;
 
-        DefaultTextures texture;
+        BackendTextures texture;
         MeshVertices alignment;
 
         glm::vec3 direction;

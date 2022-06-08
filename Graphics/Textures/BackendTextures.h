@@ -29,16 +29,18 @@ enum TexMap {
     SPECULAR = 1
 };
 
-class DefaultTextures {
+class BackendTextures {
     public:
-        DefaultTextures();
-        ~DefaultTextures();
+        BackendTextures();
+        ~BackendTextures();
 
         void createTexture(const TexEnum type, const int sides, const TexMap map);
         void setupParameters(const TexEnum type, const TexParams params, const TexParams min, const TexParams max);
         void loadFile(const std::string &file);
 
         void Draw(GLuint VAO, GLenum primType, GLuint instances, GLsizei elements, bool drawElements, Shaders* shader);
+
+        void bindTexture(GLuint textureBuffer, Attachments attach, int section, bool bind2D, int level);
 
         GLenum getTexFormat(const TexMap map) const;
 
