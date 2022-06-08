@@ -61,9 +61,9 @@ void Application::update() {
         auto &state = *_states.back();
         state.update(fps.getDeltaTime());
         updateEvents(fps.getDeltaTime());
-        glfwSwapBuffers(daWindow -> window);
-
+        
         glfwPollEvents();
+        glfwSwapBuffers(daWindow -> window);
     }
 
     fps.caculateFPS();

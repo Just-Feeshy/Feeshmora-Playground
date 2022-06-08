@@ -87,15 +87,15 @@ void BackendTextures::createTexture(const TexEnum type, int sides, const TexMap 
     texEnum = target;
 }
 
-void BackendTextures::bindTexture(GLuint textureBuffer, Attachments attach, int section, bool bind2D, int level) {
+void BackendTextures::bindTexture(Attachments attach, int section, bool bind2D, int level) {
     GLenum attachSection = attach + section;
 
-    glBindTexture(GL_TEXTURE_2D, textureBuffer);
+    glBindTexture(GL_TEXTURE_2D, textures.back()[0]);
 
     if(bind2D) {
-        glFramebufferTexture2D(GL_FRAMEBUFFER, attachSection, GL_TEXTURE_2D, textureBuffer, level);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, attachSection, GL_TEXTURE_2D, textures.back()[0], level);
     }else {
-        glFramebufferTexture(GL_FRAMEBUFFER, attachSection, textureBuffer, level);
+        glFramebufferTexture(GL_FRAMEBUFFER, attachSection, textures.back()[0], level);
     }
 }
 

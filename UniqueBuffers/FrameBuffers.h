@@ -20,7 +20,7 @@ class FrameBuffers: public Mesh {
 
         void setTexture(Attachments attach, int section, bool bind2D, int level);
     private:
-        GLuint textureBuffer;
+        BackendTextures texture;
 
         GLuint FBO;
         GLuint RBO;

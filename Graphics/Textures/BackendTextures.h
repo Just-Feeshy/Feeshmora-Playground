@@ -40,7 +40,7 @@ class BackendTextures {
 
         void Draw(GLuint VAO, GLenum primType, GLuint instances, GLsizei elements, bool drawElements, Shaders* shader);
 
-        void bindTexture(GLuint textureBuffer, Attachments attach, int section, bool bind2D, int level);
+        void bindTexture(Attachments attach, int section, bool bind2D, int level);
 
         GLenum getTexFormat(const TexMap map) const;
 
