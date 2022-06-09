@@ -18,11 +18,12 @@ enum TexEnum {
 };
 
 enum TexParams {
-    NEAREST = GL_NEAREST,
-    LINEAR = GL_LINEAR,
-    MIPMAP = GL_NEAREST_MIPMAP_LINEAR,
-    CLAMP_TO_EDGE = GL_CLAMP_TO_EDGE,
-    REPEAT = GL_REPEAT
+    NO_PARAMS = 0,
+    NEAREST = 0x2600,
+    LINEAR = 0x2601,
+    MIPMAP = 0x2702,
+    CLAMP_TO_EDGE = 0x812F,
+    REPEAT = 0x2901
 };
 
 enum TexMap {

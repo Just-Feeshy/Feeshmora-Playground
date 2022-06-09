@@ -16,14 +16,19 @@ class FrameBuffers: public Mesh {
         void render() override;
 
         GLuint getFBO() const;
+        GLuint getRBO() const;
 
         void setFBO(GLuint FBO);
+        void setRBO(GLuint RBO);
 
         void setTexture(WindowDisplay* window, Attachments attach, int section, bool bind2D, int level);
+
+        void implementWindow(WindowDisplay* window) override;
     private:
+        Bitmap* bitmap;
         BackendTextures texture;
 
-        GLuint FBO;
-        GLuint RBO;
+        GLuint FBO = 0;
+        GLuint RBO = 0;
 };
 #endif

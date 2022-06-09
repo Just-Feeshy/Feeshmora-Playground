@@ -73,8 +73,8 @@ class AdvancedStates: public BasicStates {
                 );
             }
 
-            obj -> implementWindow(Application::daWindow);
             obj -> render();
+            obj -> implementWindow(Application::daWindow);
         }
 
         virtual void setWindow(WindowDisplay* window) override {
