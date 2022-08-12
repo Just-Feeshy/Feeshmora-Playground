@@ -1,4 +1,4 @@
-## Feeshmora-Playground
+## Feeshmora-Playground (Discontinued!)
 - A small project being made with OpenGL, for now.
 
 - Feeshmora Playground is being developed in Repl it.
