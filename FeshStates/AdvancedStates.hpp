@@ -32,6 +32,8 @@ class AdvancedStates: public BasicStates {
 
                 defaultShaders.Init();
             }
+
+            //daFrameBuffer = new FrameBuffers();
         };
 
         ~AdvancedStates() {
@@ -39,6 +41,10 @@ class AdvancedStates: public BasicStates {
             
             if(daCamera != nullptr) {
                 delete daCamera;
+            }
+
+            if(daFrameBuffer != nullptr) {
+                delete daFrameBuffer;
             }
         }
         
@@ -88,6 +94,7 @@ class AdvancedStates: public BasicStates {
         glm::vec3 lightAmounts;
 
         Camera* daCamera;
+        FrameBuffers* daFrameBuffer;
     private:
         /**
         * Stuff for the Application class to handle.

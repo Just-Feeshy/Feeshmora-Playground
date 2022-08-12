@@ -24,6 +24,10 @@ class FrameBuffers: public Mesh {
         void setTexture(WindowDisplay* window, Attachments attach, int section, bool bind2D, int level);
 
         void implementWindow(WindowDisplay* window) override;
+
+        void draw(Shaders* shader, const int index) override {}
+        void update(const float& elapsed) override {}
+        void draw(Shaders* shader) override {}
     private:
         Bitmap* bitmap;
         BackendTextures texture;

@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef FPS_INCLUDED
 #define FPS_INCLUDED
 
