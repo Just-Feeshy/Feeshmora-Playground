@@ -1,9 +1,12 @@
-## Feeshmora-Playground (Discontinued!)
-- A small project being made with OpenGL, for now.
+## Feeshmora-Playground
 
-- Feeshmora Playground is being developed in Repl it.
+![fesh](https://cdn.discordapp.com/attachments/884835682202304572/943311519553306664/unknown.png)
 
-- Project only runs off of eular angles only.
+- A small project being made with OpenGL.
+
+- Feeshmora Playground developed in Repl it.
+
+- Project only uses eular angles.
 
 ## Libraries
 For now.
